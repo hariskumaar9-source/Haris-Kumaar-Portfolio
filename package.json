@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "scripts": {
     "build": "cd artifacts/haris-portfolio && npm install && npm run build",
-    "deploy": "npx wrangler deploy --site=artifacts/haris-portfolio/dist"
+    "deploy": "npx wrangler pages deploy artifacts/haris-portfolio/dist"
   }
 }
