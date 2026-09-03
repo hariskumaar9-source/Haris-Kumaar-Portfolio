@@ -1,0 +1,84 @@
+Act as an expert Senior Frontend Web Developer and Award-Winning UI/UX Designer. Build a modern, Swiss-Minimalist, brutalist-inspired interactive portfolio website for Haris Kumaar based on the layout, architecture, and grid principles of yahengli.co.
+
+---
+
+### 1. SITE VISUAL SYSTEM & SPECIFICATIONS
+
+- Layout Grid:
+  * 12-column responsive CSS grid system with visible 1px solid hairline borders (#E5E5E5 in light / #222222 in dark) separating layout modules into crisp architectural index boxes.
+  * Outer margin: 32px padding on desktop, 16px on mobile.
+  * Grid structure: 4-column sticky sidebar/index on the left (33% width), 8-column main content area on the right (67% width).
+- Colors & Theme:
+  * Background: #F9F9F9 (Light Mode neutral cream) / #0A0A0A (Dark Mode option).
+  * Primary Text: #111111 (High-contrast charcoal).
+  * Secondary / Meta Text: #666666 (Muted gray for project categories, dates, and locations).
+  * Hairline Borders: 1px solid rgba(0, 0, 0, 0.1).
+- Typography:
+  * Headers / Titles: PP Neue Montreal, Space Grotesk, or Inter. SemiBold (600), Uppercase, letter-spacing: +0.05em.
+  * Body & Metadata: Neutral Sans / Monospace (13px - 14px), font-weight: 400, letter-spacing: +0.04em, uppercase for category tags.
+- Navigation Bar:
+  * Position: Fixed top header (height: 64px) with backdrop-filter: blur(12px) and a bottom 1px border.
+  * Left: HARIS KUMAAR | AI-INTEGRATED PRODUCT DESIGNER
+  * Right Links: [WORK], [EXPERIENCE], [SKILLS], [CONTACT], Linkedin ↗, Email ✉️
+
+---
+
+### 2. PAGE CONTENT STRUCTURE (HARIS KUMAAR)
+
+#### LEFT COLUMN (Sticky Index & Quick Details)
+- Header Bio:
+  * Name: HARIS KUMAAR
+  * Title: AI-Integrated Product Designer & UX Specialist
+  * Location: Erode - 638004, Tamil Nadu, India
+  * Contact: +91 9360430764 | hariskuma_ar@zohomail.in
+- Interactive Quick Index / Navigation Jump Links:
+  * 01. SELECTED WORKS
+  * 02. EXPERIENCE
+  * 03. SKILLS & TOOLKIT
+  * 04. EDUCATION & BACKGROUND
+
+---
+
+#### RIGHT COLUMN (Main Content & Media Display)
+
+SECTION 1: HERO / ABOUT SUMMARY
+- Headline: Creative and user-focused Product Designer specializing in UX, interaction design, branding, motion graphics, and AI-assisted workflows. Experienced in user research, prototyping, usability testing, and scalable digital product design.
+
+SECTION 2: WORK EXPERIENCE (Modular Timeline Cards)
+1. AI-Integrated UX Specialist | Freelance
+   - Timeline: July 2023 - Present | Remote
+   - Highlights: Designed websites, branding, and digital experiences for startups; built UX flows, prototypes, and responsive interfaces leveraging AI tools & Adobe Creative Suite.
+2. Product Designer | Simpliaxis Solutions Private Limited
+   - Timeline: Dec 2024 - June 2025 | Bengaluru, KA
+   - Key Metric: Improved platform engagement by 30% through UX redesigns, wireframes, and interactive Figma prototypes.
+3. Product Designer | Kanavulabs Private Limited
+   - Timeline: July 2023 - Aug 2024 | Erode, TN
+   - Key Metric: Reduced user errors by 25% through IoT & industrial product usability improvements using Figma & ProtoPie.
+
+SECTION 3: FEATURED PROJECTS GRID
+- Project 01 | IoT & Industrial UX Platform (Kanavulabs)
+- Project 02 | EdTech / SaaS UX Engagement Redesign (Simpliaxis)
+- Project 03 | AI-Assisted Interface & Motion Design System
+- Project 04 | Brand & Digital Experience Studies
+
+SECTION 4: SKILLS & TOOLKIT (Structured Categorized Grid)
+- Core Competencies: Human-Centered Design, AI-Integrated Product Design, User Research, Usability Testing, Interaction Design, Motion & Branding, Systems Thinking.
+- Primary Software: Figma, Framer, ProtoPie, Adobe Creative Suite, Spline, Unicorn Studio, Penpot, Miro, Notion.
+- AI & Research Stack: Claude AI, ChatGPT, Gemini, Stitch AI, Relume, Maze, Dovetail, Optimal Workshop, Ethnio, Lyssna.
+
+SECTION 5: EDUCATION & LANGUAGES
+- Education:
+  * B.E. in Mechanical Engineering — Sri Shakthi Institute of Engineering and Technology (2017–2022)
+  * UI/UX, Graphic & Motion Design Certification — Teachnook (Under IIT Bhubaneswar Regime, 2023)
+- Languages: English (Professional), Tamil (Native)
+
+---
+
+### 3. ANIMATION & INTERACTION SPECIFICATIONS
+
+- Scrolling Behavior:
+  * Smooth sticky-split scrolling where the left panel stays fixed while the right side scrolls through experience, skills, and projects seamlessly.
+- Hover Effects:
+  * Project List Hover: Hovering over project title items reveals an animated floating image preview card that smoothly follows the cursor (cubic-bezier(0.16, 1, 0.3, 1) transition).
+  * Link Hover: External links with arrows (↗) translate diagonally upward (+2px, -2px) on hover.
+  * Border Highlight: Hovering over experience cards changes border color from #E5E5E5 to #111111 with a subtle fill color transition.
