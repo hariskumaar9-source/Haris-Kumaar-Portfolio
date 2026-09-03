@@ -2,6 +2,7 @@
   "name": "workspace",
   "version": "1.0.0",
   "scripts": {
-    "build": "cd artifacts/haris-portfolio && npm install && npm run build"
+    "build": "cd artifacts/haris-portfolio && npm install && npm run build",
+    "deploy": "npx wrangler deploy --site=artifacts/haris-portfolio/dist"
   }
 }
