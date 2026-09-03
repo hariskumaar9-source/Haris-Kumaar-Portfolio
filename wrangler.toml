@@ -4,3 +4,5 @@ pages_build_output_dir = "./artifacts/haris-portfolio/dist"
 
 [assets]
 directory = "./artifacts/haris-portfolio/dist"
+html_handling = "auto-trailing-slash"
+not_found_handling = "single-page-app"
