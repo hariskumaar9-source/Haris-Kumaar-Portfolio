@@ -1,3 +1,6 @@
 name = "haris-kumaar-portfolio"
 compatibility_date = "2024-09-02"
-pages_build_output_dir = "artifacts/haris-portfolio/dist"
+pages_build_output_dir = "./artifacts/haris-portfolio/dist"
+
+[assets]
+directory = "./artifacts/haris-portfolio/dist"
