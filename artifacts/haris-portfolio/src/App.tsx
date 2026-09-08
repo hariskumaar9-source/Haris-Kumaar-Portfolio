@@ -887,9 +887,9 @@ function Home() {
               activeStreamIndex={activeAnimeStream}
             />
 
-        {/* Desktop Icons Array: Dual-Orientation Adaptive Grid (Full Viewport Height in Portrait, Zero Bottom Empty Space) */}
+        {/* Desktop Icons Array: Single-Column Full Height on Desktop, Dual-Column Balanced Grid on Mobile Portrait */}
         <div className="relative z-10 select-none max-w-full h-[calc(100dvh-95px)] sm:h-[calc(100dvh-105px)] landscape:h-auto overflow-visible pointer-events-none">
-          <div className="grid grid-flow-col portrait:grid-rows-6 portrait:h-full portrait:content-between landscape:grid-rows-3 landscape:h-auto landscape:content-start sm:portrait:grid-rows-6 sm:landscape:grid-rows-3 lg:landscape:grid-rows-6 lg:h-auto lg:content-start lg:gap-y-3.5 gap-x-3 sm:gap-x-6 w-max max-w-full overflow-visible pointer-events-auto">
+          <div className="grid grid-flow-col portrait:grid-rows-6 portrait:h-full portrait:content-between landscape:grid-rows-3 landscape:h-auto landscape:content-start sm:portrait:grid-rows-6 sm:landscape:grid-rows-3 lg:grid-rows-[repeat(11,minmax(0,auto))] lg:h-auto lg:content-start lg:gap-y-1 lg:gap-x-4 [@media(min-width:1024px)_and_(max-height:650px)]:grid-rows-6 gap-x-3 sm:gap-x-6 w-max max-w-full overflow-visible pointer-events-auto">
             {/* Column 1 (Primary Career & Case Studies Portfolio) */}
             <DesktopIcon
               id="work"

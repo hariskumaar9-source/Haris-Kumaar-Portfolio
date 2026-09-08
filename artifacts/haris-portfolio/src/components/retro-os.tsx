@@ -437,7 +437,7 @@ export function DesktopIcon({
   isSelected?: boolean;
 }) {
   const getIcon = () => {
-    const iconClass = 'w-9 h-9 sm:w-10 sm:h-10 md:w-[38px] md:h-[38px]';
+    const iconClass = 'w-9 h-9 sm:w-10 sm:h-10 md:w-[38px] md:h-[38px] lg:w-[34px] lg:h-[34px]';
     switch (icon) {
       case 'folder':
         return <Folder size={38} strokeWidth={2} className={`${iconClass} fill-[#ffea88] text-[#111111]`} />;
@@ -479,13 +479,13 @@ export function DesktopIcon({
       whileHover={{ scale: 1.02, y: -1 }}
       whileTap={{ scale: 0.95 }}
       transition={{ type: 'spring', stiffness: 450, damping: 22 }}
-      className="group relative hover:z-20 flex flex-col items-center justify-center p-1 sm:p-1.5 text-center select-none cursor-grab active:cursor-grabbing focus:outline-none"
+      className="group relative hover:z-20 flex flex-col items-center justify-center p-1 sm:p-1.5 lg:p-1 lg:py-0.5 text-center select-none cursor-grab active:cursor-grabbing focus:outline-none desktop-icon-item"
     >
-      <div className="relative mb-1 flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded transition-transform group-hover:-translate-y-0.5 filter drop-shadow-[2px_2px_0px_rgba(0,0,0,0.7)]">
+      <div className="relative mb-1 lg:mb-0.5 flex h-10 w-10 sm:h-11 sm:w-11 lg:h-9 lg:w-9 items-center justify-center rounded transition-transform group-hover:-translate-y-0.5 filter drop-shadow-[2px_2px_0px_rgba(0,0,0,0.7)]">
         {getIcon()}
       </div>
       <span
-        className={`relative z-10 px-1.5 sm:px-2 py-0.5 sm:py-1 font-mono text-[9px] sm:text-[10px] md:text-[11px] font-bold leading-tight max-w-[118px] sm:max-w-[135px] whitespace-nowrap overflow-hidden text-ellipsis border border-black sm:border-2 ${
+        className={`relative z-10 px-1.5 sm:px-2 lg:px-1.5 py-0.5 sm:py-1 lg:py-0.5 font-mono text-[9px] sm:text-[10px] md:text-[11px] lg:text-[10px] font-bold leading-tight max-w-[118px] sm:max-w-[135px] lg:max-w-[124px] whitespace-nowrap overflow-hidden text-ellipsis border border-black sm:border-2 ${
           isSelected
             ? 'bg-black text-[#d8ee57] shadow-[2px_2px_0px_#000000]'
             : 'bg-white text-black shadow-[2px_2px_0px_rgba(0,0,0,0.85)] group-hover:bg-black group-hover:text-white'
