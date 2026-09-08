@@ -878,7 +878,7 @@ function Home() {
 
         {/* Desktop Workspace Canvas - Fills 100% of CRT Screen Aperture Dynamically */}
         <div className="relative h-full w-full overflow-hidden">
-          <main className="mac-desktop-bg relative h-full w-full overflow-hidden pt-8 sm:pt-9 pb-12 sm:pb-14 landscape:pt-6 landscape:pb-10 px-2 sm:px-4">
+          <main className="mac-desktop-bg relative h-full w-full overflow-hidden pt-9 sm:pt-10 pb-16 px-2 sm:px-4">
             {/* 80s Retro Anime (Slam Dunk) Looping Background with 8-Bit Pixelation & Macintosh Dotted Overlay - INSIDE CRT SCREEN */}
             <SlamDunkBackground
               enabled={animeEnabled}
@@ -887,9 +887,9 @@ function Home() {
               activeStreamIndex={activeAnimeStream}
             />
 
-        {/* Desktop Icons Array: Single-Column Full Height on Desktop, Dual-Column Balanced Grid on Mobile Portrait */}
-        <div className="relative z-10 select-none max-w-full h-[calc(100dvh-95px)] sm:h-[calc(100dvh-105px)] landscape:h-auto overflow-visible pointer-events-none">
-          <div className="grid grid-flow-col portrait:grid-rows-6 portrait:h-full portrait:content-between landscape:grid-rows-3 landscape:h-auto landscape:content-start sm:portrait:grid-rows-6 sm:landscape:grid-rows-3 lg:grid-rows-[repeat(11,minmax(0,auto))] lg:h-auto lg:content-start lg:gap-y-1 lg:gap-x-4 [@media(min-width:1024px)_and_(max-height:650px)]:grid-rows-6 gap-x-3 sm:gap-x-6 w-max max-w-full overflow-visible pointer-events-auto">
+        {/* Desktop Icons Array: Single Vertical Column One-by-One from Top Menu Bar to Lower Bezel */}
+        <div className="relative z-10 select-none max-w-full h-full overflow-visible pointer-events-none">
+          <div className="flex flex-col justify-between h-full w-max max-w-full overflow-visible pointer-events-auto py-0.5">
             {/* Column 1 (Primary Career & Case Studies Portfolio) */}
             <DesktopIcon
               id="work"

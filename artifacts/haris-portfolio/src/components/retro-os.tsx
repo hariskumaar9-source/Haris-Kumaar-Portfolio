@@ -437,33 +437,33 @@ export function DesktopIcon({
   isSelected?: boolean;
 }) {
   const getIcon = () => {
-    const iconClass = 'w-9 h-9 sm:w-10 sm:h-10 md:w-[38px] md:h-[38px] lg:w-[34px] lg:h-[34px]';
+    const iconClass = 'w-7 h-7 sm:w-8 sm:h-8 md:w-[32px] md:h-[32px]';
     switch (icon) {
       case 'folder':
-        return <Folder size={38} strokeWidth={2} className={`${iconClass} fill-[#ffea88] text-[#111111]`} />;
+        return <Folder size={32} strokeWidth={2} className={`${iconClass} fill-[#ffea88] text-[#111111]`} />;
       case 'document':
-        return <FileText size={38} strokeWidth={2} className={`${iconClass} fill-[#f5f5f5] text-[#111111]`} />;
+        return <FileText size={32} strokeWidth={2} className={`${iconClass} fill-[#f5f5f5] text-[#111111]`} />;
       case 'terminal':
-        return <Terminal size={38} strokeWidth={2} className={`${iconClass} fill-[#222222] text-[#78ff88]`} />;
+        return <Terminal size={32} strokeWidth={2} className={`${iconClass} fill-[#222222] text-[#78ff88]`} />;
       case 'mail':
-        return <Mail size={38} strokeWidth={2} className={`${iconClass} fill-[#d4e4ff] text-[#111111]`} />;
+        return <Mail size={32} strokeWidth={2} className={`${iconClass} fill-[#d4e4ff] text-[#111111]`} />;
       case 'trash':
-        return <Trash2 size={38} strokeWidth={2} className={`${iconClass} fill-[#e8e8e8] text-[#111111]`} />;
+        return <Trash2 size={32} strokeWidth={2} className={`${iconClass} fill-[#e8e8e8] text-[#111111]`} />;
       case 'harddrive':
-        return <HardDrive size={38} strokeWidth={2} className={`${iconClass} fill-[#c8c8c8] text-[#111111]`} />;
+        return <HardDrive size={32} strokeWidth={2} className={`${iconClass} fill-[#c8c8c8] text-[#111111]`} />;
       case 'sparkles':
-        return <Sparkles size={38} strokeWidth={2} className={`${iconClass} fill-[#d8ee57] text-[#111111]`} />;
+        return <Sparkles size={32} strokeWidth={2} className={`${iconClass} fill-[#d8ee57] text-[#111111]`} />;
       case 'music':
-        return <Music size={38} strokeWidth={2} className={`${iconClass} fill-[#ff69b4] text-[#111111]`} />;
+        return <Music size={32} strokeWidth={2} className={`${iconClass} fill-[#ff69b4] text-[#111111]`} />;
       case 'game':
-        return <Trophy size={38} strokeWidth={2} className={`${iconClass} fill-[#ffd166] text-[#111111]`} />;
+        return <Trophy size={32} strokeWidth={2} className={`${iconClass} fill-[#ffd166] text-[#111111]`} />;
       case 'tv':
-        return <Tv size={38} strokeWidth={2} className={`${iconClass} fill-[#ff6b6b] text-[#111111]`} />;
+        return <Tv size={32} strokeWidth={2} className={`${iconClass} fill-[#ff6b6b] text-[#111111]`} />;
       case 'bot':
       case 'ai':
-        return <Cpu size={38} strokeWidth={2} className={`${iconClass} fill-[#d8ee57] text-[#111111]`} />;
+        return <Cpu size={32} strokeWidth={2} className={`${iconClass} fill-[#d8ee57] text-[#111111]`} />;
       default:
-        return <Folder size={38} strokeWidth={2} className={`${iconClass} fill-[#ffea88] text-[#111111]`} />;
+        return <Folder size={32} strokeWidth={2} className={`${iconClass} fill-[#ffea88] text-[#111111]`} />;
     }
   };
 
@@ -479,13 +479,13 @@ export function DesktopIcon({
       whileHover={{ scale: 1.02, y: -1 }}
       whileTap={{ scale: 0.95 }}
       transition={{ type: 'spring', stiffness: 450, damping: 22 }}
-      className="group relative hover:z-20 flex flex-col items-center justify-center p-1 sm:p-1.5 lg:p-1 lg:py-0.5 text-center select-none cursor-grab active:cursor-grabbing focus:outline-none desktop-icon-item"
+      className="group relative hover:z-20 flex flex-col items-center justify-center p-0.5 sm:p-1 text-center select-none cursor-grab active:cursor-grabbing focus:outline-none desktop-icon-item shrink-0"
     >
-      <div className="relative mb-1 lg:mb-0.5 flex h-10 w-10 sm:h-11 sm:w-11 lg:h-9 lg:w-9 items-center justify-center rounded transition-transform group-hover:-translate-y-0.5 filter drop-shadow-[2px_2px_0px_rgba(0,0,0,0.7)]">
+      <div className="relative mb-0.5 flex h-7 w-7 sm:h-8 sm:w-8 md:h-8 md:w-8 items-center justify-center rounded transition-transform group-hover:-translate-y-0.5 filter drop-shadow-[2px_2px_0px_rgba(0,0,0,0.7)]">
         {getIcon()}
       </div>
       <span
-        className={`relative z-10 px-1.5 sm:px-2 lg:px-1.5 py-0.5 sm:py-1 lg:py-0.5 font-mono text-[9px] sm:text-[10px] md:text-[11px] lg:text-[10px] font-bold leading-tight max-w-[118px] sm:max-w-[135px] lg:max-w-[124px] whitespace-nowrap overflow-hidden text-ellipsis border border-black sm:border-2 ${
+        className={`relative z-10 px-1.5 sm:px-2 py-0.5 font-mono text-[9px] sm:text-[9.5px] md:text-[10px] font-bold leading-tight max-w-[145px] sm:max-w-[160px] whitespace-nowrap overflow-hidden text-ellipsis border border-black sm:border-2 ${
           isSelected
             ? 'bg-black text-[#d8ee57] shadow-[2px_2px_0px_#000000]'
             : 'bg-white text-black shadow-[2px_2px_0px_rgba(0,0,0,0.85)] group-hover:bg-black group-hover:text-white'
