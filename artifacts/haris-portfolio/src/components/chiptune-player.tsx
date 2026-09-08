@@ -745,22 +745,22 @@ export function StudioTapePlayer() {
             className="rounded border-2 border-black p-2 sm:p-2.5 text-black transition-colors"
             style={{ backgroundColor: currentSong.cassetteColor }}
           >
-            <div className="flex items-center justify-between border-b border-black/30 pb-1 text-[8.5px] sm:text-[9.5px] font-bold">
-              <span className="flex items-center gap-1 sm:gap-1.5">
-                <Radio size={11} />
-                <span className="truncate max-w-[120px] sm:max-w-none">MOCKINTOSH HI-FI TDK-90</span>
-              </span>
-              <div className="flex items-center gap-1">
+            <div className="flex items-center justify-between gap-1.5 border-b border-black/30 pb-1 text-[8.5px] sm:text-[9px] font-bold">
+              <div className="flex items-center gap-1 sm:gap-1.5 shrink min-w-0">
+                <Radio size={11} className="shrink-0 text-black" />
+                <span className="truncate font-mono tracking-tight text-[8px] sm:text-[9px]">MOCKINTOSH TDK-90</span>
+              </div>
+              <div className="flex items-center gap-1 shrink-0 whitespace-nowrap">
                 {currentSong.isExplicit && (
-                  <span className="rounded bg-black text-[#ff4d6d] px-1 py-0.2 font-mono text-[7px] sm:text-[8px] font-black border border-black flex items-center gap-0.5">
-                    <span className="bg-[#ff4d6d] text-black px-0.5 text-[6px] font-black rounded-2xs">E</span>
+                  <span className="rounded bg-black text-[#ff4d6d] px-1 py-0.5 font-mono text-[7px] sm:text-[7.5px] font-black border border-black flex items-center gap-0.5 shrink-0 leading-none whitespace-nowrap shadow-xs">
+                    <span className="bg-[#ff4d6d] text-black px-0.5 text-[5.5px] font-black rounded-2xs leading-none">E</span>
                     EXPLICIT
                   </span>
                 )}
-                <span className="rounded bg-black text-[#d8ee57] px-1.5 py-0.2 font-mono text-[7.5px] sm:text-[8.5px]">
-                  {currentSong.edition || 'ORIGINAL'}
+                <span className="rounded bg-black text-[#d8ee57] px-1.5 py-0.5 font-mono text-[7px] sm:text-[7.5px] font-bold border border-black shrink-0 leading-none whitespace-nowrap shadow-xs">
+                  {currentSong.edition?.includes('UNRATED') || currentSong.edition?.includes('UNCENSORED') ? 'UNRATED' : 'ORIGINAL'}
                 </span>
-                <span className="rounded bg-white text-black px-1 py-0.2 font-mono text-[7.5px] sm:text-[8.5px] font-bold border border-black">
+                <span className="rounded bg-white text-black px-1 py-0.5 font-mono text-[7px] sm:text-[7.5px] font-bold border border-black shrink-0 leading-none whitespace-nowrap shadow-xs">
                   {soundProfile.toUpperCase()}
                 </span>
               </div>
