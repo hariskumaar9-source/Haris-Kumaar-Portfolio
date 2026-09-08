@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="100%" height="100%" style="background:#1a0c1e;image-rendering:pixelated;">
+  <rect x="0" y="0" width="400" height="240" fill="#1a0c1e" />
+  <rect x="8" y="8" width="384" height="224" fill="#100514" rx="4" stroke="#e0aaff" stroke-width="2" />
+  <rect x="10" y="10" width="380" height="18" fill="#c77dff" />
+  <text x="25" y="23" fill="#fff" font-family="'Courier New', monospace" font-size="10" font-weight="900">RIFF // MUSIC VIBE SYNTH [JULY 2024]</text>
+
+  <!-- Synthesizer and Audio equalizer -->
+  <g transform="translate(30, 45)">
+    <rect x="0" y="0" width="340" height="155" fill="#240046" stroke="#7b2cbf" stroke-width="1.5" />
+    <text x="20" y="28" fill="#e0aaff" font-family="'Courier New', monospace" font-size="11" font-weight="bold">> CREATE MUSIC THAT SUITS YOUR VIBE</text>
+
+    <!-- Retro equalizer bars -->
+    <g transform="translate(30, 45)">
+      <rect x="0" y="30" width="14" height="40" fill="#ff007f" />
+      <rect x="20" y="10" width="14" height="60" fill="#c77dff" />
+      <rect x="40" y="20" width="14" height="50" fill="#9d4edd" />
+      <rect x="60" y="0" width="14" height="70" fill="#e0aaff" />
+      <rect x="80" y="25" width="14" height="45" fill="#ff007f" />
+      <rect x="100" y="15" width="14" height="55" fill="#c77dff" />
+      <rect x="120" y="35" width="14" height="35" fill="#9d4edd" />
+      <rect x="140" y="5" width="14" height="65" fill="#e0aaff" />
+    </g>
+
+    <!-- Synth Keyboard at bottom -->
+    <g transform="translate(190, 45)">
+      <rect x="0" y="0" width="130" height="75" fill="#100514" stroke="#c77dff" stroke-width="1" />
+      <!-- White keys -->
+      <rect x="5" y="5" width="16" height="65" fill="#fff" stroke="#000" />
+      <rect x="21" y="5" width="16" height="65" fill="#fff" stroke="#000" />
+      <rect x="37" y="5" width="16" height="65" fill="#fff" stroke="#000" />
+      <rect x="53" y="5" width="16" height="65" fill="#fff" stroke="#000" />
+      <rect x="69" y="5" width="16" height="65" fill="#fff" stroke="#000" />
+      <rect x="85" y="5" width="16" height="65" fill="#fff" stroke="#000" />
+      <rect x="101" y="5" width="16" height="65" fill="#fff" stroke="#000" />
+      <!-- Black keys -->
+      <rect x="16" y="5" width="10" height="40" fill="#000" />
+      <rect x="32" y="5" width="10" height="40" fill="#000" />
+      <rect x="64" y="5" width="10" height="40" fill="#000" />
+      <rect x="80" y="5" width="10" height="40" fill="#000" />
+      <rect x="96" y="5" width="10" height="40" fill="#000" />
+    </g>
+    <text x="20" y="140" fill="#e0aaff" font-family="'Courier New', monospace" font-size="9">SOUND DESIGN &amp; GENERATIVE AUDIO VIBES</text>
+  </g>
+</svg>

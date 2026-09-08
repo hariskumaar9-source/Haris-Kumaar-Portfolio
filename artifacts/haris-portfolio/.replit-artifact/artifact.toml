@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Haris Kumaar Portfolio"
+description = "A polished personal portfolio for Haris Kumaar, showcasing product design, UX strategy, AI-assisted workflows, and selected work."
+version = "1.0.0"
+id = "artifacts/haris-portfolio"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23302
+
+[services.development]
+run = "pnpm --filter @workspace/haris-portfolio run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/haris-portfolio", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/haris-portfolio/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23302"
+BASE_PATH = "/"

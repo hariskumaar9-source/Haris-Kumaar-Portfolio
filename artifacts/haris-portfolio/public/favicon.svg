@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" shape-rendering="crispEdges">
+  <!-- Outer Bevel & Drop Shadow (Pixel Art) -->
+  <rect x="16" y="16" width="96" height="100" rx="8" fill="#111111" />
+  
+  <!-- Classic Beige Chassis -->
+  <rect x="14" y="12" width="96" height="98" rx="8" fill="#E8DEC8" stroke="#111111" stroke-width="4" />
+  <!-- Bevel Highlights -->
+  <rect x="18" y="16" width="88" height="4" fill="#FBF8EE" />
+  <rect x="18" y="16" width="4" height="88" fill="#FBF8EE" />
+  <rect x="18" y="102" width="88" height="4" fill="#C5B79C" />
+  <rect x="102" y="16" width="4" height="90" fill="#C5B79C" />
+
+  <!-- CRT Screen Inset Bezel -->
+  <rect x="26" y="24" width="72" height="56" rx="4" fill="#1A1F24" stroke="#111111" stroke-width="4" />
+  <rect x="30" y="28" width="64" height="48" fill="#0D1318" />
+
+  <!-- CRT Scanline Accents -->
+  <line x1="30" y1="36" x2="94" y2="36" stroke="#1F2933" stroke-width="2" />
+  <line x1="30" y1="44" x2="94" y2="44" stroke="#1F2933" stroke-width="2" />
+  <line x1="30" y1="52" x2="94" y2="52" stroke="#1F2933" stroke-width="2" />
+  <line x1="30" y1="60" x2="94" y2="60" stroke="#1F2933" stroke-width="2" />
+  <line x1="30" y1="68" x2="94" y2="68" stroke="#1F2933" stroke-width="2" />
+
+  <!-- 8-Bit Happy Mac Smiling Pixel Face (Neon Lime #D8EE57 & White) -->
+  <!-- Left Eye -->
+  <rect x="42" y="40" width="8" height="8" fill="#D8EE57" />
+  <rect x="44" y="42" width="4" height="4" fill="#0D1318" />
+  
+  <!-- Right Eye -->
+  <rect x="74" y="40" width="8" height="8" fill="#D8EE57" />
+  <rect x="76" y="42" width="4" height="4" fill="#0D1318" />
+
+  <!-- Nose -->
+  <rect x="60" y="46" width="4" height="8" fill="#D8EE57" />
+  <rect x="64" y="50" width="4" height="4" fill="#D8EE57" />
+
+  <!-- Happy Smile -->
+  <rect x="42" y="56" width="6" height="4" fill="#D8EE57" />
+  <rect x="46" y="60" width="6" height="4" fill="#D8EE57" />
+  <rect x="52" y="62" width="20" height="4" fill="#D8EE57" />
+  <rect x="72" y="60" width="6" height="4" fill="#D8EE57" />
+  <rect x="76" y="56" width="6" height="4" fill="#D8EE57" />
+
+  <!-- Bottom Panel: Floppy Slot & Parody Rainbow Emblem -->
+  <!-- Rainbow Emblem -->
+  <rect x="26" y="88" width="10" height="2" fill="#52B788" />
+  <rect x="26" y="90" width="10" height="2" fill="#F4A261" />
+  <rect x="26" y="92" width="10" height="2" fill="#E76F51" />
+  <rect x="26" y="94" width="10" height="2" fill="#9B5DE5" />
+
+  <!-- Floppy Disk Drive Slot -->
+  <rect x="52" y="90" width="46" height="5" rx="1" fill="#111111" />
+  <rect x="54" y="91" width="38" height="2" fill="#4B5563" />
+  <rect x="94" y="91" width="3" height="3" fill="#D8EE57" />
+</svg>

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="reggae-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#007f5f" />
+      <stop offset="45%" stop-color="#d4a373" />
+      <stop offset="70%" stop-color="#ee9b00" />
+      <stop offset="100%" stop-color="#9b2226" />
+    </linearGradient>
+  </defs>
+
+  <!-- Kingston Rasta / Dancehall Tri-Color Background -->
+  <rect width="300" height="100" fill="#007200" />
+  <rect y="100" width="300" height="100" fill="#ffb703" />
+  <rect y="200" width="300" height="100" fill="#d90429" />
+
+  <!-- Dancehall Speaker Sound System Stack Silhouettes -->
+  <g fill="#1a1a1a" stroke="#000000" stroke-width="1.5">
+    <!-- Left Stack -->
+    <rect x="15" y="40" width="55" height="160" rx="2" />
+    <circle cx="42" cy="70" r="18" fill="#333" stroke="#ffb703" stroke-width="2" />
+    <circle cx="42" cy="70" r="6" fill="#111" />
+    <circle cx="42" cy="120" r="18" fill="#333" stroke="#ffb703" stroke-width="2" />
+    <circle cx="42" cy="120" r="6" fill="#111" />
+    <circle cx="42" cy="170" r="18" fill="#333" stroke="#ffb703" stroke-width="2" />
+    <circle cx="42" cy="170" r="6" fill="#111" />
+
+    <!-- Right Stack -->
+    <rect x="230" y="40" width="55" height="160" rx="2" />
+    <circle cx="257" cy="70" r="18" fill="#333" stroke="#ffb703" stroke-width="2" />
+    <circle cx="257" cy="70" r="6" fill="#111" />
+    <circle cx="257" cy="120" r="18" fill="#333" stroke="#ffb703" stroke-width="2" />
+    <circle cx="257" cy="120" r="6" fill="#111" />
+    <circle cx="257" cy="170" r="18" fill="#333" stroke="#ffb703" stroke-width="2" />
+    <circle cx="257" cy="170" r="6" fill="#111" />
+  </g>
+
+  <!-- Sean Paul Iconic Cornrows & Sunglasses Silhouette -->
+  <g transform="translate(100, 70)">
+    <!-- Cornrows Braids -->
+    <path d="M15,10 Q50,-5 85,10 L90,40 Q50,20 10,40 Z" fill="#000" />
+    <line x1="25" y1="15" x2="30" y2="35" stroke="#ffb703" stroke-width="1.5" />
+    <line x1="40" y1="10" x2="45" y2="35" stroke="#ffb703" stroke-width="1.5" />
+    <line x1="55" y1="10" x2="55" y2="35" stroke="#ffb703" stroke-width="1.5" />
+    <line x1="70" y1="15" x2="65" y2="35" stroke="#ffb703" stroke-width="1.5" />
+
+    <!-- Face & Wrap-around Shades -->
+    <ellipse cx="50" cy="50" rx="35" ry="36" fill="#9c6644" stroke="#000" stroke-width="2" />
+    <rect x="20" y="40" width="60" height="18" rx="5" fill="#000000" stroke="#ffb703" stroke-width="1.5" />
+    <line x1="22" y1="44" x2="78" y2="44" stroke="#ffffff" stroke-width="1" opacity="0.6" />
+
+    <!-- Goatee Beard -->
+    <path d="M42,75 Q50,82 58,75 L54,86 L46,86 Z" fill="#000" />
+
+    <!-- Leather Jacket & Gold Bling -->
+    <path d="M0,95 L25,140 L75,140 L100,95 Z" fill="#111" stroke="#000" stroke-width="2" />
+    <circle cx="50" cy="115" r="10" fill="#ffb703" stroke="#000" stroke-width="2" />
+    <text x="44" y="119" font-family="Arial" font-size="10" font-weight="900" fill="#000">SP</text>
+  </g>
+
+  <!-- Typography: Sean Paul & Dutty Rock -->
+  <rect x="0" y="0" width="300" height="36" fill="#000000" />
+  <text x="15" y="26" fill="#00ff87" font-family="'Impact', Arial, sans-serif" font-size="22" letter-spacing="3">SEAN PAUL</text>
+  <text x="200" y="24" fill="#ffb703" font-family="Arial" font-size="10" font-weight="900">VP / ATLANTIC</text>
+
+  <rect x="0" y="240" width="300" height="60" fill="#000000" />
+  <text x="15" y="270" fill="#ffb703" font-family="'Impact', Arial, sans-serif" font-size="26" letter-spacing="3">DUTTY ROCK</text>
+  <text x="15" y="288" fill="#ffffff" font-family="Arial, sans-serif" font-size="9" font-weight="bold" letter-spacing="1">FEAT. SASHA — I'M STILL IN LOVE WITH YOU</text>
+</svg>

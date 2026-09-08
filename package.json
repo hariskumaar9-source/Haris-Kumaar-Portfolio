@@ -1,0 +1,12 @@
+{
+  "name": "haris-kumaar-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm --prefix artifacts/haris-portfolio run dev",
+    "build": "node scripts/build-portfolio.mjs",
+    "preview": "npm --prefix artifacts/haris-portfolio run serve",
+    "typecheck": "npm --prefix artifacts/haris-portfolio run typecheck"
+  }
+}

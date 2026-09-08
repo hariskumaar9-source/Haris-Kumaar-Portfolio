@@ -1,0 +1,71 @@
+Act as an expert Creative Web Developer and Brutalist UX/UI Designer. Build an interactive, retro OS desktop portfolio website for Haris Kumaar inspired directly by the architecture, layout, typography, and interactive window mechanics of AWGE.com.
+
+---
+
+### 1. VISUAL SYSTEM & OS ARCHITECTURE
+
+- Layout & Desktop Environment:
+  * Full-screen viewport container (100vw x 100vh, fixed overflow).
+  * Background Color: Classic Teal (#008080) or Brutalist Black (#0E0E0E) with subtle grid scanlines.
+  * Desktop Icons: Grid array on the left side of the screen with pixelated icons for "WORK.exe", "EXPERIENCE.txt", "SKILLS.sys", "CONTACT.app", and "RESUME.pdf".
+- Retro Window UI Component System:
+  * Windows must have bevel styling (3D silver border: border-top/left: 2px solid #FFFFFF, border-right/bottom: 2px solid #808080, background: #C0C0C0 or #1A1A1A).
+  * Header Bar: High-contrast title bar (#000080 blue or #222222 black) with white bold text, title, and functional top-right control buttons [_] [□] [X].
+  * Windows must be draggable across the desktop screen and update z-index on click/drag.
+- Typography & Fonts:
+  * Monospace / Retro Bitmapped Font (e.g., MS Sans Serif, VT323, Courier New, or Space Mono).
+  * Font sizes: 12px–14px crisp text, uppercase headers, system-style bold tags.
+- Navigation Header Bar (Top OS Bar):
+  * Fixed top bar (32px height) in #C0C0C0 background with 1px border.
+  * Left: HARIS KUMAAR OS v2.0 | [FILE] [VIEW] [HELP]
+  * Right: Live Digital Clock (HH:MM:SS AM/PM) + [Tamil Nadu, IN] + Contact Quick Link.
+
+---
+
+### 2. CONTENT WINDOW MODULES (HARIS KUMAAR DATA)
+
+#### WINDOW 1: "ABOUT_HARIS.TXT" (Hero / Bio Window)
+- Title: C:\USER\HARISKUMAAR\BIO.TXT
+- Content:
+  * Name: Haris Kumaar
+  * Location: Erode - 638004, Tamil Nadu, India | +91 9360430764 | hariskuma_ar@zohomail.in
+  * Core Statement: Creative and user-focused Product Designer specializing in UX, interaction design, branding, motion graphics, and AI-assisted workflows. Skilled in creating intuitive experiences for web, SaaS, and industrial platforms through data-driven design solutions.
+
+#### WINDOW 2: "WORK_EXPERIENCE.EXE" (Timeline Window)
+- Title: C:\PORTFOLIO\EXPERIENCE.EXE
+- Content (Structured as executable logs):
+  1. [LOG 01] AI-Integrated UX Specialist | Freelance
+     - Duration: July 2023 - Present | Remote
+     - Scope: Designed websites, branding, and digital experiences; built UX flows, prototypes, and responsive interfaces using AI tools and Adobe Creative Suite.
+  2. [LOG 02] Product Designer | Simpliaxis Solutions Private Limited
+     - Duration: Dec 2024 - June 2025 | Bengaluru, KA
+     - Metric: Improved platform engagement by 30% through UX redesigns, Figma wireframes, and AI-assisted workflows.
+  3. [LOG 03] Product Designer | Kanavulabs Private Limited
+     - Duration: July 2023 - Aug 2024 | Erode, TN
+     - Metric: Reduced user errors by 25% through IoT & industrial product usability improvements using Figma and ProtoPie.
+
+#### WINDOW 3: "SKILLS_MATRIX.SYS" (Toolkit Window)
+- Title: C:\SYSTEM\SKILLS_AND_TOOLS.SYS
+- Content:
+  * Core Design: Human-Centered Design, AI-Integrated Product Design, User Research & Usability Testing, Motion & Branding, Interaction Design, Design Systems, Systems Thinking.
+  * Software Stack: Figma, Framer, ProtoPie, Adobe Creative Suite, Spline, Unicorn Studio, Penpot, Miro, Notion, Uxpressia, Balsamiq, Frame0.
+  * AI & Research Tools: Claude AI, ChatGPT, Gemini, Stitch AI, Relume, Maze, Dovetail, Optimal Workshop, Ethnio, Lyssna, Survey Monkey.
+
+#### WINDOW 4: "EDUCATION_CREDENTIALS.DOC"
+- Title: C:\DOCUMENTS\EDUCATION.DOC
+- Content:
+  * Bachelor's In Mechanical Engineering | Sri Shakthi Institute of Engineering and Technology (2017–2022)
+  * UI/UX, Graphic & Motion Design Certification | Teachnook (Under IIT Bhubaneswar Regime, 2023)
+  * Languages: English (Professional Proficiency) | Tamil (Native Proficiency)
+
+---
+
+### 3. INTERACTION & ANIMATION SPECIFICATIONS
+
+- Window Behavior:
+  * Double-clicking a desktop icon spawns or restores the corresponding modal window with a pop animation (scale 0.95 to 1.0, duration 0.15s).
+  * Clicking [X] hides/closes the window.
+- Custom Cursor:
+  * Classic pixelated white arrow cursor across the screen; pixelated hand pointer over clickable desktop shortcuts and links.
+- Internal Window Scrolling:
+  * Windows feature retro squarish scrollbars (16px width) for overflow content.

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="detroit-grit" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1b263b" />
+      <stop offset="50%" stop-color="#0d1b2a" />
+      <stop offset="100%" stop-color="#000814" />
+    </linearGradient>
+  </defs>
+
+  <!-- Cold Detroit Night Steel Blue Sky -->
+  <rect width="300" height="300" fill="url(#detroit-grit)" />
+
+  <!-- Detroit Bridge & Industrial Skyline Silhouettes -->
+  <g fill="#161b22" opacity="0.8">
+    <polygon points="0,210 40,160 50,210 80,140 100,210 140,180 180,210 240,150 260,210 300,190 300,300 0,300" />
+    <line x1="0" y1="190" x2="300" y2="190" stroke="#415a77" stroke-width="1.5" stroke-dasharray="4,4" />
+  </g>
+
+  <!-- Famous Michigan State Highway 8 Mile Sign (M-102) -->
+  <g transform="translate(185, 20)">
+    <rect width="95" height="48" rx="6" fill="#006400" stroke="#ffffff" stroke-width="2.5" />
+    <text x="47" y="20" fill="#ffffff" font-family="'Arial Black', sans-serif" font-size="10" font-weight="900" text-anchor="middle">STATE ROAD</text>
+    <text x="47" y="40" fill="#ffffff" font-family="'Impact', Arial, sans-serif" font-size="20" text-anchor="middle" letter-spacing="1">8 MILE RD</text>
+  </g>
+
+  <!-- Eminem Hooded B-Rabbit Silhouette Holding Pen & Lined Paper -->
+  <g transform="translate(40, 65)">
+    <!-- Hooded Sweatshirt Silhouette -->
+    <path d="M30,40 Q60,0 90,40 L110,130 L10,130 Z" fill="#212529" stroke="#343a40" stroke-width="2" />
+    <!-- Dark Inner Hood Shadow -->
+    <path d="M40,45 Q60,15 80,45 Q60,95 40,45 Z" fill="#000000" />
+    <!-- Intense Eye Gaze Silhouette -->
+    <line x1="50" y1="46" x2="56" y2="46" stroke="#e0e1dd" stroke-width="1.5" />
+    <line x1="64" y1="46" x2="70" y2="46" stroke="#e0e1dd" stroke-width="1.5" />
+
+    <!-- Lined Notepad Paper with Scribbled Lyrics -->
+    <g transform="translate(85, 80) rotate(-10)">
+      <rect width="55" height="70" fill="#f8f9fa" stroke="#000" stroke-width="2" />
+      <line x1="5" y1="12" x2="50" y2="12" stroke="#ced4da" stroke-width="1" />
+      <line x1="5" y1="22" x2="50" y2="22" stroke="#ced4da" stroke-width="1" />
+      <line x1="5" y1="32" x2="50" y2="32" stroke="#ced4da" stroke-width="1" />
+      <line x1="5" y1="42" x2="50" y2="42" stroke="#ced4da" stroke-width="1" />
+      <line x1="5" y1="52" x2="50" y2="52" stroke="#ced4da" stroke-width="1" />
+      <!-- Pen In Hand -->
+      <polygon points="5,55 0,70 15,65" fill="#343a40" />
+      <line x1="2" y1="70" x2="-8" y2="85" stroke="#ffd166" stroke-width="3" />
+      <text x="8" y="20" font-family="monospace" font-size="5" fill="#000">palms sweaty</text>
+      <text x="8" y="30" font-family="monospace" font-size="5" fill="#000">mom's spaghetti</text>
+      <text x="8" y="40" font-family="monospace" font-size="5" fill="#000">lose yourself</text>
+    </g>
+  </g>
+
+  <!-- Typography & Movie Soundtrack Branding -->
+  <text x="20" y="226" fill="#e0e1dd" font-family="Arial, sans-serif" font-size="10" font-weight="bold" letter-spacing="2">MUSIC FROM AND INSPIRED BY</text>
+  <text x="18" y="260" fill="#ffffff" font-family="'Impact', 'Arial Black', sans-serif" font-size="34" letter-spacing="3">8 MILE</text>
+  <text x="125" y="258" fill="#e63946" font-family="'Arial Black', sans-serif" font-size="16">EMINEM</text>
+  <text x="20" y="278" fill="#778da9" font-family="Arial, sans-serif" font-size="9" font-weight="bold">FEATURING THE ACADEMY AWARD WINNING TRACK "LOSE YOURSELF"</text>
+
+  <!-- Parental Advisory -->
+  <rect x="222" y="248" width="66" height="36" fill="#ffffff" stroke="#000" stroke-width="1.5" rx="2" />
+  <rect x="224" y="250" width="62" height="11" fill="#000000" />
+  <text x="227" y="258.5" fill="#ffffff" font-family="Arial, sans-serif" font-size="6.5" font-weight="900">PARENTAL</text>
+  <text x="227" y="270" fill="#000000" font-family="Arial, sans-serif" font-size="8.5" font-weight="900">ADVISORY</text>
+  <text x="227" y="279" fill="#000000" font-family="Arial, sans-serif" font-size="5" font-weight="bold">EXPLICIT CONTENT</text>
+</svg>

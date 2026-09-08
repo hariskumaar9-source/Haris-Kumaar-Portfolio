@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="pop-pink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffb3c6" />
+      <stop offset="40%" stop-color="#ff8fab" />
+      <stop offset="80%" stop-color="#fb6f92" />
+      <stop offset="100%" stop-color="#c9184a" />
+    </linearGradient>
+    <radialGradient id="halo" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#ff8fab" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Soft 90s Pop Pastel Background -->
+  <rect width="300" height="300" fill="url(#pop-pink)" />
+  <rect width="300" height="300" fill="url(#halo)" />
+
+  <!-- Decorative Y2K Flowers & Sparkles -->
+  <g fill="#ffffff" opacity="0.6">
+    <circle cx="50" cy="70" r="16" />
+    <circle cx="65" cy="80" r="14" />
+    <circle cx="35" cy="80" r="14" />
+    <circle cx="50" cy="95" r="16" />
+    <circle cx="50" cy="82" r="8" fill="#ffd166" />
+
+    <circle cx="250" cy="180" r="14" />
+    <circle cx="262" cy="190" r="12" />
+    <circle cx="238" cy="190" r="12" />
+    <circle cx="250" cy="202" r="14" />
+    <circle cx="250" cy="190" r="6" fill="#ffd166" />
+  </g>
+
+  <!-- Britney Schoolgirl Braids Silhouette -->
+  <g transform="translate(110, 85)">
+    <!-- Blonde Twin Pigtails with Fluffy Pink Hair Ties -->
+    <path d="M-15,40 Q-35,80 -25,120 Q-15,80 -5,40 Z" fill="#ffd166" stroke="#e09f3e" stroke-width="2" />
+    <circle cx="-15" cy="40" r="12" fill="#ff758f" />
+    <path d="M95,40 Q115,80 105,120 Q95,80 85,40 Z" fill="#ffd166" stroke="#e09f3e" stroke-width="2" />
+    <circle cx="95" cy="40" r="12" fill="#ff758f" />
+
+    <!-- Head & Bangs -->
+    <ellipse cx="40" cy="45" rx="30" ry="36" fill="#fde2e4" stroke="#e09f3e" stroke-width="1.5" />
+    <path d="M12,25 Q40,10 68,25 Q60,40 40,36 Q20,40 12,25 Z" fill="#ffd166" stroke="#e09f3e" stroke-width="1.5" />
+    
+    <!-- Big 90s Pop Eyes & Smile -->
+    <ellipse cx="28" cy="45" rx="4" ry="5" fill="#3a0ca3" />
+    <ellipse cx="52" cy="45" rx="4" ry="5" fill="#3a0ca3" />
+    <circle cx="29" cy="43" r="1.5" fill="#ffffff" />
+    <circle cx="53" cy="43" r="1.5" fill="#ffffff" />
+    <path d="M30,62 Q40,70 50,62" fill="none" stroke="#ff4d6d" stroke-width="2" />
+
+    <!-- Cardigan & White Tied Shirt Collar -->
+    <path d="M10,80 L25,110 L55,110 L70,80 Z" fill="#595959" />
+    <polygon points="40,82 30,100 50,100" fill="#ffffff" stroke="#ddd" stroke-width="1" />
+  </g>
+
+  <!-- Typography: Iconic Britney Font & Single Title -->
+  <rect x="0" y="10" width="300" height="42" fill="#ffffff" opacity="0.85" />
+  <text x="16" y="38" fill="#d90429" font-family="'Georgia', serif" font-size="24" font-weight="900" font-style="italic" letter-spacing="1">britney spears</text>
+
+  <rect x="12" y="240" width="276" height="46" fill="#000000" rx="3" opacity="0.9" />
+  <text x="22" y="262" fill="#ff758f" font-family="'Arial Black', sans-serif" font-size="14" letter-spacing="1">...BABY ONE MORE TIME</text>
+  <text x="22" y="278" fill="#ffffff" font-family="Arial, sans-serif" font-size="9" font-weight="bold" letter-spacing="0.5">ORIGINAL 1998 JIVE RECORDS ALBUM MASTER</text>
+
+  <!-- Classic CD Jewel Case Sparkle Badge -->
+  <circle cx="265" cy="30" r="14" fill="#ffd166" stroke="#000" stroke-width="1.5" />
+  <text x="254" y="34" font-family="Arial" font-size="11" font-weight="bold">#1</text>
+</svg>

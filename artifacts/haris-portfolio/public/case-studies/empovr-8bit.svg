@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="100%" height="100%" style="background:#120e24;image-rendering:pixelated;">
+  <rect x="0" y="0" width="400" height="240" fill="#120e24" />
+  <rect x="8" y="8" width="384" height="224" fill="#0b0817" rx="4" stroke="#b5179e" stroke-width="2" />
+  <rect x="10" y="10" width="380" height="18" fill="#b5179e" />
+  <text x="25" y="23" fill="#fff" font-family="'Courier New', monospace" font-size="10" font-weight="900">EMPOVR // SPATIAL VR UX [MARCH 2024]</text>
+
+  <!-- VR Headset Pixel Art -->
+  <g transform="translate(130, 60)">
+    <rect x="20" y="0" width="100" height="50" rx="16" fill="#240046" stroke="#f72585" stroke-width="2" />
+    <rect x="35" y="12" width="30" height="26" rx="8" fill="#480ca8" stroke="#4cc9f0" stroke-width="1.5" />
+    <rect x="75" y="12" width="30" height="26" rx="8" fill="#480ca8" stroke="#4cc9f0" stroke-width="1.5" />
+    <line x1="0" y1="25" x2="20" y2="25" stroke="#7209b7" stroke-width="8" />
+    <line x1="120" y1="25" x2="140" y2="25" stroke="#7209b7" stroke-width="8" />
+  </g>
+
+  <!-- Holographic floating UI screens -->
+  <g transform="translate(60, 130)">
+    <rect x="0" y="10" width="80" height="50" fill="#240046" stroke="#4cc9f0" stroke-width="1.5" stroke-dasharray="3,3" />
+    <text x="10" y="30" fill="#4cc9f0" font-family="'Courier New', monospace" font-size="8">SPATIAL</text>
+    <text x="10" y="44" fill="#fff" font-family="'Courier New', monospace" font-size="10" font-weight="bold">3D NODES</text>
+
+    <rect x="100" y="0" width="80" height="65" fill="#3a0ca3" stroke="#f72585" stroke-width="1.5" />
+    <text x="110" y="24" fill="#f72585" font-family="'Courier New', monospace" font-size="8">> HEY!</text>
+    <text x="110" y="38" fill="#fff" font-family="'Courier New', monospace" font-size="9" font-weight="bold">LET'S GET</text>
+    <text x="110" y="50" fill="#fff" font-family="'Courier New', monospace" font-size="9" font-weight="bold">STARTED</text>
+
+    <rect x="200" y="10" width="80" height="50" fill="#240046" stroke="#4cc9f0" stroke-width="1.5" stroke-dasharray="3,3" />
+    <text x="210" y="30" fill="#4cc9f0" font-family="'Courier New', monospace" font-size="8">IMMERSIVE</text>
+    <text x="210" y="44" fill="#fff" font-family="'Courier New', monospace" font-size="10" font-weight="bold">HAND TRACK</text>
+  </g>
+</svg>
