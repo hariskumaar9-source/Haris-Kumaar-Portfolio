@@ -1,4 +1,4 @@
-import React, { type MouseEvent, type ReactNode, useEffect, useState } from 'react';
+import React, { type MouseEvent, type ReactNode, useEffect, useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -62,6 +62,7 @@ import {
   Music,
   Cpu,
   Bot,
+  Trophy,
 } from 'lucide-react';
 import { Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
 
@@ -642,6 +643,7 @@ function Home() {
   const [flashingLightsPlaying, setFlashingLightsPlaying] = useState(false);
   const [currentSongTitle, setCurrentSongTitle] = useState(chiptuneSynth.currentSong.title);
   const [isBooting, setIsBooting] = useState(true);
+  const mobileScrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     return chiptuneSynth.subscribe(() => {
@@ -887,8 +889,8 @@ function Home() {
               activeStreamIndex={activeAnimeStream}
             />
 
-        {/* Desktop Icons Array: Single Vertical Column One-by-One from Top Menu Bar to Lower Bezel */}
-        <div className="relative z-10 select-none max-w-full h-full overflow-visible pointer-events-none">
+        {/* Desktop Icons Array (Desktop Mode): Single Vertical Column One-by-One from Top Menu Bar to Lower Bezel */}
+        <div className="hidden md:block relative z-10 select-none max-w-full h-full overflow-visible pointer-events-none">
           <div className="flex flex-col justify-between h-full w-max max-w-full overflow-visible pointer-events-auto py-0.5">
             {/* Column 1 (Primary Career & Case Studies Portfolio) */}
             <DesktopIcon
@@ -970,6 +972,268 @@ function Home() {
               onClick={() => openWindow('trash')}
               isSelected={windows.trash}
             />
+          </div>
+        </div>
+
+        {/* Mobile Viewport Divergence (AWGE-Style Dual-Half Invisible Scroll Engine) */}
+        <div
+          ref={mobileScrollRef}
+          className="md:hidden relative z-10 h-full w-full overflow-y-auto no-scrollbar [scrollbar-width:none] [&::-webkit-scrollbar]:hidden overscroll-y-contain scroll-smooth snap-y snap-mandatory select-none"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          {/* =========================================================================
+              MOBILE HALF 1: Classic Macintosh Career Desktop (Upper Viewport Half)
+              ========================================================================= */}
+          <div className="min-h-full w-full snap-start snap-always flex flex-col justify-between py-1">
+            {/* Top Status & Divergence Telemetry Pill */}
+            <div className="flex items-center justify-between px-1.5 py-1 mb-1 border-b border-black/20 bg-white/85 backdrop-blur-xs rounded shadow-[1px_1px_0px_#000]">
+              <div className="flex items-center gap-1.5 text-[8.5px] font-black text-black">
+                <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse border border-black" />
+                <span>HARISOS · DIVERGED VIEWPORT (1/2)</span>
+              </div>
+              <div className="text-[7.5px] font-black text-black bg-[#d8ee57] px-1.5 py-0.5 border border-black rounded shadow-[1px_1px_0px_#000]">
+                AWGE ENGINE
+              </div>
+            </div>
+
+            {/* Career Document & Case Studies Icons Grid */}
+            <div className="flex flex-col justify-around flex-1 py-1">
+              <div className="grid grid-cols-2 gap-x-2 gap-y-1.5">
+                <DesktopIcon
+                  id="work"
+                  title="01_Case_Studies.fldr"
+                  icon="folder"
+                  onClick={() => openWindow('work')}
+                  isSelected={windows.work}
+                />
+                <DesktopIcon
+                  id="experience"
+                  title="02_Exp.log"
+                  icon="terminal"
+                  onClick={() => openWindow('experience')}
+                  isSelected={windows.experience}
+                />
+                <DesktopIcon
+                  id="skills"
+                  title="03_Skills.sys"
+                  icon="document"
+                  onClick={() => openWindow('skills')}
+                  isSelected={windows.skills}
+                />
+                <DesktopIcon
+                  id="about"
+                  title="04_About.txt"
+                  icon="document"
+                  onClick={() => openWindow('about')}
+                  isSelected={windows.about}
+                />
+                <DesktopIcon
+                  id="contact"
+                  title="05_Mail.app"
+                  icon="mail"
+                  onClick={() => openWindow('contact')}
+                  isSelected={windows.contact}
+                />
+                <DesktopIcon
+                  id="brief"
+                  title="Brief.app"
+                  icon="sparkles"
+                  onClick={() => openWindow('project-modal')}
+                  isSelected={isModalOpen}
+                />
+              </div>
+            </div>
+
+            {/* Tactile AWGE Scroll-Down Cue Indicator (Click or Swipe) */}
+            <div className="pt-2 pb-0.5">
+              <button
+                type="button"
+                onClick={() => {
+                  retroAudio.click();
+                  mobileScrollRef.current?.scrollTo({
+                    top: mobileScrollRef.current.scrollHeight / 2,
+                    behavior: 'smooth',
+                  });
+                }}
+                className="w-full py-2 px-2.5 rounded border-2 border-black bg-[#d8ee57] text-black font-mono text-[9px] sm:text-[9.5px] font-black uppercase tracking-wider shadow-[3px_3px_0px_#000] active:translate-y-0.5 active:shadow-[1px_1px_0px_#000] cursor-pointer flex items-center justify-between hover:bg-black hover:text-[#d8ee57] transition-colors"
+              >
+                <span className="text-xs">▾</span>
+                <span>SCROLL DOWN · DIVERGE VIEWPORT · MEDIA DECK</span>
+                <span className="text-xs">▾</span>
+              </button>
+            </div>
+          </div>
+
+          {/* =========================================================================
+              MOBILE HALF 2: AWGE Extended Multimedia & Neural Suite (Lower Viewport Half)
+              ========================================================================= */}
+          <div className="min-h-full w-full snap-start snap-always flex flex-col justify-between py-1">
+            {/* Top: Swipe Up / Return to Desktop Indicator */}
+            <div>
+              <button
+                type="button"
+                onClick={() => {
+                  retroAudio.click();
+                  mobileScrollRef.current?.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                  });
+                }}
+                className="w-full py-1 px-2.5 rounded border-2 border-black bg-white text-black font-mono text-[8.5px] sm:text-[9px] font-black uppercase tracking-wider shadow-[2px_2px_0px_#000] active:translate-y-0.5 active:shadow-[1px_1px_0px_#000] cursor-pointer flex items-center justify-between hover:bg-black hover:text-white transition-colors"
+              >
+                <span className="text-xs">▴</span>
+                <span>RETURN TO DESKTOP · UPPER HALF (1/2)</span>
+                <span className="text-xs">▴</span>
+              </button>
+
+              {/* AWGE Marquee Header */}
+              <div className="mt-1.5 border-2 border-black bg-black text-[#d8ee57] p-2 shadow-[2px_2px_0px_#000]">
+                <div className="flex items-center justify-between text-[8px] font-black uppercase tracking-widest text-[#ff4d6d]">
+                  <span>AWGE × HARISOS LAB</span>
+                  <span>LOWER DECK</span>
+                </div>
+                <div className="text-[11px] font-black tracking-tight text-white mt-0.5 uppercase">
+                  MULTIMEDIA &amp; NEURAL ENGINE SUITE
+                </div>
+                <div className="text-[7.5px] text-[#d8ee57]/90 font-mono mt-0.5">
+                  Tactile Launchers · CRT Acoustics · Next-Gen Viewports
+                </div>
+              </div>
+            </div>
+
+            {/* Tactile AWGE Cards for Multimedia & Interactive Apps */}
+            <div className="grid grid-cols-1 gap-1.5 my-1.5">
+              {/* DeviceAI Agent Launcher */}
+              <div
+                onClick={() => {
+                  retroAudio.click();
+                  openWindow('deviceAI');
+                }}
+                className="p-2 rounded border-2 border-black bg-white hover:bg-[#d8ee57] text-black shadow-[2px_2px_0px_#000] active:translate-y-0.5 cursor-pointer transition-colors flex items-center justify-between"
+              >
+                <div className="flex items-center gap-2">
+                  <div className="flex h-7 w-7 items-center justify-center rounded border-2 border-black bg-black text-[#d8ee57] shadow-[1px_1px_0px_#000]">
+                    <Cpu size={15} className="animate-pulse" />
+                  </div>
+                  <div>
+                    <div className="text-[10.5px] font-black uppercase">DeviceAI.agent</div>
+                    <div className="text-[7.5px] font-bold text-black/70">Neural Viewport Specialist · Awakened</div>
+                  </div>
+                </div>
+                <span className="text-[7.5px] font-black bg-black text-[#d8ee57] px-1.5 py-0.5 rounded border border-black">
+                  OPEN ➔
+                </span>
+              </div>
+
+              {/* Jukebox Launcher */}
+              <div
+                onClick={() => {
+                  retroAudio.click();
+                  openWindow('music');
+                }}
+                className={`p-2 rounded border-2 border-black shadow-[2px_2px_0px_#000] active:translate-y-0.5 cursor-pointer transition-colors flex items-center justify-between ${
+                  flashingLightsPlaying ? 'bg-[#d8ee57] text-black' : 'bg-white hover:bg-[#ffe5ec] text-black'
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <div className="flex h-7 w-7 items-center justify-center rounded border-2 border-black bg-[#ff69b4] text-white shadow-[1px_1px_0px_#000]">
+                    <Music size={15} className={flashingLightsPlaying ? 'animate-bounce' : ''} />
+                  </div>
+                  <div>
+                    <div className="text-[10.5px] font-black uppercase">Jukebox.app</div>
+                    <div className="text-[7.5px] font-bold text-black/70 truncate max-w-[160px]">
+                      {flashingLightsPlaying ? `♫ Playing: ${currentSongTitle || 'Flashing Lights'}` : 'Studio Tape Deck · Explicit MP3s'}
+                    </div>
+                  </div>
+                </div>
+                <span className="text-[7.5px] font-black bg-black text-white px-1.5 py-0.5 rounded border border-black">
+                  {flashingLightsPlaying ? 'PLAYING ♫' : 'OPEN ➔'}
+                </span>
+              </div>
+
+              {/* AnimeTV Launcher */}
+              <div
+                onClick={() => {
+                  retroAudio.click();
+                  openWindow('anime');
+                }}
+                className="p-2 rounded border-2 border-black bg-white hover:bg-[#ffe0e0] text-black shadow-[2px_2px_0px_#000] active:translate-y-0.5 cursor-pointer transition-colors flex items-center justify-between"
+              >
+                <div className="flex items-center gap-2">
+                  <div className="flex h-7 w-7 items-center justify-center rounded border-2 border-black bg-[#ff6b6b] text-white shadow-[1px_1px_0px_#000]">
+                    <Tv size={15} />
+                  </div>
+                  <div>
+                    <div className="text-[10.5px] font-black uppercase">AnimeTV.app</div>
+                    <div className="text-[7.5px] font-bold text-black/70">Slam Dunk Retro Broadcast · 10 Channels</div>
+                  </div>
+                </div>
+                <span className="text-[7.5px] font-black bg-black text-white px-1.5 py-0.5 rounded border border-black">
+                  WATCH ➔
+                </span>
+              </div>
+
+              {/* SnakeLadder & Trash row */}
+              <div className="grid grid-cols-2 gap-1.5">
+                <div
+                  onClick={() => {
+                    retroAudio.click();
+                    openWindow('game');
+                  }}
+                  className="p-1.5 rounded border-2 border-black bg-white hover:bg-[#fff2b2] text-black shadow-[2px_2px_0px_#000] active:translate-y-0.5 cursor-pointer transition-colors flex items-center gap-1.5"
+                >
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded border border-black bg-[#ffd166] text-black">
+                    <Trophy size={12} />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-[9px] font-black truncate">SnakeLadder</div>
+                    <div className="text-[7px] text-black/60 truncate">Portfolio Game</div>
+                  </div>
+                </div>
+
+                <div
+                  onClick={() => {
+                    retroAudio.click();
+                    openWindow('trash');
+                  }}
+                  className="p-1.5 rounded border-2 border-black bg-white hover:bg-neutral-200 text-black shadow-[2px_2px_0px_#000] active:translate-y-0.5 cursor-pointer transition-colors flex items-center gap-1.5"
+                >
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded border border-black bg-[#e8e8e8] text-black">
+                    <Trash2 size={12} />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-[9px] font-black truncate">Trash</div>
+                    <div className="text-[7px] text-black/60 truncate">Clean Desktop</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Neural Viewport Knowledge Awakening Preview Box */}
+            <div className="rounded border-2 border-black bg-[#151515] text-white p-2 shadow-[2px_2px_0px_#000]">
+              <div className="flex items-center justify-between text-[7.5px] font-mono text-[#d8ee57]">
+                <span className="font-black uppercase">⚡ NEURAL VIEWPORT KNOWLEDGE</span>
+                <span className="text-[#39e658] font-bold">AWAKENED</span>
+              </div>
+              <div className="text-[8.5px] font-bold text-white mt-0.5">
+                Learned across 37 devices (iPhone 17 Air, Tri-Fold, Rollables).
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  retroAudio.click();
+                  openWindow('deviceAI');
+                }}
+                className="mt-1.5 w-full py-1 bg-[#d8ee57] hover:bg-white text-black font-mono text-[8.5px] font-black rounded border border-black cursor-pointer shadow-[1px_1px_0px_#000]"
+              >
+                OPEN DEVICEAI NEURAL LAB ➔
+              </button>
+            </div>
+
+            {/* AWGE Footer */}
+            <div className="text-center pt-1 pb-0.5 text-[7px] font-mono text-black/60 uppercase">
+              Mockintosh Haris™ · AWGE Viewport Divergence · 2026 UX Research
+            </div>
           </div>
         </div>
 

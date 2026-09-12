@@ -28,8 +28,14 @@ import {
   assessUserDevice,
   COMPUTING_LINEAGE,
   GLOBAL_SMARTPHONE_BRANDS,
+  UPCOMING_NEXTGEN_DEVICES,
+  getNeuralViewportState,
+  trainNeuralViewportModel,
+  getLearnedDivergenceMetrics,
   type DeviceIdentity,
   type SmartphoneBrandProfile,
+  type NextGenDeviceProfile,
+  type NeuralViewportState,
 } from '../lib/device-sensor';
 import { useAiOverlapSentinel, scanAndRectifyOverlaps } from '../lib/ai-overlap-sentinel';
 
@@ -322,6 +328,92 @@ export const PRESET_DEVICES: PresetDevice[] = [
     os: 'Android',
     browser: 'Chrome (Blink)',
     pointer: 'coarse',
+  },
+
+  // Upcoming Next-Gen (2026/2027 UX Research Focus)
+  {
+    id: 'iphone-17-air',
+    name: 'iPhone 17 Air (Slim)',
+    brand: 'Apple',
+    flag: '🇺🇸',
+    categoryTag: 'innovator',
+    icon: 'phone',
+    width: 393,
+    height: 874,
+    dpr: 3,
+    os: 'iOS',
+    browser: 'Safari (WebKit)',
+    pointer: 'coarse',
+  },
+  {
+    id: 'huawei-mate-xt-trifold',
+    name: 'Mate XT Tri-Fold (10.2")',
+    brand: 'Huawei',
+    flag: '🇨🇳',
+    categoryTag: 'innovator',
+    icon: 'tablet',
+    width: 1080,
+    height: 844,
+    dpr: 2.8,
+    os: 'Android',
+    browser: 'Chrome (Blink)',
+    pointer: 'coarse',
+  },
+  {
+    id: 'samsung-z-fold-7',
+    name: 'Galaxy Z Fold 7 Flex-G',
+    brand: 'Samsung',
+    flag: '🇰🇷',
+    categoryTag: 'innovator',
+    icon: 'phone',
+    width: 412,
+    height: 960,
+    dpr: 3.5,
+    os: 'Android',
+    browser: 'Chrome (Blink)',
+    pointer: 'coarse',
+  },
+  {
+    id: 'motorola-rollable-concept',
+    name: 'Motorola Rollable Screen',
+    brand: 'Motorola',
+    flag: '🇺🇸',
+    categoryTag: 'innovator',
+    icon: 'phone',
+    width: 412,
+    height: 1080,
+    dpr: 2.75,
+    os: 'Android',
+    browser: 'Chrome (Blink)',
+    pointer: 'coarse',
+  },
+  {
+    id: 'vision-pro-spatial-webkit',
+    name: 'Vision Pro (Spatial WebKit)',
+    brand: 'Apple',
+    flag: '🥽',
+    categoryTag: 'desktop',
+    icon: 'desktop',
+    width: 1280,
+    height: 720,
+    dpr: 2.0,
+    os: 'macOS',
+    browser: 'Safari (WebKit)',
+    pointer: 'fine',
+  },
+  {
+    id: 'meta-orion-ar-hud',
+    name: 'Meta Orion AR HUD',
+    brand: 'Meta',
+    flag: '👓',
+    categoryTag: 'innovator',
+    icon: 'desktop',
+    width: 640,
+    height: 480,
+    dpr: 1.5,
+    os: 'Android',
+    browser: 'Chrome (Blink)',
+    pointer: 'fine',
   },
 
   // Gaming & Esports
@@ -645,7 +737,10 @@ export function DeviceAIAgent({ onAutoTune }: DeviceAIAgentProps) {
   const [selectedCategory, setSelectedCategory] = useState<
     'all' | 'india' | 'flagship' | 'innovator' | 'gaming' | 'global' | 'desktop'
   >('all');
-  const [viewMode, setViewMode] = useState<'presets' | 'brands-directory'>('presets');
+  const [viewMode, setViewMode] = useState<'presets' | 'brands-directory' | 'neural-awakening'>('presets');
+  const [neuralState, setNeuralState] = useState<NeuralViewportState>(() => getNeuralViewportState());
+  const [isTraining, setIsTraining] = useState(false);
+  const [trainingProgress, setTrainingProgress] = useState(0);
   const [brandSearch, setBrandSearch] = useState('');
   const [logEvents, setLogEvents] = useState<string[]>([
     `[INIT] HarisOS Neural Viewport Specialist probe active.`,
@@ -907,6 +1002,41 @@ export function DeviceAIAgent({ onAutoTune }: DeviceAIAgentProps) {
     ]);
   };
 
+  const handleTrainModel = () => {
+    retroAudio.click();
+    setIsTraining(true);
+    setTrainingProgress(0);
+    let step = 0;
+    const interval = setInterval(() => {
+      step += 20;
+      setTrainingProgress(step);
+      if (step >= 100) {
+        clearInterval(interval);
+        setIsTraining(false);
+        const updated = trainNeuralViewportModel(512);
+        setNeuralState(updated);
+        setTunedFeedback(
+          `⚡ Neural Viewport Model Trained (+512 Epochs)! Loss decreased to ${updated.neuralLoss}. Knowledge Awakened across 37 devices.`
+        );
+        setLogEvents((p) => [
+          `[NEURAL AWAKENING] Epochs: ${updated.trainingEpochs} | Loss: ${updated.neuralLoss} | Knowledge status: 100% AWAKENED across 37 viewports.`,
+          ...p.slice(0, 9),
+        ]);
+        setTimeout(() => setTunedFeedback(null), 4000);
+      }
+    }, 120);
+  };
+
+  const handleSimulateUpcoming = (dev: NextGenDeviceProfile) => {
+    retroAudio.click();
+    setActivePreset(dev.id);
+    setViewMode('presets');
+    setLogEvents((prev) => [
+      `[NEXT-GEN AWAKENING] Simulated ${dev.flag} ${dev.name} (${dev.viewportWidth}x${dev.viewportHeight} · ${dev.aspectRatio}). Strategy: ${dev.divergenceStrategy}`,
+      ...prev.slice(0, 9),
+    ]);
+  };
+
   const handleTriggerAutoTune = () => {
     retroAudio.click();
     if (onAutoTune) {
@@ -1152,6 +1282,22 @@ export function DeviceAIAgent({ onAutoTune }: DeviceAIAgentProps) {
               <span>🌍</span>
               <span>ALL WORLD BRANDS ({GLOBAL_SMARTPHONE_BRANDS.length})</span>
             </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                retroAudio.click();
+                setViewMode('neural-awakening');
+              }}
+              className={`px-2.5 py-1 text-[10px] font-bold rounded-sm border-2 border-black cursor-pointer shadow-[2px_2px_0px_#000] transition-colors flex items-center gap-1 ${
+                viewMode === 'neural-awakening'
+                  ? 'bg-black text-[#d8ee57]'
+                  : 'bg-white text-black hover:bg-neutral-100'
+              }`}
+            >
+              <Zap size={12} className={neuralState.awakened ? 'text-[#d8ee57] animate-pulse' : ''} />
+              <span>⚡ NEURAL AWAKENING &amp; NEXT-GEN ({UPCOMING_NEXTGEN_DEVICES.length})</span>
+            </button>
           </div>
 
           <div className="flex items-center gap-1.5">
@@ -1249,7 +1395,7 @@ export function DeviceAIAgent({ onAutoTune }: DeviceAIAgentProps) {
               })}
             </div>
           </div>
-        ) : (
+        ) : viewMode === 'brands-directory' ? (
           /* View Mode 2: All World Smartphone Brands Directory */
           <div>
             <div className="flex items-center gap-2 mb-2.5">
@@ -1339,6 +1485,189 @@ export function DeviceAIAgent({ onAutoTune }: DeviceAIAgentProps) {
                   </button>
                 </div>
               ))}
+            </div>
+          </div>
+        ) : (
+          /* View Mode 3: Neural Knowledge Awakening & Next-Gen Devices Matrix (2026/2027 UX Research) */
+          <div className="space-y-3 font-mono">
+            {/* Neural Awakening & Training Controller Panel */}
+            <div className="rounded border-2 border-black bg-[#111111] text-white p-3 shadow-[3px_3px_0px_#000]">
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/20 pb-2 mb-2.5">
+                <div className="flex items-center gap-2">
+                  <span className="h-3 w-3 rounded-full bg-[#39e658] animate-ping border border-black" />
+                  <span className="font-black text-xs text-[#d8ee57] tracking-wider uppercase">
+                    DEVICEAI NEURAL VIEWPORT KNOWLEDGE: 100% AWAKENED
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="rounded bg-[#39e658]/20 text-[#39e658] border border-[#39e658]/40 px-2 py-0.5 text-[8.5px] font-black uppercase">
+                    ● ACTIVE BRAIN STATUS: ONLINE
+                  </span>
+                  <span className="text-[8px] text-neutral-400">
+                    UPDATED: {new Date(neuralState.lastTrainedTimestamp).toLocaleDateString()}
+                  </span>
+                </div>
+              </div>
+
+              {/* Neural Telemetry Radar Cards */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[9.5px]">
+                <div className="p-2 rounded border border-white/20 bg-black/70">
+                  <span className="text-neutral-400 block text-[8px] font-bold uppercase">TRAINING CYCLES (EPOCHS)</span>
+                  <span className="text-[#39e658] font-bold text-sm sm:text-base">
+                    {neuralState.trainingEpochs.toLocaleString()}
+                  </span>
+                  <span className="text-neutral-400 text-[8px] block mt-0.5">
+                    Reinforced viewport telemetry
+                  </span>
+                </div>
+
+                <div className="p-2 rounded border border-white/20 bg-black/70">
+                  <span className="text-neutral-400 block text-[8px] font-bold uppercase">NEURAL LOSS CONVERGENCE</span>
+                  <span className="text-[#d8ee57] font-bold text-sm sm:text-base">
+                    {neuralState.neuralLoss}
+                  </span>
+                  <span className="text-[#39e658] text-[8px] block mt-0.5">
+                    Optimal convergence (&lt;0.005)
+                  </span>
+                </div>
+
+                <div className="p-2 rounded border border-white/20 bg-black/70">
+                  <span className="text-neutral-400 block text-[8px] font-bold uppercase">LEARNED VIEWPORTS</span>
+                  <span className="text-white font-bold text-sm sm:text-base">
+                    {neuralState.trainedViewportsCount} Matrices
+                  </span>
+                  <span className="text-neutral-400 text-[8px] block mt-0.5">
+                    31 Global + 6 Next-Gen
+                  </span>
+                </div>
+
+                <div className="p-2 rounded border border-white/20 bg-black/70">
+                  <span className="text-neutral-400 block text-[8px] font-bold uppercase">DIVERGENCE RATIO</span>
+                  <span className="text-[#ff6b6b] font-bold text-xs sm:text-sm">
+                    {neuralState.divergenceRatio}
+                  </span>
+                  <span className="text-neutral-400 text-[8px] block mt-0.5 truncate">
+                    Damping: {neuralState.invisibleScrollDamping}
+                  </span>
+                </div>
+              </div>
+
+              {/* Progress Bar during Training */}
+              {isTraining && (
+                <div className="mt-2.5 space-y-1">
+                  <div className="flex items-center justify-between text-[8.5px] text-[#d8ee57] font-bold">
+                    <span>⚡ TRAINING IN PROGRESS: RE-CALIBRATING 37 DEVICE MATRICES...</span>
+                    <span>{trainingProgress}%</span>
+                  </div>
+                  <div className="h-2 w-full rounded border border-black bg-neutral-900 overflow-hidden">
+                    <div
+                      className="h-full bg-gradient-to-r from-[#d8ee57] to-[#39e658] transition-all duration-150"
+                      style={{ width: `${trainingProgress}%` }}
+                    />
+                  </div>
+                </div>
+              )}
+
+              {/* Train Button */}
+              <div className="mt-3 flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-white/15">
+                <span className="text-[9px] text-neutral-300">
+                  Self-learning model continuously trains on viewport aspect-ratios, safe-area insets, and thumb reachability.
+                </span>
+                <button
+                  type="button"
+                  disabled={isTraining}
+                  onClick={handleTrainModel}
+                  className="px-3 py-1.5 rounded border border-black bg-[#d8ee57] hover:bg-white text-black font-black text-[10px] cursor-pointer shadow-[2px_2px_0px_#000] flex items-center gap-1.5 transition-colors disabled:opacity-50"
+                >
+                  <Zap size={13} className={isTraining ? 'animate-spin' : ''} />
+                  <span>{isTraining ? 'TRAINING NEURAL BRAIN...' : '⚡ TRAIN & AWAKEN NEURAL ENGINE (+512 EPOCHS)'}</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Core UX Research Showcase: Next-Gen Viewports (2026/2027) */}
+            <div>
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-base">🔬</span>
+                  <h4 className="font-bold text-xs uppercase text-black">
+                    Primary UX Research: Next-Gen (2026/2027) Viewports &amp; Form Factors
+                  </h4>
+                </div>
+                <span className="bg-black text-[#d8ee57] px-2 py-0.5 text-[8.5px] font-bold rounded-xs">
+                  HARIS KUMAAR UX LAB
+                </span>
+              </div>
+              <p className="text-[9px] text-neutral-600 mb-2 leading-relaxed">
+                Modern elongated phones, tri-folds, motorized rollables, and AR HUDs break conventional CSS breakpoints. HarisOS autonomously diverges viewports to protect thumb leverage, eliminate layout collision, and maintain 60 FPS performance.
+              </p>
+
+              {/* Next-Gen Devices Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 max-h-96 overflow-y-auto pr-1">
+                {UPCOMING_NEXTGEN_DEVICES.map((dev) => (
+                  <div
+                    key={dev.id}
+                    className="rounded border-2 border-black bg-white p-2.5 shadow-[2px_2px_0px_#000] flex flex-col justify-between text-[9.5px]"
+                  >
+                    <div>
+                      {/* Header */}
+                      <div className="flex items-center justify-between border-b border-black/15 pb-1 mb-1.5">
+                        <div className="flex items-center gap-1.5 min-w-0">
+                          <span className="text-lg shrink-0">{dev.flag}</span>
+                          <div className="min-w-0">
+                            <h5 className="font-black text-black text-[10.5px] leading-tight truncate">{dev.name}</h5>
+                            <span className="text-[7.5px] text-neutral-500 font-semibold block">{dev.brand}</span>
+                          </div>
+                        </div>
+                        <span className="rounded bg-[#d8ee57] border border-black px-1.5 py-0.5 text-[7.5px] font-black text-black shrink-0">
+                          {dev.releaseTimeline}
+                        </span>
+                      </div>
+
+                      {/* Display & Viewport */}
+                      <div className="space-y-1 mb-2 text-[8px]">
+                        <div className="flex justify-between items-center text-neutral-700">
+                          <span className="font-bold">VIEWPORT:</span>
+                          <span className="font-bold text-black">{dev.viewportWidth} × {dev.viewportHeight} px @ {dev.dpr}x DPR</span>
+                        </div>
+                        <div className="flex justify-between items-center text-neutral-700">
+                          <span className="font-bold">ASPECT RATIO:</span>
+                          <span className="text-black font-semibold">{dev.aspectRatio}</span>
+                        </div>
+                        <div className="flex justify-between items-center text-neutral-700">
+                          <span className="font-bold">PANEL TECH:</span>
+                          <span className="text-black truncate max-w-[170px]">{dev.displayTech}</span>
+                        </div>
+                        <div className="flex justify-between items-center text-neutral-700">
+                          <span className="font-bold">SILICON:</span>
+                          <span className="text-neutral-800">{dev.chipset}</span>
+                        </div>
+                      </div>
+
+                      {/* UX Research Challenge */}
+                      <div className="p-1.5 rounded bg-[#fff0f3] border border-[#ff4d6d]/30 text-[8px] text-[#900c3f] mb-1.5">
+                        <span className="font-black block mb-0.5 uppercase tracking-wide">⚠ UX RESEARCH PROBLEM:</span>
+                        {dev.uxResearchChallenge}
+                      </div>
+
+                      {/* HarisOS Divergence Strategy */}
+                      <div className="p-1.5 rounded bg-[#eefbe8] border border-[#39e658]/40 text-[8px] text-[#135d1f] mb-2">
+                        <span className="font-black block mb-0.5 uppercase tracking-wide">⚡ HARISOS NEURAL ADAPTATION:</span>
+                        {dev.divergenceStrategy}
+                      </div>
+                    </div>
+
+                    {/* Simulate Button */}
+                    <button
+                      type="button"
+                      onClick={() => handleSimulateUpcoming(dev)}
+                      className="w-full rounded border-2 border-black bg-[#d8ee57] hover:bg-black hover:text-[#d8ee57] py-1 text-[9px] font-black text-black cursor-pointer shadow-[1px_1px_0px_#000] transition-colors flex items-center justify-center gap-1"
+                    >
+                      <span>SIMULATE {dev.name.toUpperCase()}</span>
+                    </button>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         )}
