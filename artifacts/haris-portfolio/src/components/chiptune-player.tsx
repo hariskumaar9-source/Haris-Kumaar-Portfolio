@@ -211,6 +211,33 @@ export const JUKEBOX_SONGS: SongTrack[] = [
       { time: 165, text: "♪ [Irresistible Dancehall Riddim & Bass Groove...] ♪" },
     ],
   },
+  {
+    id: 'praise-the-lord',
+    title: 'Praise the Lord (Da Shine)',
+    artist: 'A$AP Rocky ft. Skepta',
+    year: '2018',
+    album: 'TESTING (AWGE)',
+    genre: 'Studio Master MP3 · AWGE Hip-Hop',
+    src: '/audio/praise-the-lord.mp3',
+    fallbackSrc: 'https://archive.org/download/asap-rocky-praise-the-lord/Asap%20Rocky%20-%20Praise%20the%20lord.mp3',
+    cassetteColor: '#ffcc00',
+    albumCover: '/albums/asap-rocky-testing.svg',
+    duration: 205,
+    isExplicit: true,
+    edition: 'ORIGINAL 2018 AWGE MASTER',
+    lyrics: [
+      { time: 0, text: '♪ [Iconic Pan Flute Melody · Skepta AWGE Production...] ♪' },
+      { time: 11, text: "★ A$AP ROCKY: 'I came, I saw, I came, I saw...' ★" },
+      { time: 22, text: "★ 'I PRAISE THE LORD, THEN BREAK THE LAW!' ★" },
+      { time: 34, text: "♪ 'I take what's mine, then take some more...' ♪" },
+      { time: 45, text: "★ 'IT RAINS, IT POURS, IT RAINS, IT POURS!' ★" },
+      { time: 65, text: "♪ SKEPTA: 'Yeah, I make the whole scene shake...' ♪" },
+      { time: 90, text: "★ 'I PRAISE THE LORD, THEN BREAK THE LAW!' ★" },
+      { time: 125, text: '♪ [Heavy 808 Sub-Bass, Pan Flute & AWGE Analog Vibes...] ♪' },
+      { time: 160, text: "★ 'IT RAINS, IT POURS, IT RAINS, IT POURS!' ★" },
+      { time: 195, text: '★ PRAISE THE LORD (DA SHINE) · AWGE MASTERPIECE ★' },
+    ],
+  },
 ];
 
 type SoundProfile = 'studio' | 'bass-boost' | 'vinyl-warmth' | 'lo-fi';

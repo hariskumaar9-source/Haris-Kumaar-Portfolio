@@ -996,29 +996,17 @@ function Home() {
               </div>
             </div>
 
-            {/* Career Document & Case Studies Icons Grid */}
-            <div className="flex flex-col justify-around flex-1 py-1">
-              <div className="grid grid-cols-2 gap-x-2 gap-y-1.5">
+            {/* Career Document & Case Studies Icons Grid: Locked in User-Requested 3x2 Matrix (Row 1: Cases, About, Brief; Row 2: Skills, Exp, Mail) */}
+            <div className="flex flex-col justify-around flex-1 py-1 px-0.5">
+              <div className="grid grid-cols-3 gap-x-1 gap-y-3.5 sm:gap-y-5 items-center justify-items-center">
+                {/* Row 1: Case Studies, About, Brief */}
                 <DesktopIcon
                   id="work"
                   title="01_Case_Studies.fldr"
                   icon="folder"
                   onClick={() => openWindow('work')}
                   isSelected={windows.work}
-                />
-                <DesktopIcon
-                  id="experience"
-                  title="02_Exp.log"
-                  icon="terminal"
-                  onClick={() => openWindow('experience')}
-                  isSelected={windows.experience}
-                />
-                <DesktopIcon
-                  id="skills"
-                  title="03_Skills.sys"
-                  icon="document"
-                  onClick={() => openWindow('skills')}
-                  isSelected={windows.skills}
+                  isLocked={true}
                 />
                 <DesktopIcon
                   id="about"
@@ -1026,13 +1014,7 @@ function Home() {
                   icon="document"
                   onClick={() => openWindow('about')}
                   isSelected={windows.about}
-                />
-                <DesktopIcon
-                  id="contact"
-                  title="05_Mail.app"
-                  icon="mail"
-                  onClick={() => openWindow('contact')}
-                  isSelected={windows.contact}
+                  isLocked={true}
                 />
                 <DesktopIcon
                   id="brief"
@@ -1040,6 +1022,33 @@ function Home() {
                   icon="sparkles"
                   onClick={() => openWindow('project-modal')}
                   isSelected={isModalOpen}
+                  isLocked={true}
+                />
+
+                {/* Row 2: Skills, Exp, Mail */}
+                <DesktopIcon
+                  id="skills"
+                  title="03_Skills.sys"
+                  icon="document"
+                  onClick={() => openWindow('skills')}
+                  isSelected={windows.skills}
+                  isLocked={true}
+                />
+                <DesktopIcon
+                  id="experience"
+                  title="02_Exp.log"
+                  icon="terminal"
+                  onClick={() => openWindow('experience')}
+                  isSelected={windows.experience}
+                  isLocked={true}
+                />
+                <DesktopIcon
+                  id="contact"
+                  title="05_Mail.app"
+                  icon="mail"
+                  onClick={() => openWindow('contact')}
+                  isSelected={windows.contact}
+                  isLocked={true}
                 />
               </div>
             </div>

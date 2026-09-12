@@ -429,12 +429,14 @@ export function DesktopIcon({
   icon,
   onClick,
   isSelected,
+  isLocked = false,
 }: {
   id: string;
   title: string;
   icon: 'folder' | 'document' | 'terminal' | 'mail' | 'trash' | 'harddrive' | 'sparkles' | 'music' | 'game' | 'tv' | 'bot' | 'ai';
   onClick: () => void;
   isSelected?: boolean;
+  isLocked?: boolean;
 }) {
   const getIcon = () => {
     const iconClass = 'w-7 h-7 sm:w-8 sm:h-8 md:w-[32px] md:h-[32px]';
@@ -469,7 +471,7 @@ export function DesktopIcon({
 
   return (
     <motion.div
-      drag
+      drag={!isLocked}
       dragMomentum={false}
       dragElastic={0.05}
       onClick={() => {
@@ -479,13 +481,15 @@ export function DesktopIcon({
       whileHover={{ scale: 1.02, y: -1 }}
       whileTap={{ scale: 0.95 }}
       transition={{ type: 'spring', stiffness: 450, damping: 22 }}
-      className="group relative hover:z-20 flex flex-col items-center justify-center p-0.5 sm:p-1 text-center select-none cursor-grab active:cursor-grabbing focus:outline-none desktop-icon-item shrink-0"
+      className={`group relative hover:z-20 flex flex-col items-center justify-center p-0.5 sm:p-1 text-center select-none ${
+        isLocked ? 'cursor-pointer' : 'cursor-grab active:cursor-grabbing'
+      } focus:outline-none desktop-icon-item shrink-0`}
     >
       <div className="relative mb-0.5 flex h-7 w-7 sm:h-8 sm:w-8 md:h-8 md:w-8 items-center justify-center rounded transition-transform group-hover:-translate-y-0.5 filter drop-shadow-[2px_2px_0px_rgba(0,0,0,0.7)]">
         {getIcon()}
       </div>
       <span
-        className={`relative z-10 px-1.5 sm:px-2 py-0.5 font-mono text-[9px] sm:text-[9.5px] md:text-[10px] font-bold leading-tight max-w-[145px] sm:max-w-[160px] whitespace-nowrap overflow-hidden text-ellipsis border border-black sm:border-2 ${
+        className={`relative z-10 px-1 sm:px-1.5 py-0.5 font-mono text-[8px] sm:text-[9px] md:text-[10px] font-bold leading-tight max-w-[102px] sm:max-w-[130px] md:max-w-[160px] whitespace-nowrap overflow-hidden text-ellipsis border border-black sm:border-2 ${
           isSelected
             ? 'bg-black text-[#d8ee57] shadow-[2px_2px_0px_#000000]'
             : 'bg-white text-black shadow-[2px_2px_0px_rgba(0,0,0,0.85)] group-hover:bg-black group-hover:text-white'

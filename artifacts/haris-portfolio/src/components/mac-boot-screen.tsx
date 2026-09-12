@@ -205,11 +205,16 @@ export function MacBootScreen({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-[100] flex items-center justify-center bg-[#444444] p-2.5 sm:p-4 select-none font-mono"
+        className="fixed inset-0 z-[100] flex items-center justify-center bg-[#242628] p-2 sm:p-4 select-none font-mono overflow-hidden"
         style={{
-          backgroundImage: `radial-gradient(#666666 15%, transparent 16%), radial-gradient(#555555 15%, transparent 16%)`,
+          width: '100vw',
+          height: '100dvh',
+          maxWidth: '100vw',
+          maxHeight: '100dvh',
+          backgroundImage: `radial-gradient(#444648 18%, transparent 19%), radial-gradient(#333537 18%, transparent 19%)`,
           backgroundSize: '8px 8px',
           backgroundPosition: '0 0, 4px 4px',
+          boxSizing: 'border-box',
         }}
         onClick={() => {
           if (!chimePlayed.current) {
@@ -218,11 +223,11 @@ export function MacBootScreen({
           }
         }}
       >
-        {/* Vintage Macintosh Welcome Dialog (Fits cleanly in viewport, ZERO scrolling) */}
+        {/* Vintage Macintosh Welcome Dialog (Guaranteed zero overflow / zero viewport breakout) */}
         <motion.div
-          initial={{ scale: 0.95, y: 12 }}
-          animate={{ scale: 1, y: 0 }}
-          className="relative w-full max-w-lg sm:max-w-xl rounded-sm border-4 border-black bg-[#eadecc] p-3 sm:p-4 shadow-[10px_10px_0px_#000000] overflow-hidden flex flex-col gap-2.5 max-h-[96dvh]"
+          initial={{ scale: 0.96, opacity: 0.9 }}
+          animate={{ scale: 1, opacity: 1 }}
+          className="relative w-[calc(100vw-20px)] sm:w-full max-w-sm sm:max-w-md md:max-w-lg rounded-sm border-2 sm:border-4 border-black bg-[#eadecc] p-2.5 sm:p-4 shadow-[4px_4px_0px_#000000] sm:shadow-[8px_8px_0px_#000000] overflow-hidden flex flex-col gap-2 sm:gap-2.5 max-h-[calc(100dvh-20px)] box-border"
         >
           {/* Top Title Bar of Dialog */}
           <div className="flex items-center justify-between border-b-2 border-black pb-1.5">
@@ -298,18 +303,18 @@ export function MacBootScreen({
           {/* ===================================================================== */}
           {/* BRAD PITT HOLLYWOOD SWAGGER CARD (FRONT & CENTER WITH READING TIME)   */}
           {/* ===================================================================== */}
-          <div className="rounded-sm border-2 border-black bg-white p-2.5 sm:p-3 shadow-[3px_3px_0px_#000]">
-            <div className="flex items-center justify-between gap-1.5 border-b border-black/15 pb-1 mb-1.5">
-              <div className="flex items-center gap-1.5 text-[9.5px] sm:text-[10.5px] font-bold text-black">
-                <Sparkles size={12} className="text-amber-500 shrink-0" />
+          <div className="rounded-sm border-2 border-black bg-white p-2 sm:p-2.5 shadow-[2px_2px_0px_#000] shrink-0">
+            <div className="flex items-center justify-between gap-1.5 border-b border-black/15 pb-1 mb-1">
+              <div className="flex items-center gap-1.5 text-[9px] sm:text-[10px] font-bold text-black">
+                <Sparkles size={11} className="text-amber-500 shrink-0" />
                 <span className="tracking-wide">HOLLYWOOD SWAGGER &amp; QUOTE:</span>
               </div>
-              <span className="text-[8.5px] sm:text-[9.5px] font-bold text-black bg-[#d8ee57] px-1.5 py-0.5 rounded border border-black truncate">
+              <span className="text-[8px] sm:text-[9px] font-bold text-black bg-[#d8ee57] px-1.5 py-0.5 rounded border border-black truncate">
                 🎬 {currentQuote.movie}
               </span>
             </div>
-            <div className="min-h-[44px] flex items-center">
-              <p className="text-xs sm:text-[13px] font-bold italic leading-relaxed text-black/90">
+            <div className="min-h-[34px] sm:min-h-[42px] flex items-center">
+              <p className="text-[11px] sm:text-[13px] font-bold italic leading-snug text-black/90">
                 "{currentQuote.quote}"
               </p>
             </div>
@@ -318,7 +323,7 @@ export function MacBootScreen({
           {/* ===================================================================== */}
           {/* COMPACT DEVICE AI SENSOR & VIEWPORT SCREENING RADAR                   */}
           {/* ===================================================================== */}
-          <div className="rounded border-2 border-black bg-[#0e1117] p-2 sm:p-2.5 text-white shadow-[2px_2px_0px_#000]">
+          <div className="rounded border-2 border-black bg-[#0e1117] p-1.5 sm:p-2.5 text-white shadow-[2px_2px_0px_#000] shrink-0">
             {/* Header with Identified Brand */}
             <div className="flex items-center justify-between text-[9.5px] sm:text-[10.5px] font-bold text-[#d8ee57] border-b border-white/15 pb-1 mb-1.5">
               <div className="flex items-center gap-1.5 truncate">
