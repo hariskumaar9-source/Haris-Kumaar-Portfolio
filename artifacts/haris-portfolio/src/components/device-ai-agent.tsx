@@ -38,6 +38,12 @@ import {
   type NeuralViewportState,
 } from '../lib/device-sensor';
 import { useAiOverlapSentinel, scanAndRectifyOverlaps } from '../lib/ai-overlap-sentinel';
+import {
+  subscribeSecurityTelemetry,
+  tightenSecurityShields,
+  getSecurityTelemetry,
+  type SecurityTelemetry,
+} from '../lib/anti-inspect';
 
 export interface ViewportTelemetry {
   width: number;
@@ -729,6 +735,12 @@ export interface DeviceAIAgentProps {
 
 export function DeviceAIAgent({ onAutoTune }: DeviceAIAgentProps) {
   const overlapTelemetry = useAiOverlapSentinel();
+  const [securityTelemetry, setSecurityTelemetry] = useState<SecurityTelemetry>(getSecurityTelemetry);
+
+  useEffect(() => {
+    return subscribeSecurityTelemetry(setSecurityTelemetry);
+  }, []);
+
   const [activePreset, setActivePreset] = useState<string | null>(null);
   const [simulatedOrientation, setSimulatedOrientation] = useState<'auto' | 'portrait' | 'landscape'>('auto');
   const [realTelemetry, setRealTelemetry] = useState<ViewportTelemetry>(detectRealTelemetry);
@@ -1187,11 +1199,11 @@ export function DeviceAIAgent({ onAutoTune }: DeviceAIAgentProps) {
           <div className="flex items-center gap-2">
             <span className="h-2.5 w-2.5 rounded-full bg-[#39e658] animate-ping" />
             <span className="font-bold text-xs text-[#d8ee57] tracking-wider uppercase">
-              DEVICEAI ACTIVE SENTINEL: REAL-TIME OVERLAP RECTIFIER &amp; SECURITY SHIELD
+              DEVICEAI ACTIVE SENTINEL: ULTRA AWAKENED · AI PROCUREMENT SHIELD
             </span>
           </div>
           <span className="rounded bg-[#39e658]/20 text-[#39e658] border border-[#39e658]/40 px-1.5 py-0.5 text-[8.5px] font-bold uppercase">
-            ● 24/7 AUTO-RECTIFICATION ARMED
+            ● TIGHTENED DEFENSE: 100% ARMED
           </span>
         </div>
 
@@ -1207,42 +1219,55 @@ export function DeviceAIAgent({ onAutoTune }: DeviceAIAgentProps) {
           </div>
 
           <div className="p-2 rounded border border-white/20 bg-black/60">
-            <span className="text-neutral-400 block text-[9px] font-bold">TYPOGRAPHY HEALTH</span>
-            <span className="text-[#d8ee57] font-bold text-xs sm:text-sm">
-              {overlapTelemetry.typographyHealth}
+            <span className="text-neutral-400 block text-[9px] font-bold">AI PROCUREMENT &amp; BOTS</span>
+            <span className="text-[#39e658] font-bold text-xs sm:text-sm">
+              {securityTelemetry.automatedScrapersBlocked} Neutralized
             </span>
             <span className="text-neutral-400 text-[8.5px] block mt-0.5">
-              Balanced line-heights &amp; letter kerning
+              GPTBot, Claude, Scrapy, Puppeteer blocked
             </span>
           </div>
 
           <div className="p-2 rounded border border-white/20 bg-black/60">
-            <span className="text-neutral-400 block text-[9px] font-bold">ANTI-INSPECT PROTECTION</span>
+            <span className="text-neutral-400 block text-[9px] font-bold">ANTI-INSPECT &amp; TAMPER SHIELD</span>
             <span className="text-[#ff4d6d] font-bold text-xs sm:text-sm">
-              ACTIVE (DATA PROTECTED)
+              {securityTelemetry.inspectAttemptsBlocked} Defended (LOCKED)
             </span>
             <span className="text-neutral-400 text-[8.5px] block mt-0.5">
-              Right-click, F12, &amp; source snooping blocked
+              F12, right-click, DOM dump &amp; view-source locked
             </span>
           </div>
         </div>
 
         <div className="mt-2.5 flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-white/15">
-          <span className="text-[9px] text-neutral-300">
-            {overlapTelemetry.statusSummary}
+          <span className="text-[9px] text-[#d8ee57] font-semibold">
+            {securityTelemetry.statusText}
           </span>
-          <button
-            type="button"
-            onClick={() => {
-              retroAudio.click();
-              const res = scanAndRectifyOverlaps();
-              setTunedFeedback(`DeviceAI Scanned: ${res.rectified} typographic & element collisions resolved.`);
-              setTimeout(() => setTunedFeedback(null), 3500);
-            }}
-            className="px-2.5 py-1 rounded border border-black bg-[#d8ee57] text-black font-bold text-[9.5px] hover:bg-[#cbe348] cursor-pointer shadow-[1px_1px_0px_#000] flex items-center gap-1"
-          >
-            <span>⚡ RUN AI SCAN &amp; RECTIFY NOW</span>
-          </button>
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <button
+              type="button"
+              onClick={() => {
+                const res = tightenSecurityShields();
+                setTunedFeedback(res.message);
+                setTimeout(() => setTunedFeedback(null), 3500);
+              }}
+              className="px-2.5 py-1 rounded border border-black bg-[#ff4d6d] text-white font-bold text-[9px] hover:bg-[#ff3355] cursor-pointer shadow-[1px_1px_0px_#000] flex items-center gap-1"
+            >
+              <span>🛡️ TIGHTEN &amp; RE-ARM SHIELDS</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                retroAudio.click();
+                const res = scanAndRectifyOverlaps();
+                setTunedFeedback(`DeviceAI Scanned: ${res.rectified} typographic & element collisions resolved.`);
+                setTimeout(() => setTunedFeedback(null), 3500);
+              }}
+              className="px-2.5 py-1 rounded border border-black bg-[#d8ee57] text-black font-bold text-[9.5px] hover:bg-[#cbe348] cursor-pointer shadow-[1px_1px_0px_#000] flex items-center gap-1"
+            >
+              <span>⚡ RUN AI SCAN &amp; RECTIFY NOW</span>
+            </button>
+          </div>
         </div>
       </div>
 
