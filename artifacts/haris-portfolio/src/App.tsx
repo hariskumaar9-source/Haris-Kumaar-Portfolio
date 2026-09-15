@@ -271,7 +271,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: 'simpliaxis',
-    index: '02',
+    index: '03',
     name: 'Simpliaxis Dashboard',
     client: 'Simpliaxis Learning Solutions',
     category: 'AI & LMS',
@@ -311,15 +311,15 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: 'solarix',
-    index: '02',
-    name: 'Solarix',
-    client: 'Solarix Energy Solutions',
+    index: '04',
+    name: 'Solarix Systems',
+    client: 'Solarix Systems (Solarix Secure Systems)',
     category: 'CleanTech',
-    projectType: 'Renewable Energy Digital Platform',
+    projectType: 'Renewable Energy Digital Platform & Subsidy Calculator',
     status: 'Live Marketing Website',
-    headline: '"Let The Sun Pay your Bill" — Switch to Solar Energy',
+    headline: '"Let The Sun Pay your Bill" — Switch to Solar Energy in Tamil Nadu',
     description:
-      'Solarix is a renewable energy platform designed to educate users about solar adoption while simplifying access to residential and commercial solar solutions.',
+      'Solarix Systems is an MNRE & TANGEDCO-approved solar EPC platform designed to educate users about PM Surya Ghar solar subsidies, calculate rooftop energy savings, and streamline residential and commercial solar installations across Tamil Nadu.',
     achieved:
       'Successfully designed a modern conversion-focused renewable energy platform that improved service communication, strengthened brand trust, enhanced mobile responsiveness, and created a scalable digital experience for residential and commercial solar users.',
     metric: '90% Bill Reduction / 20+ Homes',
@@ -341,18 +341,69 @@ export const caseStudies: CaseStudy[] = [
       'User Research',
     ],
     eightBitImage: '/case-studies/solarix-8bit.svg',
-    liveUrl: 'https://solarix.energy',
+    liveUrl: 'https://www.solarixsystems.in/',
     testimonial: {
       author: 'Ar. Krishna Prasath',
       quote:
         'Precise, sharp and smart. Very good in communication and understands the user needs. All these qualities make me want to work with Haris Kumaar again.',
     },
     isFeatured: true,
-    date: '2024',
+    date: '2024 — 2025',
+  },
+  {
+    id: 'avrsathishkumar',
+    index: '05',
+    name: 'AVR Sathish Kumar',
+    client: 'AVR Predictive Forum',
+    category: 'Astrology & EdTech',
+    projectType: 'Predictive Astrology Education & Consultation Platform',
+    status: 'Live Platform & Academy',
+    headline: 'Ancient Wisdom. Structured Mastery. — AVRS Predictive Astrology Platform',
+    description:
+      'A structured predictive astrology and Vedic research platform designed for Mr. AVR Sathish Kumar and the AVR Predictive Forum. Delivers structured astrology curriculum, practical chart analysis methodologies, Bogar Naadi and K.P. system frameworks, video archives, and mentorship across 1,000+ practicing astrologers.',
+    achieved:
+      'Architected an authoritative, learner-centric digital academy for traditional Vedic astrology, delivering seamless bilingual content (English & Tamil), structured course enrollment funnels, and verified student outcome visualizers that established digital authority and community trust.',
+    metric: '1,000+ Astrologers Mentored / 90% Practice Rate',
+    role: [
+      'Designed end-to-end user journeys for course discovery, astrological consultation booking, and student onboarding',
+      'Structured bilingual information architecture (English and Tamil) for planetary combinations, remedial guidance, and horoscopic rectification',
+      'Built conversion-focused landing page architecture with embedded video lessons and alumni testimonial carousels',
+      'Crafted distinguished typography hierarchy balancing classical Vedic heritage with modern, accessible readability',
+      'Conducted field interviews with astrology learners and consulting clients to simplify course syllabus navigation',
+    ],
+    skills: [
+      'EdTech UX Design',
+      'Bilingual Content Architecture',
+      'Information Hierarchy',
+      'Course Portal Design',
+      'Design Systems',
+      'User Research & Usability Testing',
+      'Conversion Rate Optimization',
+    ],
+    eightBitImage: '/case-studies/avrsathishkumar-8bit.svg',
+    liveUrl: 'https://www.avrsathishkumar.in/',
+    userResearch: {
+      participants: '30+ Astrology Students, Professional Astrologers & Consultation Seekers',
+      methodology: 'Curriculum Comprehension Audits, Trust Signal Benchmarking, and Bilingual Legibility Tests',
+      keyFindings: [
+        'Students required an empirical distinction between generic sensationalist astrology and structured, research-backed predictive methodologies (AVRS System & K.P. Method).',
+        'Bilingual readers (Tamil & English) needed dedicated font line-height scaling to ensure Tamil diacritical characters remained unclipped across mobile displays.',
+        'Showcasing authentic video lecture previews and tangible student success stories increased course enrollment inquiries by 55%.',
+      ],
+      outcome:
+        'Created an authentic, highly credible digital education hub that demystifies traditional Vedic science into structured, professional mastery.',
+    },
+    testimonial: {
+      author: 'Ulagakani & Forum Alumni',
+      quote:
+        'Every rule is taught with proper evidence and research—nothing is asked to be believed blindly. The digital platform makes learning highly logical, practical, and enjoyable.',
+    },
+    isFeatured: true,
+    date: '2024 — 2025',
   },
   {
     id: 'sowbhagya-livora',
-    index: '03',
+    index: '06',
     name: 'Sowbhagya Livora',
     client: 'Sowbhagya Livora Interiors',
     category: 'Luxury & Brand',
@@ -392,7 +443,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: 'healora',
-    index: '04',
+    index: '07',
     name: 'Healora',
     client: 'Healora Healthcare Solutions',
     category: 'Healthcare',
@@ -432,7 +483,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: 'empovr',
-    index: '05',
+    index: '08',
     name: 'EMPOVR (VR App)',
     client: 'Spatial Research Lab',
     category: 'Spatial & VR',
@@ -453,7 +504,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: 'calli-survey',
-    index: '06',
+    index: '09',
     name: 'Calli Survey',
     client: 'Calli AI Studio',
     category: 'AI & Voice',
@@ -474,7 +525,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: 'arvix',
-    index: '07',
+    index: '10',
     name: 'ARVIX',
     client: 'Skill 4.0 Academy',
     category: 'AI & LMS',
@@ -495,7 +546,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: 'riff',
-    index: '08',
+    index: '11',
     name: 'Riff',
     client: 'Riff Audio Labs',
     category: 'Creative Tech',
@@ -516,7 +567,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: 'digixcare',
-    index: '09',
+    index: '12',
     name: 'DigiXcare',
     client: 'DigiX Healthcare Systems',
     category: 'Healthcare',
@@ -639,7 +690,7 @@ function Home() {
   const [copied, setCopied] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeCaseStudy, setActiveCaseStudy] = useState<CaseStudy | null>(null);
-  const [workFilter, setWorkFilter] = useState<'all' | 'featured' | 'gallery' | 'ai' | 'clean' | 'health' | 'research' | 'webos'>('all');
+  const [workFilter, setWorkFilter] = useState<'all' | 'featured' | 'gallery' | 'ai' | 'clean' | 'health' | 'research' | 'webos' | 'astro'>('all');
   const [flashingLightsPlaying, setFlashingLightsPlaying] = useState(false);
   const [currentSongTitle, setCurrentSongTitle] = useState(chiptuneSynth.currentSong.title);
   const [isBooting, setIsBooting] = useState(true);
@@ -1318,7 +1369,7 @@ function Home() {
             ========================================================================= */}
         <MacWindow
           id="work"
-          title="Case_Studies.fldr — 11 Case Studies, System Evolution & Live Sites"
+          title={`Case_Studies.fldr — ${caseStudies.length} Case Studies, System Evolution & Live Sites`}
           isOpen={windows.work}
           onClose={() => closeWindow('work')}
           zIndex={zIndices.work}
@@ -1336,7 +1387,7 @@ function Home() {
                       FINDER: CASE_STUDIES.FLDR
                     </span>
                     <span className="font-mono text-xs font-bold text-black/75">
-                      11 Items · System Evolution Decks · 8-Bit Previews · Live Cloud Links
+                      {caseStudies.length} Items · System Evolution Decks · 8-Bit Previews · Live Cloud Links
                     </span>
                   </div>
                   <h2 className="mt-1.5 font-mono text-xl sm:text-2xl font-bold uppercase tracking-tight text-black">
@@ -1355,13 +1406,14 @@ function Home() {
               {/* Filter Pills with Smooth Horizontal Flow & Breathing Space */}
               <div className="mt-4 flex items-center gap-2 overflow-x-auto no-scrollbar py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden font-mono text-xs">
                 {[
-                  { id: 'all', label: 'All Items (11)' },
+                  { id: 'all', label: `All Items (${caseStudies.length})` },
                   { id: 'webos', label: '⚡ HarisOS Evolution' },
-                  { id: 'research', label: '📋 User Research (2)' },
-                  { id: 'featured', label: '★ Featured (6)' },
-                  { id: 'gallery', label: 'Project Gallery (5)' },
+                  { id: 'research', label: `📋 User Research (${caseStudies.filter((c) => Boolean(c.userResearch)).length})` },
+                  { id: 'featured', label: `★ Featured (${caseStudies.filter((c) => c.isFeatured).length})` },
+                  { id: 'gallery', label: `Project Gallery (${caseStudies.filter((c) => !c.isFeatured).length})` },
                   { id: 'ai', label: 'AI & LMS' },
                   { id: 'clean', label: 'CleanTech' },
+                  { id: 'astro', label: '🔮 Astrology & Vedic' },
                   { id: 'health', label: 'Healthcare' },
                 ].map((tab) => {
                   const isActive = workFilter === tab.id;
@@ -1396,6 +1448,7 @@ function Home() {
                   if (workFilter === 'gallery') return !cs.isFeatured;
                   if (workFilter === 'ai') return cs.category.includes('AI') || cs.category.includes('LMS');
                   if (workFilter === 'clean') return cs.category.includes('CleanTech');
+                  if (workFilter === 'astro') return cs.category.includes('Astrology') || cs.category.includes('Predictive');
                   if (workFilter === 'health') return cs.category.includes('Health');
                   return true;
                 })
