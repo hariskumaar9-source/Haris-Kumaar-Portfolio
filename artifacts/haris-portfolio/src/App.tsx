@@ -694,7 +694,6 @@ function Home() {
   const [flashingLightsPlaying, setFlashingLightsPlaying] = useState(false);
   const [currentSongTitle, setCurrentSongTitle] = useState(chiptuneSynth.currentSong.title);
   const [isBooting, setIsBooting] = useState(true);
-  const mobileScrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     return chiptuneSynth.subscribe(() => {
@@ -931,7 +930,7 @@ function Home() {
 
         {/* Desktop Workspace Canvas - Fills 100% of CRT Screen Aperture Dynamically */}
         <div className="relative h-full w-full overflow-hidden">
-          <main className="mac-desktop-bg relative h-full w-full overflow-hidden pt-9 sm:pt-10 pb-16 px-2 sm:px-4">
+          <main className="mac-desktop-bg relative h-full w-full overflow-hidden pt-10 sm:pt-12 pb-3 sm:pb-4 px-2 sm:px-4">
             {/* 80s Retro Anime (Slam Dunk) Looping Background with 8-Bit Pixelation & Macintosh Dotted Overlay - INSIDE CRT SCREEN */}
             <SlamDunkBackground
               enabled={animeEnabled}
@@ -940,8 +939,8 @@ function Home() {
               activeStreamIndex={activeAnimeStream}
             />
 
-        {/* Desktop Icons Array (Desktop Mode): Single Vertical Column One-by-One from Top Menu Bar to Lower Bezel */}
-        <div className="hidden md:block relative z-10 select-none max-w-full h-full overflow-visible pointer-events-none">
+        {/* Desktop Icons Array: Single Vertical Column One-by-One from Top Menu Bar to Lower Bezel */}
+        <div className="relative z-10 select-none max-w-full h-full overflow-visible pointer-events-none">
           <div className="flex flex-col justify-between h-full w-max max-w-full overflow-visible pointer-events-auto py-0.5">
             {/* Column 1 (Primary Career & Case Studies Portfolio) */}
             <DesktopIcon
@@ -1023,136 +1022,6 @@ function Home() {
               onClick={() => openWindow('trash')}
               isSelected={windows.trash}
             />
-          </div>
-        </div>
-
-        {/* Mobile Viewport Divergence (AWGE-Style Dual-Half Invisible Scroll Engine) */}
-        <div
-          ref={mobileScrollRef}
-          className="md:hidden relative z-10 h-full w-full overflow-y-auto no-scrollbar [scrollbar-width:none] [&::-webkit-scrollbar]:hidden overscroll-y-contain scroll-smooth snap-y snap-mandatory select-none"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        >
-          {/* =========================================================================
-              MOBILE HALF 1: Classic Macintosh Career Desktop (Upper Viewport Half)
-              ========================================================================= */}
-          <div className="min-h-full w-full snap-start snap-always flex flex-col justify-between py-1">
-            {/* Top Status & Divergence Telemetry Pill */}
-            <div className="flex items-center justify-between px-1.5 py-1 mb-1 border-b border-black/20 bg-white/85 backdrop-blur-xs rounded shadow-[1px_1px_0px_#000]">
-              <div className="flex items-center gap-1.5 text-[8.5px] font-black text-black">
-                <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse border border-black" />
-                <span>HARISOS · DIVERGED VIEWPORT (1/2)</span>
-              </div>
-              <div className="text-[7.5px] font-black text-black bg-[#d8ee57] px-1.5 py-0.5 border border-black rounded shadow-[1px_1px_0px_#000]">
-                AWGE ENGINE
-              </div>
-            </div>
-
-            {/* Career Document & Case Studies Icons Grid: Locked in User-Requested 3x2 Matrix (Row 1: Cases, About, Brief; Row 2: Skills, Exp, Mail) */}
-            <div className="flex flex-col justify-around flex-1 py-1 px-0.5">
-              <div className="grid grid-cols-3 gap-x-1 gap-y-3.5 sm:gap-y-5 items-center justify-items-center">
-                {/* Row 1: Case Studies, About, Brief */}
-                <DesktopIcon
-                  id="work"
-                  title="01_Case_Studies.fldr"
-                  icon="folder"
-                  onClick={() => openWindow('work')}
-                  isSelected={windows.work}
-                  isLocked={true}
-                />
-                <DesktopIcon
-                  id="about"
-                  title="04_About.txt"
-                  icon="document"
-                  onClick={() => openWindow('about')}
-                  isSelected={windows.about}
-                  isLocked={true}
-                />
-                <DesktopIcon
-                  id="brief"
-                  title="Brief.app"
-                  icon="sparkles"
-                  onClick={() => openWindow('project-modal')}
-                  isSelected={isModalOpen}
-                  isLocked={true}
-                />
-
-                {/* Row 2: Skills, Exp, Mail */}
-                <DesktopIcon
-                  id="skills"
-                  title="03_Skills.sys"
-                  icon="document"
-                  onClick={() => openWindow('skills')}
-                  isSelected={windows.skills}
-                  isLocked={true}
-                />
-                <DesktopIcon
-                  id="experience"
-                  title="02_Exp.log"
-                  icon="terminal"
-                  onClick={() => openWindow('experience')}
-                  isSelected={windows.experience}
-                  isLocked={true}
-                />
-                <DesktopIcon
-                  id="contact"
-                  title="05_Mail.app"
-                  icon="mail"
-                  onClick={() => openWindow('contact')}
-                  isSelected={windows.contact}
-                  isLocked={true}
-                />
-              </div>
-            </div>
-
-          </div>
-
-          {/* =========================================================================
-              MOBILE HALF 2: Classic Macintosh System & Interactive Apps (Lower Viewport Half)
-              ========================================================================= */}
-          <div className="min-h-full w-full snap-start snap-always flex flex-col justify-between py-1">
-            {/* Desktop Icons Array (Mobile Phase 2): Single Vertical Column matching Desktop Version */}
-            <div className="flex flex-col justify-between h-full w-max max-w-full overflow-visible pointer-events-auto py-1 px-1">
-              <DesktopIcon
-                id="deviceAI"
-                title="DeviceAI.agent"
-                icon="ai"
-                onClick={() => openWindow('deviceAI')}
-                isSelected={windows.deviceAI}
-                isLocked={true}
-              />
-              <DesktopIcon
-                id="music"
-                title="Jukebox.app"
-                icon="music"
-                onClick={() => openWindow('music')}
-                isSelected={windows.music}
-                isLocked={true}
-              />
-              <DesktopIcon
-                id="anime"
-                title="AnimeTV.app"
-                icon="tv"
-                onClick={() => openWindow('anime')}
-                isSelected={windows.anime}
-                isLocked={true}
-              />
-              <DesktopIcon
-                id="game"
-                title="SnakeLadder.game"
-                icon="game"
-                onClick={() => openWindow('game')}
-                isSelected={windows.game}
-                isLocked={true}
-              />
-              <DesktopIcon
-                id="trash"
-                title="Trash"
-                icon="trash"
-                onClick={() => openWindow('trash')}
-                isSelected={windows.trash}
-                isLocked={true}
-              />
-            </div>
           </div>
         </div>
 
@@ -2158,128 +2027,6 @@ function Home() {
             </div>
           </div>
         </MacWindow>
-
-        {/* Floating System Dock (AWGE / Macintosh Quick Switcher) - INSIDE CRT SCREEN */}
-        <div
-          className="absolute bottom-2 sm:bottom-3 left-1/2 -translate-x-1/2 z-40 flex w-max max-w-[99vw] sm:max-w-[98vw] md:max-w-[96%] items-center gap-1 sm:gap-2 rounded-full border-2 border-black bg-white/95 px-2 sm:px-4 py-1 sm:py-1.5 shadow-[4px_4px_0px_#000000] backdrop-blur-md overflow-x-auto no-scrollbar [scrollbar-width:none] [&::-webkit-scrollbar]:hidden overscroll-contain touch-pan-x"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        >
-          <button
-            type="button"
-            onClick={() => openWindow('work')}
-            title="Case Studies & Live Links"
-            className={`mac-button rounded-sm px-2 sm:px-3 py-0.5 sm:py-1 font-mono text-[9px] sm:text-[11px] font-bold border border-black cursor-pointer shrink-0 transition-colors ${
-              windows.work ? 'bg-black text-[#d8ee57]' : 'bg-white text-black hover:bg-black hover:text-white'
-            }`}
-          >
-            <span className="sm:hidden">Cases</span>
-            <span className="hidden sm:inline">Case_Studies</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => openWindow('experience')}
-            title="Experience Log"
-            className={`mac-button rounded-sm px-2 sm:px-3 py-0.5 sm:py-1 font-mono text-[9px] sm:text-[11px] font-bold border border-black cursor-pointer shrink-0 transition-colors ${
-              windows.experience ? 'bg-black text-[#d8ee57]' : 'bg-white text-black hover:bg-black hover:text-white'
-            }`}
-          >
-            <span className="sm:hidden">Exp</span>
-            <span className="hidden sm:inline">02_Exp</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => openWindow('skills')}
-            title="Toolkit & Skills"
-            className={`mac-button rounded-sm px-2 sm:px-3 py-0.5 sm:py-1 font-mono text-[9px] sm:text-[11px] font-bold border border-black cursor-pointer shrink-0 transition-colors ${
-              windows.skills ? 'bg-black text-[#d8ee57]' : 'bg-white text-black hover:bg-black hover:text-white'
-            }`}
-          >
-            <span className="sm:hidden">Skills</span>
-            <span className="hidden sm:inline">03_Skills</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => openWindow('about')}
-            title="About Haris"
-            className={`mac-button rounded-sm px-2 sm:px-3 py-0.5 sm:py-1 font-mono text-[9px] sm:text-[11px] font-bold border border-black cursor-pointer shrink-0 transition-colors ${
-              windows.about ? 'bg-black text-[#d8ee57]' : 'bg-white text-black hover:bg-black hover:text-white'
-            }`}
-          >
-            <span className="sm:hidden">About</span>
-            <span className="hidden sm:inline">04_About</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => openWindow('contact')}
-            title="Contact Desk"
-            className={`mac-button rounded-sm px-2 sm:px-3 py-0.5 sm:py-1 font-mono text-[9px] sm:text-[11px] font-bold border border-black cursor-pointer shrink-0 transition-colors ${
-              windows.contact ? 'bg-black text-[#d8ee57]' : 'bg-white text-black hover:bg-black hover:text-white'
-            }`}
-          >
-            <span className="sm:hidden">Mail</span>
-            <span className="hidden sm:inline">05_Contact</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => openWindow('anime')}
-            title="Slam Dunk & Retro Anime TV (10 Channels)"
-            className={`mac-button flex items-center gap-1 rounded-sm px-2 sm:px-3 py-0.5 sm:py-1 font-mono text-[9px] sm:text-[11px] font-bold border border-black cursor-pointer shrink-0 transition-colors ${
-              windows.anime ? 'bg-black text-[#ff6b6b]' : 'bg-white text-black hover:bg-black hover:text-white'
-            }`}
-          >
-            <Tv size={11} className={windows.anime ? 'text-[#ff6b6b]' : ''} />
-            <span className="sm:hidden">TV</span>
-            <span className="hidden sm:inline">📺 AnimeTV</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => openWindow('project-modal')}
-            title="Discuss Project"
-            className="mac-button flex items-center gap-1 rounded-sm bg-[#d8ee57] border border-black px-2 sm:px-3 py-0.5 sm:py-1 font-mono text-[9px] sm:text-[11px] font-bold text-black hover:bg-black hover:text-[#d8ee57] cursor-pointer shrink-0 transition-colors"
-          >
-            <Sparkles size={11} className="shrink-0" />
-            <span>Brief</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => openWindow('game')}
-            title="Snakes & Ladders: Portfolio Walkthrough Game"
-            className={`mac-button rounded-sm px-2 sm:px-3 py-0.5 sm:py-1 font-mono text-[9px] sm:text-[11px] font-bold border border-black cursor-pointer shrink-0 transition-colors ${
-              windows.game ? 'bg-black text-[#d8ee57]' : 'bg-white text-black hover:bg-black hover:text-white'
-            }`}
-          >
-            <span className="sm:hidden">Game</span>
-            <span className="hidden sm:inline">🎲 Game</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => openWindow('deviceAI')}
-            title="DeviceAI Viewport Specialist"
-            className={`mac-button flex items-center gap-1 rounded-sm px-2 sm:px-3 py-0.5 sm:py-1 font-mono text-[9px] sm:text-[11px] font-bold border border-black cursor-pointer shrink-0 transition-colors ${
-              windows.deviceAI ? 'bg-black text-[#d8ee57]' : 'bg-white text-black hover:bg-black hover:text-white'
-            }`}
-          >
-            <Cpu size={11} className={windows.deviceAI ? 'text-[#d8ee57] animate-pulse' : ''} />
-            <span className="sm:hidden">AI</span>
-            <span className="hidden sm:inline">🤖 AI Agent</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => openWindow('music')}
-            title="Studio Master Tape Deck · Authentic MP3 Collection"
-            className={`mac-button flex items-center gap-1 sm:gap-1.5 rounded-sm px-2 sm:px-3.5 py-0.5 sm:py-1 font-mono text-[9px] sm:text-[11px] font-bold border border-black cursor-pointer shrink-0 transition-colors ${
-              flashingLightsPlaying
-                ? 'bg-[#d8ee57] text-black shadow-[2px_2px_0px_#000]'
-                : windows.music
-                ? 'bg-black text-[#d8ee57]'
-                : 'bg-white text-black hover:bg-black hover:text-white'
-            }`}
-          >
-            <Music size={11} className={flashingLightsPlaying ? 'animate-bounce text-black' : ''} />
-            <span className="sm:hidden">{flashingLightsPlaying ? '♫ MP3 ON' : '♫ MP3'}</span>
-            <span className="hidden sm:inline whitespace-nowrap">{flashingLightsPlaying ? `♫ ${currentSongTitle}: ON` : '♫ Studio MP3s'}</span>
-          </button>
-        </div>
       </main>
     </div>
     </MacintoshBezelFrame>

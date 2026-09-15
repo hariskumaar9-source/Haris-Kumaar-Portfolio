@@ -439,7 +439,7 @@ export function DesktopIcon({
   isLocked?: boolean;
 }) {
   const getIcon = () => {
-    const iconClass = 'w-7 h-7 sm:w-8 sm:h-8 md:w-[32px] md:h-[32px]';
+    const iconClass = 'w-6 h-6 sm:w-7 sm:h-7 md:w-[32px] md:h-[32px]';
     switch (icon) {
       case 'folder':
         return <Folder size={32} strokeWidth={2} className={`${iconClass} fill-[#ffea88] text-[#111111]`} />;
@@ -481,11 +481,9 @@ export function DesktopIcon({
       whileHover={{ scale: 1.02, y: -1 }}
       whileTap={{ scale: 0.95 }}
       transition={{ type: 'spring', stiffness: 450, damping: 22 }}
-      className={`group relative hover:z-20 flex flex-col items-center justify-center p-0.5 sm:p-1 text-center select-none ${
-        isLocked ? 'cursor-pointer' : 'cursor-grab active:cursor-grabbing'
-      } focus:outline-none desktop-icon-item shrink-0`}
+      className="group relative hover:z-20 flex flex-col items-center justify-center p-0.5 sm:p-1 text-center select-none cursor-pointer focus:outline-none desktop-icon-item shrink-0"
     >
-      <div className="relative mb-0.5 flex h-7 w-7 sm:h-8 sm:w-8 md:h-8 md:w-8 items-center justify-center rounded transition-transform group-hover:-translate-y-0.5 filter drop-shadow-[2px_2px_0px_rgba(0,0,0,0.7)]">
+      <div className="relative mb-0.5 flex h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 items-center justify-center rounded transition-transform group-hover:-translate-y-0.5 filter drop-shadow-[2px_2px_0px_rgba(0,0,0,0.7)]">
         {getIcon()}
       </div>
       <span
