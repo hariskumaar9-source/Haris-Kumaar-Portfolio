@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ExternalLink,
@@ -63,17 +63,36 @@ export function CaseStudyModal({
   onClose: () => void;
   onOpenProjectBrief: () => void;
 }) {
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && caseStudy) {
+        retroAudio.windowClose();
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [caseStudy, onClose]);
+
   if (!caseStudy) return null;
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-1.5 sm:p-6 bg-black/60 backdrop-blur-xs select-none">
+      <div
+        className="fixed inset-0 z-[80] flex items-center justify-center pt-10 sm:pt-12 pb-4 sm:pb-6 px-2 sm:px-6 bg-black/65 backdrop-blur-xs select-none"
+        onClick={(e) => {
+          if (e.target === e.currentTarget) {
+            retroAudio.windowClose();
+            onClose();
+          }
+        }}
+      >
         <motion.div
           initial={{ scale: 0.92, opacity: 0, y: 15 }}
           animate={{ scale: 1, opacity: 1, y: 0 }}
           exit={{ scale: 0.95, opacity: 0, y: 10 }}
           transition={{ type: 'spring', stiffness: 450, damping: 26 }}
-          className="relative flex flex-col w-full max-w-3xl max-h-[min(94dvh,calc(100dvh-20px))] rounded-md border-3 border-black bg-[#f2f2f2] shadow-[8px_8px_0px_#000000] overflow-hidden"
+          className="relative flex flex-col w-full max-w-3xl max-h-[calc(100dvh-56px)] sm:max-h-[calc(100dvh-64px)] rounded-md border-3 border-black bg-[#f2f2f2] shadow-[8px_8px_0px_#000000] overflow-hidden my-auto"
         >
           {/* Retro Macintosh Window Titlebar */}
           <div className="flex h-9 items-center justify-between border-b-2 border-black bg-[#e0e0e0] px-2 sm:px-3 font-mono text-xs font-bold text-black select-none shrink-0">

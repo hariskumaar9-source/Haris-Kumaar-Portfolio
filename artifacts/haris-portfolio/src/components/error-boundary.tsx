@@ -56,7 +56,7 @@ function DefaultFallback({ error, resetError }: ErrorFallbackProps) {
   }, [resetError]);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-xs p-4 select-none font-mono">
+    <div className="fixed inset-0 z-[95] flex items-center justify-center bg-black/80 backdrop-blur-xs pt-10 sm:pt-12 pb-4 px-4 select-none font-mono">
       <div className="max-w-md w-full rounded border-4 border-black bg-[#ededed] p-4 sm:p-5 shadow-[8px_8px_0px_#000] text-black">
         {/* Macintosh Alert Header */}
         <div className="flex items-center gap-2 border-b-2 border-black pb-2 mb-3">

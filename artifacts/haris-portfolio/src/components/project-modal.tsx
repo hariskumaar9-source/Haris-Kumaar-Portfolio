@@ -126,7 +126,7 @@ export function ProjectDiscussionModal({ isOpen, onClose }: ProjectModalProps) {
 
   return (
     <div
-      className="absolute inset-0 z-50 flex items-center justify-center bg-black/65 p-2 backdrop-blur-sm transition-opacity duration-200 sm:p-4 select-none font-mono"
+      className="fixed inset-0 z-[80] flex items-center justify-center pt-10 sm:pt-12 pb-4 sm:pb-6 px-2 sm:px-6 bg-black/65 backdrop-blur-sm transition-opacity duration-200 select-none font-mono"
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
@@ -137,7 +137,7 @@ export function ProjectDiscussionModal({ isOpen, onClose }: ProjectModalProps) {
         }
       }}
     >
-      <div className="relative flex max-h-[min(94dvh,calc(100dvh-20px))] w-full max-w-[680px] flex-col overflow-hidden rounded-sm border-2 border-black bg-[#f0f0f0] text-black shadow-[6px_6px_0px_#000000] mac-window-frame animate-in fade-in zoom-in-95 duration-200">
+      <div className="relative flex max-h-[calc(100dvh-56px)] sm:max-h-[calc(100dvh-64px)] w-full max-w-[680px] flex-col overflow-hidden rounded-sm border-2 border-black bg-[#f0f0f0] text-black shadow-[6px_6px_0px_#000000] mac-window-frame animate-in fade-in zoom-in-95 duration-200 my-auto">
         {/* Vintage Macintosh Titlebar with Pinstripes */}
         <div className="flex h-8 items-center justify-between border-b-2 border-black bg-[#e5e5e5] px-2 sm:px-2.5">
           <button
