@@ -1104,195 +1104,54 @@ function Home() {
               </div>
             </div>
 
-            {/* Tactile AWGE Scroll-Down Cue Indicator (Click or Swipe) */}
-            <div className="pt-2 pb-0.5">
-              <button
-                type="button"
-                onClick={() => {
-                  retroAudio.click();
-                  mobileScrollRef.current?.scrollTo({
-                    top: mobileScrollRef.current.scrollHeight / 2,
-                    behavior: 'smooth',
-                  });
-                }}
-                className="w-full py-2 px-2.5 rounded border-2 border-black bg-[#d8ee57] text-black font-mono text-[9px] sm:text-[9.5px] font-black uppercase tracking-wider shadow-[3px_3px_0px_#000] active:translate-y-0.5 active:shadow-[1px_1px_0px_#000] cursor-pointer flex items-center justify-between hover:bg-black hover:text-[#d8ee57] transition-colors"
-              >
-                <span className="text-xs">▾</span>
-                <span>SCROLL DOWN · DIVERGE VIEWPORT · MEDIA DECK</span>
-                <span className="text-xs">▾</span>
-              </button>
-            </div>
           </div>
 
           {/* =========================================================================
-              MOBILE HALF 2: AWGE Extended Multimedia & Neural Suite (Lower Viewport Half)
+              MOBILE HALF 2: Classic Macintosh System & Interactive Apps (Lower Viewport Half)
               ========================================================================= */}
           <div className="min-h-full w-full snap-start snap-always flex flex-col justify-between py-1">
-            {/* Top: Swipe Up / Return to Desktop Indicator */}
-            <div>
-              <button
-                type="button"
-                onClick={() => {
-                  retroAudio.click();
-                  mobileScrollRef.current?.scrollTo({
-                    top: 0,
-                    behavior: 'smooth',
-                  });
-                }}
-                className="w-full py-1 px-2.5 rounded border-2 border-black bg-white text-black font-mono text-[8.5px] sm:text-[9px] font-black uppercase tracking-wider shadow-[2px_2px_0px_#000] active:translate-y-0.5 active:shadow-[1px_1px_0px_#000] cursor-pointer flex items-center justify-between hover:bg-black hover:text-white transition-colors"
-              >
-                <span className="text-xs">▴</span>
-                <span>RETURN TO DESKTOP · UPPER HALF (1/2)</span>
-                <span className="text-xs">▴</span>
-              </button>
-
-              {/* AWGE Marquee Header */}
-              <div className="mt-1.5 border-2 border-black bg-black text-[#d8ee57] p-2 shadow-[2px_2px_0px_#000]">
-                <div className="flex items-center justify-between text-[8px] font-black uppercase tracking-widest text-[#ff4d6d]">
-                  <span>AWGE × HARISOS LAB</span>
-                  <span>LOWER DECK</span>
-                </div>
-                <div className="text-[11px] font-black tracking-tight text-white mt-0.5 uppercase">
-                  MULTIMEDIA &amp; NEURAL ENGINE SUITE
-                </div>
-                <div className="text-[7.5px] text-[#d8ee57]/90 font-mono mt-0.5">
-                  Tactile Launchers · CRT Acoustics · Next-Gen Viewports
-                </div>
-              </div>
-            </div>
-
-            {/* Tactile AWGE Cards for Multimedia & Interactive Apps */}
-            <div className="grid grid-cols-1 gap-1.5 my-1.5">
-              {/* DeviceAI Agent Launcher */}
-              <div
-                onClick={() => {
-                  retroAudio.click();
-                  openWindow('deviceAI');
-                }}
-                className="p-2 rounded border-2 border-black bg-white hover:bg-[#d8ee57] text-black shadow-[2px_2px_0px_#000] active:translate-y-0.5 cursor-pointer transition-colors flex items-center justify-between"
-              >
-                <div className="flex items-center gap-2">
-                  <div className="flex h-7 w-7 items-center justify-center rounded border-2 border-black bg-black text-[#d8ee57] shadow-[1px_1px_0px_#000]">
-                    <Cpu size={15} className="animate-pulse" />
-                  </div>
-                  <div>
-                    <div className="text-[10.5px] font-black uppercase">DeviceAI.agent</div>
-                    <div className="text-[7.5px] font-bold text-black/70">Neural Viewport Specialist · Awakened</div>
-                  </div>
-                </div>
-                <span className="text-[7.5px] font-black bg-black text-[#d8ee57] px-1.5 py-0.5 rounded border border-black">
-                  OPEN ➔
-                </span>
-              </div>
-
-              {/* Jukebox Launcher */}
-              <div
-                onClick={() => {
-                  retroAudio.click();
-                  openWindow('music');
-                }}
-                className={`p-2 rounded border-2 border-black shadow-[2px_2px_0px_#000] active:translate-y-0.5 cursor-pointer transition-colors flex items-center justify-between ${
-                  flashingLightsPlaying ? 'bg-[#d8ee57] text-black' : 'bg-white hover:bg-[#ffe5ec] text-black'
-                }`}
-              >
-                <div className="flex items-center gap-2">
-                  <div className="flex h-7 w-7 items-center justify-center rounded border-2 border-black bg-[#ff69b4] text-white shadow-[1px_1px_0px_#000]">
-                    <Music size={15} className={flashingLightsPlaying ? 'animate-bounce' : ''} />
-                  </div>
-                  <div>
-                    <div className="text-[10.5px] font-black uppercase">Jukebox.app</div>
-                    <div className="text-[7.5px] font-bold text-black/70 truncate max-w-[160px]">
-                      {flashingLightsPlaying ? `♫ Playing: ${currentSongTitle || 'Flashing Lights'}` : 'Studio Tape Deck · Explicit MP3s'}
-                    </div>
-                  </div>
-                </div>
-                <span className="text-[7.5px] font-black bg-black text-white px-1.5 py-0.5 rounded border border-black">
-                  {flashingLightsPlaying ? 'PLAYING ♫' : 'OPEN ➔'}
-                </span>
-              </div>
-
-              {/* AnimeTV Launcher */}
-              <div
-                onClick={() => {
-                  retroAudio.click();
-                  openWindow('anime');
-                }}
-                className="p-2 rounded border-2 border-black bg-white hover:bg-[#ffe0e0] text-black shadow-[2px_2px_0px_#000] active:translate-y-0.5 cursor-pointer transition-colors flex items-center justify-between"
-              >
-                <div className="flex items-center gap-2">
-                  <div className="flex h-7 w-7 items-center justify-center rounded border-2 border-black bg-[#ff6b6b] text-white shadow-[1px_1px_0px_#000]">
-                    <Tv size={15} />
-                  </div>
-                  <div>
-                    <div className="text-[10.5px] font-black uppercase">AnimeTV.app</div>
-                    <div className="text-[7.5px] font-bold text-black/70">Slam Dunk Retro Broadcast · 10 Channels</div>
-                  </div>
-                </div>
-                <span className="text-[7.5px] font-black bg-black text-white px-1.5 py-0.5 rounded border border-black">
-                  WATCH ➔
-                </span>
-              </div>
-
-              {/* SnakeLadder & Trash row */}
-              <div className="grid grid-cols-2 gap-1.5">
-                <div
-                  onClick={() => {
-                    retroAudio.click();
-                    openWindow('game');
-                  }}
-                  className="p-1.5 rounded border-2 border-black bg-white hover:bg-[#fff2b2] text-black shadow-[2px_2px_0px_#000] active:translate-y-0.5 cursor-pointer transition-colors flex items-center gap-1.5"
-                >
-                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded border border-black bg-[#ffd166] text-black">
-                    <Trophy size={12} />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="text-[9px] font-black truncate">SnakeLadder</div>
-                    <div className="text-[7px] text-black/60 truncate">Portfolio Game</div>
-                  </div>
-                </div>
-
-                <div
-                  onClick={() => {
-                    retroAudio.click();
-                    openWindow('trash');
-                  }}
-                  className="p-1.5 rounded border-2 border-black bg-white hover:bg-neutral-200 text-black shadow-[2px_2px_0px_#000] active:translate-y-0.5 cursor-pointer transition-colors flex items-center gap-1.5"
-                >
-                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded border border-black bg-[#e8e8e8] text-black">
-                    <Trash2 size={12} />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="text-[9px] font-black truncate">Trash</div>
-                    <div className="text-[7px] text-black/60 truncate">Clean Desktop</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Neural Viewport Knowledge Awakening Preview Box */}
-            <div className="rounded border-2 border-black bg-[#151515] text-white p-2 shadow-[2px_2px_0px_#000]">
-              <div className="flex items-center justify-between text-[7.5px] font-mono text-[#d8ee57]">
-                <span className="font-black uppercase">⚡ NEURAL VIEWPORT KNOWLEDGE</span>
-                <span className="text-[#39e658] font-bold">AWAKENED</span>
-              </div>
-              <div className="text-[8.5px] font-bold text-white mt-0.5">
-                Learned across 37 devices (iPhone 17 Air, Tri-Fold, Rollables).
-              </div>
-              <button
-                type="button"
-                onClick={() => {
-                  retroAudio.click();
-                  openWindow('deviceAI');
-                }}
-                className="mt-1.5 w-full py-1 bg-[#d8ee57] hover:bg-white text-black font-mono text-[8.5px] font-black rounded border border-black cursor-pointer shadow-[1px_1px_0px_#000]"
-              >
-                OPEN DEVICEAI NEURAL LAB ➔
-              </button>
-            </div>
-
-            {/* AWGE Footer */}
-            <div className="text-center pt-1 pb-0.5 text-[7px] font-mono text-black/60 uppercase">
-              Mockintosh Haris™ · AWGE Viewport Divergence · 2026 UX Research
+            {/* Desktop Icons Array (Mobile Phase 2): Single Vertical Column matching Desktop Version */}
+            <div className="flex flex-col justify-between h-full w-max max-w-full overflow-visible pointer-events-auto py-1 px-1">
+              <DesktopIcon
+                id="deviceAI"
+                title="DeviceAI.agent"
+                icon="ai"
+                onClick={() => openWindow('deviceAI')}
+                isSelected={windows.deviceAI}
+                isLocked={true}
+              />
+              <DesktopIcon
+                id="music"
+                title="Jukebox.app"
+                icon="music"
+                onClick={() => openWindow('music')}
+                isSelected={windows.music}
+                isLocked={true}
+              />
+              <DesktopIcon
+                id="anime"
+                title="AnimeTV.app"
+                icon="tv"
+                onClick={() => openWindow('anime')}
+                isSelected={windows.anime}
+                isLocked={true}
+              />
+              <DesktopIcon
+                id="game"
+                title="SnakeLadder.game"
+                icon="game"
+                onClick={() => openWindow('game')}
+                isSelected={windows.game}
+                isLocked={true}
+              />
+              <DesktopIcon
+                id="trash"
+                title="Trash"
+                icon="trash"
+                onClick={() => openWindow('trash')}
+                isSelected={windows.trash}
+                isLocked={true}
+              />
             </div>
           </div>
         </div>
