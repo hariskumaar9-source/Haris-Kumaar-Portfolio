@@ -1,69 +1,208 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
   <defs>
-    <linearGradient id="pop-pink" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ffb3c6" />
-      <stop offset="40%" stop-color="#ff8fab" />
-      <stop offset="80%" stop-color="#fb6f92" />
-      <stop offset="100%" stop-color="#c9184a" />
+    <!-- 90s Dreamy Pop Gradients -->
+    <linearGradient id="pop-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fed0dd" />
+      <stop offset="35%" stop-color="#ffafcc" />
+      <stop offset="70%" stop-color="#ff8fab" />
+      <stop offset="100%" stop-color="#f72585" />
     </linearGradient>
-    <radialGradient id="halo" cx="50%" cy="40%" r="60%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8" />
-      <stop offset="100%" stop-color="#ff8fab" stop-opacity="0" />
+    <radialGradient id="stage-glow" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85" />
+      <stop offset="60%" stop-color="#ffe5ec" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#ffb3c6" stop-opacity="0" />
+    </radialGradient>
+    
+    <!-- Hair Gradients -->
+    <linearGradient id="blonde-main" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff1a8" />
+      <stop offset="30%" stop-color="#fed166" />
+      <stop offset="70%" stop-color="#e29525" />
+      <stop offset="100%" stop-color="#b06b0d" />
+    </linearGradient>
+    <linearGradient id="blonde-highlight" x1="30%" y1="0%" x2="70%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="40%" stop-color="#fffae0" />
+      <stop offset="100%" stop-color="#f9d479" />
+    </linearGradient>
+    
+    <!-- Skin Gradients -->
+    <linearGradient id="skin-face" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffeedd" />
+      <stop offset="60%" stop-color="#fcd8c1" />
+      <stop offset="100%" stop-color="#f7c1a0" />
+    </linearGradient>
+    
+    <!-- Fluffy Pink Scrunchie Gradient -->
+    <radialGradient id="scrunchie-pink" cx="40%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="25%" stop-color="#ff758f" />
+      <stop offset="75%" stop-color="#c9184a" />
+      <stop offset="100%" stop-color="#800f2f" />
     </radialGradient>
   </defs>
 
-  <!-- Soft 90s Pop Pastel Background -->
-  <rect width="300" height="300" fill="url(#pop-pink)" />
-  <rect width="300" height="300" fill="url(#halo)" />
+  <!-- 1. Background -->
+  <rect width="300" height="300" fill="url(#pop-bg)" />
+  <rect width="300" height="300" fill="url(#stage-glow)" />
 
-  <!-- Decorative Y2K Flowers & Sparkles -->
-  <g fill="#ffffff" opacity="0.6">
-    <circle cx="50" cy="70" r="16" />
-    <circle cx="65" cy="80" r="14" />
-    <circle cx="35" cy="80" r="14" />
-    <circle cx="50" cy="95" r="16" />
-    <circle cx="50" cy="82" r="8" fill="#ffd166" />
-
-    <circle cx="250" cy="180" r="14" />
-    <circle cx="262" cy="190" r="12" />
-    <circle cx="238" cy="190" r="12" />
-    <circle cx="250" cy="202" r="14" />
-    <circle cx="250" cy="190" r="6" fill="#ffd166" />
-  </g>
-
-  <!-- Britney Schoolgirl Braids Silhouette -->
-  <g transform="translate(110, 85)">
-    <!-- Blonde Twin Pigtails with Fluffy Pink Hair Ties -->
-    <path d="M-15,40 Q-35,80 -25,120 Q-15,80 -5,40 Z" fill="#ffd166" stroke="#e09f3e" stroke-width="2" />
-    <circle cx="-15" cy="40" r="12" fill="#ff758f" />
-    <path d="M95,40 Q115,80 105,120 Q95,80 85,40 Z" fill="#ffd166" stroke="#e09f3e" stroke-width="2" />
-    <circle cx="95" cy="40" r="12" fill="#ff758f" />
-
-    <!-- Head & Bangs -->
-    <ellipse cx="40" cy="45" rx="30" ry="36" fill="#fde2e4" stroke="#e09f3e" stroke-width="1.5" />
-    <path d="M12,25 Q40,10 68,25 Q60,40 40,36 Q20,40 12,25 Z" fill="#ffd166" stroke="#e09f3e" stroke-width="1.5" />
+  <!-- Y2K Aesthetic Sparkles and Daisies -->
+  <g opacity="0.45">
+    <path d="M45,75 Q45,60 50,55 Q55,60 55,75 Q55,90 50,95 Q45,90 45,75 Z" fill="#ffffff" />
+    <path d="M30,75 Q45,75 50,70 Q45,75 30,75 Q15,75 20,70 Q25,75 30,75 Z" fill="#ffffff" />
+    <circle cx="50" cy="75" r="4" fill="#ffd166" />
     
-    <!-- Big 90s Pop Eyes & Smile -->
-    <ellipse cx="28" cy="45" rx="4" ry="5" fill="#3a0ca3" />
-    <ellipse cx="52" cy="45" rx="4" ry="5" fill="#3a0ca3" />
-    <circle cx="29" cy="43" r="1.5" fill="#ffffff" />
-    <circle cx="53" cy="43" r="1.5" fill="#ffffff" />
-    <path d="M30,62 Q40,70 50,62" fill="none" stroke="#ff4d6d" stroke-width="2" />
-
-    <!-- Cardigan & White Tied Shirt Collar -->
-    <path d="M10,80 L25,110 L55,110 L70,80 Z" fill="#595959" />
-    <polygon points="40,82 30,100 50,100" fill="#ffffff" stroke="#ddd" stroke-width="1" />
+    <circle cx="260" cy="180" r="10" fill="#ffffff" opacity="0.7" />
+    <circle cx="270" cy="188" r="8" fill="#ffffff" opacity="0.7" />
+    <circle cx="250" cy="188" r="8" fill="#ffffff" opacity="0.7" />
+    <circle cx="260" cy="198" r="10" fill="#ffffff" opacity="0.7" />
+    <circle cx="260" cy="188" r="5" fill="#ffd166" />
+    
+    <polygon points="245,65 248,72 255,75 248,78 245,85 242,78 235,75 242,72" fill="#ffffff" />
+    <polygon points="35,185 37,190 42,192 37,194 35,199 33,194 28,192 33,190" fill="#ffffff" />
   </g>
 
-  <!-- Typography: Iconic Britney Font & Single Title -->
-  <rect x="0" y="10" width="300" height="42" fill="#ffffff" opacity="0.85" />
-  <text x="16" y="38" fill="#d90429" font-family="'Georgia', serif" font-size="24" font-weight="900" font-style="italic" letter-spacing="1">britney spears</text>
+  <!-- 2. Girl Portrait: Britney Spears -->
+  <g id="britney-character">
+    <!-- Back Hair Flow -->
+    <path d="M92,120 C70,140 60,175 62,225 C75,230 100,210 105,180 Z" fill="url(#blonde-main)" opacity="0.9" />
+    <path d="M208,120 C230,140 240,175 238,225 C225,230 200,210 195,180 Z" fill="url(#blonde-main)" opacity="0.9" />
 
-  <rect x="12" y="240" width="276" height="46" fill="#000000" rx="3" opacity="0.9" />
-  <text x="22" y="262" fill="#ff758f" font-family="'Arial Black', sans-serif" font-size="14" letter-spacing="1">...BABY ONE MORE TIME</text>
-  <text x="22" y="278" fill="#ffffff" font-family="Arial, sans-serif" font-size="9" font-weight="bold" letter-spacing="0.5">ORIGINAL 1998 JIVE RECORDS ALBUM MASTER</text>
+    <!-- Shoulders & Upper Body (Grey School Cardigan) -->
+    <path d="M72,260 C78,215 110,205 130,202 L170,202 C190,205 222,215 228,260 L240,285 L60,285 Z" fill="#434656" />
+    <path d="M60,285 L72,260 C78,215 105,208 120,205 L116,285 Z" fill="#323544" />
+    <path d="M240,285 L228,260 C222,215 195,208 180,205 L184,285 Z" fill="#323544" />
 
-  <!-- Classic CD Jewel Case Sparkle Badge -->
-  <circle cx="265" cy="30" r="14" fill="#ffd166" stroke="#000" stroke-width="1.5" />
-  <text x="254" y="34" font-family="Arial" font-size="11" font-weight="bold">#1</text>
+    <!-- Crisp White Schoolgirl Shirt V-Neck & Collar -->
+    <polygon points="122,205 150,255 178,205" fill="#f8f9fa" stroke="#d5d7dc" stroke-width="1" />
+    <path d="M120,202 L145,215 L140,230 L115,210 Z" fill="#ffffff" stroke="#ced4da" stroke-width="0.8" />
+    <path d="M180,202 L155,215 L160,230 L185,210 Z" fill="#ffffff" stroke="#ced4da" stroke-width="0.8" />
+    <!-- Tied shirt knot at mid-chest -->
+    <circle cx="150" cy="256" r="6" fill="#ffffff" stroke="#ddd" stroke-width="1" />
+    <path d="M146,258 C140,270 135,278 138,284 C143,284 148,272 150,262 Z" fill="#ffffff" />
+    <path d="M154,258 C160,270 165,278 162,284 C157,284 152,272 150,262 Z" fill="#ffffff" />
+
+    <!-- Neck & Collarbones -->
+    <path d="M134,175 L134,208 C140,214 160,214 166,208 L166,175 Z" fill="url(#skin-face)" />
+    <!-- Neck shadow under chin -->
+    <path d="M134,176 C142,185 158,185 166,176 C158,181 142,181 134,176 Z" fill="#e2a784" />
+    <line x1="140" y1="206" x2="147" y2="209" stroke="#dda382" stroke-width="1.2" stroke-linecap="round" />
+    <line x1="160" y1="206" x2="153" y2="209" stroke="#dda382" stroke-width="1.2" stroke-linecap="round" />
+
+    <!-- Head & Feminine Jawline -->
+    <path d="M118,125 C116,155 125,182 150,186 C175,182 184,155 182,125 C182,100 118,100 118,125 Z" fill="url(#skin-face)" />
+
+    <!-- Soft Blushing Cheeks -->
+    <ellipse cx="130" cy="154" rx="10" ry="6" fill="#ff758f" opacity="0.35" />
+    <ellipse cx="170" cy="154" rx="10" ry="6" fill="#ff758f" opacity="0.35" />
+
+    <!-- Nose -->
+    <path d="M149,140 C149,147 146,151 144,153 C147,154 153,154 156,153" fill="none" stroke="#dc9371" stroke-width="1.5" stroke-linecap="round" />
+    <ellipse cx="145" cy="153" rx="1.5" ry="1" fill="#c47854" opacity="0.7" />
+    <ellipse cx="155" cy="153" rx="1.5" ry="1" fill="#c47854" opacity="0.7" />
+
+    <!-- Eyes (Pretty Hazel-Brown with 90s Pop Liner & Mascara) -->
+    <!-- Left Eye -->
+    <g id="left-eye">
+      <path d="M125,138 Q134,131 143,138" fill="none" stroke="#2b1810" stroke-width="2.2" stroke-linecap="round" />
+      <path d="M126,138 Q134,144 142,138" fill="#ffffff" />
+      <ellipse cx="134" cy="138" rx="4" ry="4.5" fill="#58311a" />
+      <circle cx="134" cy="138" r="2.5" fill="#1b120c" />
+      <circle cx="135.5" cy="136" r="1.3" fill="#ffffff" />
+      <path d="M125,137 L122,135" stroke="#2b1810" stroke-width="1.5" stroke-linecap="round" />
+      <path d="M138,133 L140,131" stroke="#2b1810" stroke-width="1.2" stroke-linecap="round" />
+      <!-- Eyebrow -->
+      <path d="M124,129 Q133,124 143,127" fill="none" stroke="#a06828" stroke-width="1.8" stroke-linecap="round" />
+    </g>
+
+    <!-- Right Eye -->
+    <g id="right-eye">
+      <path d="M157,138 Q166,131 175,138" fill="none" stroke="#2b1810" stroke-width="2.2" stroke-linecap="round" />
+      <path d="M158,138 Q166,144 174,138" fill="#ffffff" />
+      <ellipse cx="166" cy="138" rx="4" ry="4.5" fill="#58311a" />
+      <circle cx="166" cy="138" r="2.5" fill="#1b120c" />
+      <circle cx="167.5" cy="136" r="1.3" fill="#ffffff" />
+      <path d="M175,137 L178,135" stroke="#2b1810" stroke-width="1.5" stroke-linecap="round" />
+      <path d="M162,133 L160,131" stroke="#2b1810" stroke-width="1.2" stroke-linecap="round" />
+      <!-- Eyebrow -->
+      <path d="M157,127 Q167,124 176,129" fill="none" stroke="#a06828" stroke-width="1.8" stroke-linecap="round" />
+    </g>
+
+    <!-- Sweet Pop Star Smile & Glossy Pink Lips -->
+    <path d="M138,166 Q150,169 162,166 Q150,175 138,166 Z" fill="#d90429" />
+    <!-- Pearly white teeth glimpse -->
+    <path d="M141,166 Q150,168 159,166 Q150,167 141,166 Z" fill="#ffffff" />
+    <!-- Glossy bottom lip -->
+    <path d="M141,168 Q150,177 159,168" fill="none" stroke="#ff4d6d" stroke-width="2.5" stroke-linecap="round" />
+    <path d="M146,171 Q150,173 154,171" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" opacity="0.8" />
+
+    <!-- 3. Britney's Signature 90s Golden Blonde Hair -->
+    <!-- Feathered Bangs across Forehead -->
+    <path d="M116,115 C125,95 145,92 150,92 C155,92 175,95 184,115 C176,110 168,118 160,113 C153,121 146,114 140,121 C133,114 125,120 116,115 Z" fill="url(#blonde-main)" stroke="#cca03a" stroke-width="1" />
+    <!-- Hair strands & highlights -->
+    <path d="M130,95 C136,108 138,118 140,121" fill="none" stroke="url(#blonde-highlight)" stroke-width="2" />
+    <path d="M165,95 C162,106 158,115 154,120" fill="none" stroke="url(#blonde-highlight)" stroke-width="2" />
+    <path d="M148,93 L150,114" fill="none" stroke="#fff" stroke-width="1.5" opacity="0.7" />
+
+    <!-- Left Pigtail / Braid flowing from head over shoulder -->
+    <g id="left-pigtail">
+      <!-- Hair root curve attaching smoothly to side of head -->
+      <path d="M120,112 C105,108 92,118 90,132 C92,142 105,145 118,140 Z" fill="url(#blonde-main)" />
+      <!-- Fluffy Pink Pom-Pom Scrunchie #1 -->
+      <circle cx="92" cy="138" r="14" fill="url(#scrunchie-pink)" />
+      <circle cx="85" cy="132" r="8" fill="#ff758f" opacity="0.9" />
+      <circle cx="98" cy="144" r="8" fill="#c9184a" opacity="0.9" />
+      <circle cx="98" cy="132" r="7" fill="#ff8fab" />
+      <circle cx="85" cy="144" r="7" fill="#ff4d6d" />
+      <!-- Wavy braid strand draping over cardigan -->
+      <path d="M92,145 C78,175 75,210 82,248 C88,252 98,245 96,220 C96,190 102,165 98,148 Z" fill="url(#blonde-main)" stroke="#cca03a" stroke-width="1.2" />
+      <!-- Braid rib segments -->
+      <path d="M85,170 Q92,175 96,168" fill="none" stroke="#b06b0d" stroke-width="1.5" />
+      <path d="M82,192 Q90,197 96,190" fill="none" stroke="#b06b0d" stroke-width="1.5" />
+      <path d="M82,215 Q88,220 94,213" fill="none" stroke="#b06b0d" stroke-width="1.5" />
+      <path d="M83,235 Q87,238 92,233" fill="none" stroke="#b06b0d" stroke-width="1.5" />
+      <!-- Blonde shine -->
+      <path d="M88,155 C82,185 80,215 85,245" fill="none" stroke="url(#blonde-highlight)" stroke-width="2.5" opacity="0.8" />
+    </g>
+
+    <!-- Right Pigtail / Braid flowing from head over shoulder -->
+    <g id="right-pigtail">
+      <!-- Hair root curve attaching smoothly to side of head -->
+      <path d="M180,112 C195,108 208,118 210,132 C208,142 195,145 182,140 Z" fill="url(#blonde-main)" />
+      <!-- Fluffy Pink Pom-Pom Scrunchie #2 -->
+      <circle cx="208" cy="138" r="14" fill="url(#scrunchie-pink)" />
+      <circle cx="215" cy="132" r="8" fill="#ff758f" opacity="0.9" />
+      <circle cx="202" cy="144" r="8" fill="#c9184a" opacity="0.9" />
+      <circle cx="202" cy="132" r="7" fill="#ff8fab" />
+      <circle cx="215" cy="144" r="7" fill="#ff4d6d" />
+      <!-- Wavy braid strand draping over cardigan -->
+      <path d="M208,145 C222,175 225,210 218,248 C212,252 202,245 204,220 C204,190 198,165 202,148 Z" fill="url(#blonde-main)" stroke="#cca03a" stroke-width="1.2" />
+      <!-- Braid rib segments -->
+      <path d="M215,170 Q208,175 204,168" fill="none" stroke="#b06b0d" stroke-width="1.5" />
+      <path d="M218,192 Q210,197 204,190" fill="none" stroke="#b06b0d" stroke-width="1.5" />
+      <path d="M218,215 Q212,220 206,213" fill="none" stroke="#b06b0d" stroke-width="1.5" />
+      <path d="M217,235 Q213,238 208,233" fill="none" stroke="#b06b0d" stroke-width="1.5" />
+      <!-- Blonde shine -->
+      <path d="M212,155 C218,185 220,215 215,245" fill="none" stroke="url(#blonde-highlight)" stroke-width="2.5" opacity="0.8" />
+    </g>
+  </g>
+
+  <!-- 4. Typography: Authentic Britney Spears Album Branding -->
+  <!-- Top Banner -->
+  <rect x="0" y="8" width="300" height="42" fill="#ffffff" opacity="0.92" />
+  <line x1="0" y1="50" x2="300" y2="50" stroke="#f72585" stroke-width="1.5" opacity="0.6" />
+  
+  <text x="16" y="37" fill="#c9184a" font-family="'Georgia', serif" font-size="25" font-weight="900" font-style="italic" letter-spacing="1">britney spears</text>
+
+  <!-- CD Jewel Case Gold '#1' Hit Badge -->
+  <circle cx="265" cy="29" r="14" fill="#ffd166" stroke="#b06b0d" stroke-width="1.5" />
+  <circle cx="265" cy="29" r="12" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.7" />
+  <text x="256" y="34" font-family="'Arial Black', sans-serif" font-size="12" font-weight="900" fill="#7a4200">#1</text>
+
+  <!-- Bottom Dark Album Banner -->
+  <rect x="10" y="248" width="280" height="44" rx="4" fill="#000000" opacity="0.9" stroke="#ff758f" stroke-width="1" />
+  <text x="20" y="268" fill="#ff758f" font-family="'Arial Black', sans-serif" font-size="13" letter-spacing="1.5">...BABY ONE MORE TIME</text>
+  <text x="20" y="283" fill="#e0e0e0" font-family="'Space Mono', monospace, sans-serif" font-size="8.5" font-weight="bold" letter-spacing="0.8">ORIGINAL 1999 JIVE RECORDS POP MASTER</text>
+  <circle cx="270" cy="270" r="8" fill="#ff0055" />
+  <polygon points="268,266 274,270 268,274" fill="#ffffff" />
 </svg>

@@ -101,38 +101,10 @@ export function tightenSecurityShields(): { success: boolean; message: string } 
 export function initAntiInspectProtection() {
   if (typeof window === 'undefined') return () => {};
 
-  // 1. Check for Automated AI / Headless Scraper Environments
+  // 1. Safe scraper telemetry (non-blocking for legitimate social & search crawlers)
   const detectAiScraper = () => {
-    try {
-      const win = window as any;
-      const nav = navigator as any;
-
-      const isWebdriver = Boolean(nav.webdriver);
-      const isPhantom = Boolean(win.callPhantom || win._phantom || win.__nightmare);
-      const isSelenium = Boolean(win.__selenium_unwrapped || win.__webdriver_evaluate || win.__webdriver_script_fn);
-      const isHeadlessUserAgent = /HeadlessChrome|Puppeteer|Playwright|Scrapy|Python|curl|Wget/i.test(nav.userAgent);
-
-      if (isWebdriver || isPhantom || isSelenium || isHeadlessUserAgent) {
-        triggerSecurityAlert('🚨 [DeviceAI Sentinel] Automated AI procurement / crawler bot detected and neutralized.', true);
-        // Inject anti-procurement watermark overlay
-        const blockBanner = document.createElement('div');
-        blockBanner.id = 'deviceai-sentinel-quarantine';
-        blockBanner.setAttribute(
-          'style',
-          'position:fixed;top:0;left:0;width:100vw;height:100vh;background:#000000;color:#d8ee57;z-index:999999;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:monospace;padding:24px;text-align:center;box-sizing:border-box;'
-        );
-        blockBanner.innerHTML = `
-          <div style="border:3px solid #ff4d6d;padding:20px;max-width:520px;background:#111111;box-shadow:6px 6px 0px #ff4d6d;">
-            <h1 style="color:#ff4d6d;font-size:16px;margin:0 0 10px 0;letter-spacing:1px;">🔒 [DEVICEAI ULTRA DEFENSE: AWAKENED]</h1>
-            <p style="font-size:12px;line-height:1.5;color:#ffffff;margin:0 0 12px 0;">Automated AI scraping, UI procurement, and code reverse-engineering are strictly prohibited.</p>
-            <p style="font-size:10px;color:#d8ee57;margin:0;">All intellectual property, bespoke retro design, and systems &copy; Haris Kumaar. (W3C TDM Reserved · No AI Training)</p>
-          </div>
-        `;
-        if (!document.getElementById('deviceai-sentinel-quarantine')) {
-          document.body.appendChild(blockBanner);
-        }
-      }
-    } catch {}
+    // Non-blocking: Social media crawlers (LinkedIn, Twitter, Facebook) and preview bots
+    // must be allowed to render the site cleanly to prevent false "Malicious / Evasion" flags.
   };
 
   // 2. Disable Right-Click Context Menu (Inspect / Copy)

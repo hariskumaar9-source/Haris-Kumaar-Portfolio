@@ -23,15 +23,17 @@ User-agent: OmigiliBot
 User-agent: Webzio
 Disallow: /
 
-# Standard search indexing allowed for general human discoverability
+# Allow search engines and social preview crawlers (LinkedIn, Twitter, Slack, WhatsApp)
 User-agent: Googlebot
 User-agent: Bingbot
 User-agent: Slurp
 User-agent: DuckDuckBot
+User-agent: LinkedInBot
+User-agent: Twitterbot
+User-agent: facebookexternalhit
 Allow: /
 
 User-agent: *
-Disallow: /assets/
 Disallow: /src/
 Disallow: /api/
 Allow: /
