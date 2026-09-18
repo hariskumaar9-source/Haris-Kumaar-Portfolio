@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   Play,
   Pause,
@@ -7,6 +8,8 @@ import {
   Music,
   SkipBack,
   SkipForward,
+  Rewind,
+  FastForward,
   RotateCcw,
   Radio,
   Sliders,
@@ -536,6 +539,209 @@ function formatTime(seconds: number): string {
   return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
 }
 
+/**
+ * Vintage Reel-to-Reel Bobbin (Inspired by classic Studio Tape Recorders)
+ * Features rotating 3-spoke metal flange, ventilation holes, central drive spindle,
+ * and dynamic magnetic tape pack winding from supply spool to take-up spool.
+ */
+function BobbinReel({
+  size = 100,
+  isSpinning = false,
+  tapePercent = 50,
+}: {
+  size?: number;
+  isSpinning?: boolean;
+  tapePercent?: number; // 0 (empty) to 100 (full)
+}) {
+  const minTapeR = size * 0.22;
+  const maxTapeR = size * 0.44;
+  const currentTapeR = minTapeR + (maxTapeR - minTapeR) * (tapePercent / 100);
+
+  return (
+    <div
+      className="relative flex items-center justify-center shrink-0"
+      style={{ width: size, height: size }}
+    >
+      {/* Magnetic Tape Pack (Rich dark brown tape with concentric grooves) */}
+      <div
+        className="absolute rounded-full pointer-events-none transition-all duration-300"
+        style={{
+          width: currentTapeR * 2,
+          height: currentTapeR * 2,
+          background: 'radial-gradient(circle, #22140b 15%, #422817 65%, #180d07 100%)',
+          boxShadow: 'inset 0 0 6px rgba(0,0,0,0.85), 0 0 4px rgba(0,0,0,0.6)',
+          border: '1.5px solid #5a381e',
+        }}
+      >
+        <div className="absolute inset-0 rounded-full opacity-35 border border-white/20 scale-75" />
+        <div className="absolute inset-0 rounded-full opacity-25 border border-black/40 scale-50" />
+      </div>
+
+      {/* Rotating Studio Bobbin Flange & Cutout Spokes */}
+      <motion.div
+        className="relative w-full h-full flex items-center justify-center pointer-events-none select-none"
+        animate={{ rotate: isSpinning ? 360 : 0 }}
+        transition={{
+          repeat: Infinity,
+          duration: 2.2,
+          ease: 'linear',
+        }}
+      >
+        <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)]">
+          <defs>
+            <linearGradient id="bobbin-metal" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#f5f5f7" />
+              <stop offset="30%" stopColor="#c8cad0" />
+              <stop offset="70%" stopColor="#878a92" />
+              <stop offset="100%" stopColor="#4f5259" />
+            </linearGradient>
+            <radialGradient id="hub-metal" cx="45%" cy="40%" r="55%">
+              <stop offset="0%" stopColor="#ffffff" />
+              <stop offset="50%" stopColor="#b4b7be" />
+              <stop offset="100%" stopColor="#222428" />
+            </radialGradient>
+          </defs>
+
+          {/* Outer Chrome Rim Flange */}
+          <circle cx="50" cy="50" r="47" fill="none" stroke="url(#bobbin-metal)" strokeWidth="3" />
+          <circle cx="50" cy="50" r="44" fill="none" stroke="#111111" strokeWidth="1" opacity="0.6" />
+
+          {/* 3 Main Teardrop/Triangular Cutout Spokes */}
+          <g fill="none" stroke="url(#bobbin-metal)" strokeWidth="6.5" opacity="0.95">
+            <line x1="50" y1="50" x2="50" y2="7" strokeLinecap="round" />
+            <line x1="50" y1="50" x2="87.2" y2="71.5" strokeLinecap="round" />
+            <line x1="50" y1="50" x2="12.8" y2="71.5" strokeLinecap="round" />
+          </g>
+
+          {/* 6 Peripheral Weight-Reduction Drill Holes */}
+          <g fill="#1a1b1e" stroke="#222" strokeWidth="0.8">
+            <circle cx="50" cy="21" r="3.5" />
+            <circle cx="75" cy="35" r="3.5" />
+            <circle cx="75" cy="65" r="3.5" />
+            <circle cx="50" cy="79" r="3.5" />
+            <circle cx="25" cy="65" r="3.5" />
+            <circle cx="25" cy="35" r="3.5" />
+          </g>
+
+          {/* Middle Reinforcement Ring */}
+          <circle cx="50" cy="50" r="31" fill="none" stroke="url(#bobbin-metal)" strokeWidth="1.8" opacity="0.85" />
+
+          {/* Central Spindle Hub */}
+          <circle cx="50" cy="50" r="14" fill="url(#hub-metal)" stroke="#111" strokeWidth="1.5" />
+          <circle cx="50" cy="50" r="8" fill="#111111" stroke="#333" strokeWidth="1" />
+
+          {/* 3 Drive Spline Teeth */}
+          <rect x="48" y="38" width="4" height="6" fill="#f0f0f2" rx="0.5" />
+          <rect x="48" y="38" width="4" height="6" fill="#f0f0f2" rx="0.5" transform="rotate(120 50 50)" />
+          <rect x="48" y="38" width="4" height="6" fill="#f0f0f2" rx="0.5" transform="rotate(240 50 50)" />
+
+          {/* Center Axle Hole */}
+          <circle cx="50" cy="50" r="3.5" fill="#000000" />
+        </svg>
+      </motion.div>
+    </div>
+  );
+}
+
+/**
+ * Dual Illuminated Vintage Analog VU Meter
+ */
+function AnalogVuMeter({
+  label,
+  active,
+  currentTime,
+}: {
+  label: string;
+  active: boolean;
+  currentTime: number;
+}) {
+  const offset = label === 'CH-L' ? 0 : 0.45;
+  const needleDeg = active
+    ? -18 + Math.sin((currentTime + offset) * 7.5) * 20 + Math.sin((currentTime + offset) * 19) * 7
+    : -36;
+  const isPeaking = active && needleDeg > 5;
+
+  return (
+    <div className="flex flex-col items-center">
+      <div className="relative w-16 sm:w-20 h-10 sm:h-12 rounded border-2 border-black bg-gradient-to-b from-[#ffe57f] via-[#ffd166] to-[#f4a261] p-1 overflow-hidden shadow-[inset_0_2px_4px_rgba(0,0,0,0.5)] flex flex-col justify-between select-none">
+        {/* Warm Meter Backlight glow */}
+        <div className="absolute inset-0 bg-yellow-300/30 pointer-events-none" />
+
+        {/* Dial Scale */}
+        <div className="relative z-1 flex justify-between items-start text-[6px] sm:text-[7px] font-black text-black font-mono leading-none pt-0.5">
+          <span className="text-black/80">-20</span>
+          <span className="text-black/80">-7</span>
+          <span className="text-black/90">0</span>
+          <span className="text-red-700 font-black">+3</span>
+        </div>
+
+        {/* Dial Arc */}
+        <svg viewBox="0 0 80 40" className="absolute inset-0 w-full h-full pointer-events-none">
+          <path d="M12,28 Q40,12 68,28" fill="none" stroke="#222" strokeWidth="0.8" opacity="0.6" />
+          <path d="M52,18 Q60,22 68,28" fill="none" stroke="#d90429" strokeWidth="1.8" />
+        </svg>
+
+        {/* Dynamic Needle */}
+        <div
+          className="absolute bottom-[-4px] left-1/2 w-0.5 h-8 sm:h-9 bg-black origin-bottom transition-transform duration-100 ease-out"
+          style={{
+            transform: `translateX(-50%) rotate(${needleDeg}deg)`,
+            boxShadow: '0 0 2px rgba(0,0,0,0.8)',
+          }}
+        >
+          <div className="w-1 h-1 bg-red-600 rounded-full -ml-0.25 -mt-0.5" />
+        </div>
+
+        {/* Meter Bottom Label */}
+        <div className="relative z-2 self-center flex items-center justify-between w-full mt-auto text-[6.5px] sm:text-[7.5px] font-mono font-black text-black">
+          <span>VU</span>
+          <span className="text-[6px] tracking-tighter text-black/70">{label}</span>
+          <span className={isPeaking ? 'text-red-600 font-black animate-pulse' : 'text-black/40'}>PEAK</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Vintage 3-Digit Mechanical Tape Counter
+ */
+function TapeIndexCounter({
+  currentTime,
+  onReset,
+}: {
+  currentTime: number;
+  onReset: () => void;
+}) {
+  const counterVal = Math.floor(currentTime * 1.6) % 1000;
+  const digits = counterVal.toString().padStart(3, '0').split('');
+
+  return (
+    <div className="flex items-center gap-1.5 bg-[#101114] px-2 py-1 rounded border-2 border-black shadow-[inset_0_2px_4px_rgba(0,0,0,0.8)]">
+      <div className="flex items-center gap-0.5">
+        {digits.map((digit, idx) => (
+          <div
+            key={idx}
+            className="w-4 sm:w-4.5 h-6 sm:h-7 bg-[#1c1d21] border border-black rounded-xs flex items-center justify-center font-mono font-black text-white text-xs sm:text-sm shadow-inner relative overflow-hidden"
+          >
+            <div className="absolute inset-x-0 top-1/2 h-[1px] bg-black/60 pointer-events-none" />
+            <span className="relative z-1">{digit}</span>
+          </div>
+        ))}
+      </div>
+      <button
+        type="button"
+        onClick={onReset}
+        title="Reset Tape Counter"
+        className="w-4 h-4 rounded-full border border-black bg-neutral-700 hover:bg-neutral-600 active:scale-95 text-[7px] font-bold flex items-center justify-center cursor-pointer shadow-xs"
+      >
+        R
+      </button>
+      <span className="text-[7.5px] font-mono font-bold text-neutral-400 uppercase tracking-tighter hidden xs:inline">INDEX</span>
+    </div>
+  );
+}
+
 export function StudioTapePlayer() {
   const [isPlaying, setIsPlaying] = useState(studioMp3Engine.isPlaying);
   const [currentTime, setCurrentTime] = useState(studioMp3Engine.currentTime);
@@ -545,6 +751,29 @@ export function StudioTapePlayer() {
   const [soundProfile, setSoundProfile] = useState<SoundProfile>(studioMp3Engine.soundProfile);
   const [lyric, setLyric] = useState(studioMp3Engine.lyric);
   const [currentSong, setCurrentSong] = useState<SongTrack>(studioMp3Engine.currentSong);
+
+  // Cassette physical state (loading / eject transition)
+  const [isEjected, setIsEjected] = useState(false);
+  const [tapeInsertKey, setTapeInsertKey] = useState(0);
+
+  const prevSongIdRef = useRef(currentSong.id);
+  useEffect(() => {
+    if (prevSongIdRef.current !== currentSong.id) {
+      prevSongIdRef.current = currentSong.id;
+      setTapeInsertKey((k) => k + 1);
+      setIsEjected(false);
+      try {
+        retroAudio.click();
+      } catch {}
+    }
+  }, [currentSong.id]);
+
+  const handleToggleEject = () => {
+    try {
+      retroAudio.click();
+    } catch {}
+    setIsEjected((prev) => !prev);
+  };
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -715,157 +944,348 @@ export function StudioTapePlayer() {
         </div>
       </div>
 
-      {/* Studio Showcase: Album Art Display Card + Minimal Tactile Cassette Tape */}
-      <div className="flex flex-col md:flex-row items-center md:items-stretch justify-center gap-3 sm:gap-4 my-1 w-full">
-        {/* Vinyl / CD Album Artwork Display Sleeve */}
-        <div className="flex flex-row md:flex-col items-center gap-3 rounded border-3 border-black bg-[#151515] p-2.5 sm:p-3 text-white shadow-[4px_4px_0px_#000] shrink-0 w-full md:w-[170px] justify-center">
-          <div className="relative group shrink-0">
-            {/* CD Jewel Case / Vinyl Cover Container */}
-            <div className="relative h-20 w-20 sm:h-24 sm:w-24 md:h-36 md:w-36 overflow-hidden rounded border-2 border-black bg-black shadow-[2px_2px_0px_rgba(255,255,255,0.25)]">
-              <img
-                src={currentSong.albumCover}
-                alt={`${currentSong.artist} - ${currentSong.album}`}
-                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                loading="eager"
-              />
-              {/* Vinyl Groove Sheen Overlay */}
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-white/20 opacity-60" />
+      {/* Studio Showcase: Full-Width Vintage Bobbin Reel-to-Reel Tape Recorder & Deck */}
+      <div className="relative rounded-md border-3 sm:border-4 border-black bg-gradient-to-b from-[#1c1d22] via-[#25272e] to-[#16171b] p-3 sm:p-4 text-white shadow-[5px_5px_0px_#000000] w-full my-1 flex flex-col gap-2.5 sm:gap-3 select-none">
+        {/* Chassis Corner Hardware Hex Screws */}
+        <div className="absolute top-2 left-2 h-2 w-2 rounded-full border border-black bg-neutral-400 flex items-center justify-center text-[7px] text-black font-black leading-none">+</div>
+        <div className="absolute top-2 right-2 h-2 w-2 rounded-full border border-black bg-neutral-400 flex items-center justify-center text-[7px] text-black font-black leading-none">+</div>
+        <div className="absolute bottom-2 left-2 h-2 w-2 rounded-full border border-black bg-neutral-400 flex items-center justify-center text-[7px] text-black font-black leading-none">+</div>
+        <div className="absolute bottom-2 right-2 h-2 w-2 rounded-full border border-black bg-neutral-400 flex items-center justify-center text-[7px] text-black font-black leading-none">+</div>
+
+        {/* 1. Top Deck Dashboard: Brand, Index Counter, Status LEDs, Dual VU Meters */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-2.5 border-b-2 border-black/50 pb-2.5 px-1">
+          {/* Deck Badge & Status Indicators */}
+          <div className="flex flex-col gap-1 min-w-0">
+            <div className="flex items-center gap-2">
+              <span className="font-mono text-[9px] sm:text-[10px] font-black tracking-widest text-[#d8ee57] uppercase">
+                HARIS-TONE PRO-DECK · BR-808
+              </span>
+              <span className="rounded bg-white/10 border border-white/20 px-1 py-0.2 text-[7px] sm:text-[7.5px] font-mono text-neutral-300">
+                STUDIO REEL CASSETTE
+              </span>
             </div>
-            {/* Subtle Vinyl Grooved Edge Peeking on Desktop */}
-            <div className="hidden md:block absolute -right-2 top-2 bottom-2 w-3 rounded-r-full bg-[#111] border border-white/20 -z-1 opacity-75" />
+            {/* Status LEDs */}
+            <div className="flex items-center gap-3 text-[7.5px] sm:text-[8px] font-mono font-bold text-neutral-400">
+              <span className="flex items-center gap-1">
+                <span className="h-1.5 w-1.5 rounded-full bg-amber-400 shadow-[0_0_4px_#fbbf24]" />
+                <span>POWER</span>
+              </span>
+              <span className="flex items-center gap-1">
+                <span className={`h-1.5 w-1.5 rounded-full ${!isEjected ? 'bg-cyan-400 shadow-[0_0_4px_#22d3ee]' : 'bg-red-500 animate-pulse'}`} />
+                <span>{!isEjected ? 'TAPE LOADED' : 'TAPE EJECTED'}</span>
+              </span>
+              <span className="flex items-center gap-1">
+                <span className={`h-1.5 w-1.5 rounded-full ${isPlaying && !isEjected ? 'bg-emerald-400 animate-ping' : 'bg-neutral-600'}`} />
+                <span>{isPlaying && !isEjected ? 'MOTOR: RUNNING' : 'MOTOR: IDLE'}</span>
+              </span>
+              <span className="flex items-center gap-1 hidden xs:inline-flex">
+                <span className="h-1.5 w-1.5 rounded-full bg-yellow-400/80" />
+                <span>DOLBY B-NR</span>
+              </span>
+            </div>
           </div>
 
-          {/* Album Metadata & Badges */}
-          <div className="min-w-0 flex-1 md:w-full md:text-center">
-            <div className="flex items-center md:justify-center gap-1 flex-wrap">
-              <span className="rounded bg-[#d8ee57] text-black px-1.5 py-0.2 font-mono text-[7px] sm:text-[7.5px] font-black uppercase">
-                ALBUM COVER
-              </span>
-              {currentSong.isExplicit && (
-                <span className="rounded bg-[#ef476f] text-white px-1 py-0.2 font-mono text-[6.5px] sm:text-[7px] font-black uppercase">
-                  EXPLICIT
-                </span>
-              )}
-            </div>
-            <h4 className="mt-1 font-mono text-xs sm:text-sm font-black text-white truncate max-w-[190px] md:max-w-none">
-              {currentSong.album}
-            </h4>
-            <p className="font-mono text-[9.5px] sm:text-[10px] text-neutral-400 font-bold truncate">
-              {currentSong.artist}
-            </p>
-            <div className="mt-0.5 text-[8px] sm:text-[8.5px] text-[#ffd166] font-mono truncate">
-              ★ {currentSong.year} · {currentSong.edition || 'STUDIO MASTER'}
+          {/* Center/Right Dashboard: 3-Digit Counter & Dual Vintage VU Meters */}
+          <div className="flex items-center gap-2 sm:gap-3.5 shrink-0">
+            <TapeIndexCounter
+              currentTime={currentTime}
+              onReset={() => {
+                try { retroAudio.click(); } catch {}
+                studioMp3Engine.seek(0);
+              }}
+            />
+            <div className="flex items-center gap-1.5 bg-[#121316] p-1 rounded border-2 border-black">
+              <AnalogVuMeter label="CH-L" active={isPlaying && !isEjected} currentTime={currentTime} />
+              <AnalogVuMeter label="CH-R" active={isPlaying && !isEjected} currentTime={currentTime} />
             </div>
           </div>
         </div>
 
-        {/* Minimal Width Cassette Tape Housing Visualizer (Proportionate, realistic, never stretched) */}
-        <div className="relative rounded border-4 border-black bg-[#222222] p-2.5 sm:p-3 text-white shadow-[4px_4px_0px_#000000] sm:shadow-[6px_6px_0px_#000000] w-full max-w-[390px] sm:max-w-[430px] flex flex-col justify-between">
-          {/* Cassette Corner Screw Accents */}
-          <div className="absolute top-1.5 left-1.5 h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full border border-black bg-neutral-400" />
-          <div className="absolute top-1.5 right-1.5 h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full border border-black bg-neutral-400" />
-          <div className="absolute bottom-1.5 left-1.5 h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full border border-black bg-neutral-400" />
-          <div className="absolute bottom-1.5 right-1.5 h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full border border-black bg-neutral-400" />
+        {/* 2. Main Cassette Well Chamber (Animated Tape Insertion / Ejection) */}
+        <div className="relative rounded border-3 border-black bg-[#0d0e11] p-2 sm:p-3 min-h-[175px] sm:min-h-[195px] flex flex-col justify-center overflow-hidden shadow-[inset_0_3px_8px_rgba(0,0,0,0.9)]">
+          {/* Internal Chamber Depth Gradient & Guide Rails */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/90 pointer-events-none" />
+          <div className="absolute top-0 inset-x-0 h-1 bg-neutral-700/50" />
+          <div className="absolute bottom-0 inset-x-0 h-1.5 bg-neutral-800" />
+          <div className="absolute left-1 top-4 bottom-4 w-1 rounded bg-neutral-700/60" />
+          <div className="absolute right-1 top-4 bottom-4 w-1 rounded bg-neutral-700/60" />
 
-          {/* Vintage Cassette Tape Label Sticker */}
-          <div
-            className="rounded border-2 border-black p-2 sm:p-2.5 text-black transition-colors"
-            style={{ backgroundColor: currentSong.cassetteColor }}
-          >
-            <div className="flex items-center justify-between gap-1.5 border-b border-black/30 pb-1 text-[8.5px] sm:text-[9px] font-bold">
-              <div className="flex items-center gap-1 sm:gap-1.5 shrink min-w-0">
-                <Radio size={11} className="shrink-0 text-black" />
-                <span className="truncate font-mono tracking-tight text-[8px] sm:text-[9px]">MOCKINTOSH TDK-90</span>
-              </div>
-              <div className="flex items-center gap-1 shrink-0 whitespace-nowrap">
-                {currentSong.isExplicit && (
-                  <span className="rounded bg-black text-[#ff4d6d] px-1 py-0.5 font-mono text-[7px] sm:text-[7.5px] font-black border border-black flex items-center gap-0.5 shrink-0 leading-none whitespace-nowrap shadow-xs">
-                    <span className="bg-[#ff4d6d] text-black px-0.5 text-[5.5px] font-black rounded-2xs leading-none">E</span>
-                    EXPLICIT
+          <AnimatePresence mode="wait">
+            {!isEjected ? (
+              /* Loaded Cassette Tape Container */
+              <motion.div
+                key={`tape-${currentSong.id}-${tapeInsertKey}`}
+                initial={{ y: -80, opacity: 0, scale: 0.96, rotateX: 14 }}
+                animate={{ y: 0, opacity: 1, scale: 1, rotateX: 0 }}
+                exit={{ y: -90, opacity: 0, scale: 1.04, rotateX: -12 }}
+                transition={{
+                  type: 'spring',
+                  stiffness: 300,
+                  damping: 24,
+                  mass: 0.85,
+                }}
+                className="relative rounded-md border-3 border-black p-2 sm:p-2.5 text-black transition-colors w-full shadow-[0_4px_12px_rgba(0,0,0,0.8)] z-1"
+                style={{ backgroundColor: currentSong.cassetteColor }}
+              >
+                {/* Cassette Shell Corner Rivets */}
+                <div className="absolute top-1.5 left-1.5 h-1.5 w-1.5 rounded-full border border-black bg-neutral-300" />
+                <div className="absolute top-1.5 right-1.5 h-1.5 w-1.5 rounded-full border border-black bg-neutral-300" />
+                <div className="absolute bottom-1.5 left-1.5 h-1.5 w-1.5 rounded-full border border-black bg-neutral-300" />
+                <div className="absolute bottom-1.5 right-1.5 h-1.5 w-1.5 rounded-full border border-black bg-neutral-300" />
+
+                {/* Cassette Vintage Top Label Band */}
+                <div className="flex items-center justify-between gap-1.5 border-b border-black/35 pb-1 text-[8.5px] sm:text-[9.5px] font-bold">
+                  <div className="flex items-center gap-1.5 shrink min-w-0">
+                    <Radio size={12} className="shrink-0 text-black" />
+                    <span className="truncate font-mono tracking-tight text-[8.5px] sm:text-[9.5px]">MOCKINTOSH TDK-90</span>
+                  </div>
+                  <div className="flex items-center gap-1 shrink-0 whitespace-nowrap">
+                    {currentSong.isExplicit && (
+                      <span className="rounded bg-black text-[#ff4d6d] px-1 py-0.5 font-mono text-[7px] sm:text-[7.5px] font-black border border-black flex items-center gap-0.5 shrink-0 leading-none shadow-xs">
+                        <span className="bg-[#ff4d6d] text-black px-0.5 text-[5.5px] font-black rounded-2xs leading-none">E</span>
+                        EXPLICIT
+                      </span>
+                    )}
+                    <span className="rounded bg-black text-[#d8ee57] px-1.5 py-0.5 font-mono text-[7px] sm:text-[8px] font-bold border border-black shrink-0 leading-none shadow-xs">
+                      {currentSong.edition?.includes('UNRATED') || currentSong.edition?.includes('UNCENSORED') ? 'UNRATED' : 'ORIGINAL'}
+                    </span>
+                    <span className="rounded bg-white text-black px-1 py-0.5 font-mono text-[7px] sm:text-[8px] font-bold border border-black shrink-0 leading-none shadow-xs">
+                      {soundProfile.toUpperCase()}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Track Details Subheader */}
+                <div className="mt-1 flex items-baseline justify-between border-b border-black/20 pb-1">
+                  <h4 className="font-mono text-xs sm:text-sm font-black tracking-tight truncate max-w-[280px] sm:max-w-none text-black">
+                    SIDE A: {currentSong.artist} — "{currentSong.title}"
+                  </h4>
+                  <span className="text-[8.5px] sm:text-[9.5px] font-mono font-bold opacity-80 shrink-0 ml-1.5">
+                    {formatTime(currentTime)} / {formatTime(duration)}
                   </span>
-                )}
-                <span className="rounded bg-black text-[#d8ee57] px-1.5 py-0.5 font-mono text-[7px] sm:text-[7.5px] font-bold border border-black shrink-0 leading-none whitespace-nowrap shadow-xs">
-                  {currentSong.edition?.includes('UNRATED') || currentSong.edition?.includes('UNCENSORED') ? 'UNRATED' : 'ORIGINAL'}
-                </span>
-                <span className="rounded bg-white text-black px-1 py-0.5 font-mono text-[7px] sm:text-[7.5px] font-bold border border-black shrink-0 leading-none whitespace-nowrap shadow-xs">
-                  {soundProfile.toUpperCase()}
-                </span>
-              </div>
-            </div>
-            <div className="mt-1 flex items-baseline justify-between">
-              <h4 className="font-mono text-[11px] sm:text-xs md:text-sm font-black tracking-tight truncate max-w-[190px] sm:max-w-none">
-                SIDE A: {currentSong.artist} — "{currentSong.title}"
-              </h4>
-              <span className="text-[8.5px] sm:text-[9.5px] font-bold opacity-75 shrink-0 ml-1.5">
-                {formatTime(currentTime)} / {formatTime(duration)}
-              </span>
-            </div>
-          </div>
+                </div>
 
-          {/* Retro Explicit Tape Parental Advisory Banner */}
-          <div className="mt-1.5 flex items-center justify-between px-1 text-[7.5px] sm:text-[8.5px] font-mono">
-            <div className="inline-flex items-center gap-1 rounded-xs border border-white/60 bg-black px-1.5 py-0.5 text-white shadow-sm">
-              <span className="font-black tracking-wider text-[6.5px] sm:text-[7px] border-r border-white/40 pr-1 text-[#ff4d6d]">
-                PARENTAL ADVISORY
-              </span>
-              <span className="font-bold text-[6.5px] sm:text-[7px] text-[#d8ee57]">
-                EXPLICIT CASSETTE TAPE · UNRATED MASTER
-              </span>
-            </div>
-            <span className="text-neutral-400 font-bold hidden xs:inline">
-              TYPE II (CrO2)
-            </span>
-          </div>
+                {/* Central Bobbin Chamber Window with Dual Reels & 16-Band Visualizer */}
+                <div className="relative mt-1.5 rounded border-2 border-black bg-[#111215] p-2 sm:p-2.5 overflow-hidden shadow-[inset_0_2px_6px_rgba(0,0,0,0.9)] flex items-center justify-between gap-2">
+                  {/* Left Supply Bobbin Reel (Thins as song progresses) */}
+                  <div className="flex flex-col items-center">
+                    <BobbinReel
+                      size={window.innerWidth < 640 ? 76 : 94}
+                      isSpinning={isPlaying && !isEjected}
+                      tapePercent={Math.max(12, 100 - progressPercent)}
+                    />
+                    <span className="text-[7px] font-mono font-bold text-neutral-400 mt-0.5">SUPPLY A</span>
+                  </div>
 
-          {/* Center Tape Transport Mechanism & Dual Spools */}
-          <div className="mt-1.5 flex items-center justify-between rounded border-2 border-black bg-[#111111] p-1.5 sm:p-2.5">
-            {/* Left Feed Spool */}
-            <div
-              className={`flex h-8 w-8 sm:h-11 sm:w-11 items-center justify-center rounded-full border-2 border-white/60 bg-neutral-800 transition-transform duration-300 shrink-0 ${
-                isPlaying ? 'animate-spin' : ''
+                  {/* Center Audio Spectrum Visualizer & Tape Bridge Mechanism */}
+                  <div className="flex flex-1 flex-col items-center justify-center px-1 sm:px-2 z-1 min-w-0">
+                    {/* Visualizer Canvas framed in chrome window */}
+                    <div className="relative w-full max-w-[220px] rounded border border-black/60 bg-black/85 p-1 shadow-inner flex flex-col items-center">
+                      <canvas
+                        ref={canvasRef}
+                        width={200}
+                        height={30}
+                        className="h-6 sm:h-8 w-full rounded"
+                      />
+                      <div className="w-full flex items-center justify-between text-[6.5px] sm:text-[7.5px] font-mono font-bold text-neutral-400 px-0.5 mt-0.5">
+                        <span className="text-[#d8ee57]">16-BAND DSP</span>
+                        <span className={isPlaying ? 'text-emerald-400 animate-pulse' : 'text-neutral-500'}>
+                          {isPlaying ? '● REALTIME 60FPS' : '❚❚ STANDBY'}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Tape Head Bridge & Mechanical Rollers underneath */}
+                    <div className="mt-1 flex items-center justify-center gap-3 text-neutral-400">
+                      {/* Left Guide Pin */}
+                      <div className="h-2 w-2 rounded-full border border-black bg-neutral-300 shadow-xs" />
+                      {/* Magnetic Playback Head */}
+                      <div className="h-3 w-8 rounded-xs border border-black bg-neutral-700 flex items-center justify-center shadow-xs">
+                        <div className="h-1 w-4 bg-neutral-900 rounded-2xs" />
+                      </div>
+                      {/* Right Guide Pin & Pinch Roller */}
+                      <div className="h-2 w-2 rounded-full border border-black bg-neutral-300 shadow-xs" />
+                    </div>
+
+                    {/* Magnetic Brown Tape Thread Path */}
+                    <div className="mt-0.5 h-1 w-full max-w-[210px] bg-gradient-to-r from-[#5a381e] via-[#3a200f] to-[#5a381e] border-y border-black/60 shadow-xs opacity-90" />
+                  </div>
+
+                  {/* Right Takeup Bobbin Reel (Thickens as song progresses) */}
+                  <div className="flex flex-col items-center">
+                    <BobbinReel
+                      size={window.innerWidth < 640 ? 76 : 94}
+                      isSpinning={isPlaying && !isEjected}
+                      tapePercent={Math.min(92, progressPercent + 12)}
+                    />
+                    <span className="text-[7px] font-mono font-bold text-neutral-400 mt-0.5">TAKEUP B</span>
+                  </div>
+
+                  {/* Clear Acrylic Window Diagonal Glass Sheen Reflection */}
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-75" />
+                </div>
+
+                {/* Cassette Lower Footer: Tape Type & Parental Advisory */}
+                <div className="mt-1.5 flex items-center justify-between text-[7.5px] sm:text-[8.5px] font-mono font-bold px-0.5 text-black/80">
+                  <span className="rounded bg-black/10 px-1 py-0.2 border border-black/20">
+                    TYPE II (CrO2) HIGH BIAS · 70µs EQ
+                  </span>
+                  <span className="rounded bg-black text-white px-1 py-0.2 text-[7px] font-mono font-black">
+                    NR DOLBY SYSTEM
+                  </span>
+                </div>
+              </motion.div>
+            ) : (
+              /* Ejected State: Empty Bay Compartment */
+              <motion.div
+                key="ejected-bay"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.2 }}
+                className="flex flex-col items-center justify-center p-6 text-center border-2 border-dashed border-neutral-600 rounded bg-black/40 z-1"
+              >
+                <div className="flex items-center gap-8 mb-3 opacity-60">
+                  <div className="h-10 w-10 rounded-full border-2 border-dashed border-white/50 flex items-center justify-center">
+                    <div className="h-3 w-3 rounded-full bg-neutral-600" />
+                  </div>
+                  <div className="h-4 w-12 rounded bg-neutral-700 border border-black" />
+                  <div className="h-10 w-10 rounded-full border-2 border-dashed border-white/50 flex items-center justify-center">
+                    <div className="h-3 w-3 rounded-full bg-neutral-600" />
+                  </div>
+                </div>
+                <p className="font-mono text-xs sm:text-sm font-black text-[#ffd166] uppercase tracking-wider">
+                  ⏏ CASSETTE TAPE EJECTED
+                </p>
+                <p className="font-mono text-[9px] sm:text-[10px] text-neutral-400 mt-1 max-w-[280px]">
+                  Click the button below or choose a song from the tracklist to load the cassette into the drive.
+                </p>
+                <button
+                  type="button"
+                  onClick={handleToggleEject}
+                  className="mt-3 rounded border-2 border-black bg-[#d8ee57] hover:bg-[#cbe348] text-black font-mono text-xs font-black px-4 py-1.5 shadow-[2px_2px_0px_#000] cursor-pointer"
+                >
+                  INSERT TAPE NOW ↵
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+
+        {/* 3. Deck Control Console: Transport Keys, Eject, Scrubber Slider */}
+        <div className="flex flex-col gap-2 pt-1 border-t border-black/40">
+          {/* Tactile Piano-Key Style Deck Transport Buttons */}
+          <div className="flex items-center justify-between gap-1 sm:gap-2 flex-wrap sm:flex-nowrap">
+            {/* Eject / Load Key */}
+            <button
+              type="button"
+              onClick={handleToggleEject}
+              title={isEjected ? 'Load Cassette Tape into Deck' : 'Eject Cassette Tape'}
+              className={`flex items-center gap-1.5 rounded border-2 border-black px-2.5 sm:px-3 py-1 sm:py-1.5 font-mono text-[10px] sm:text-[11px] font-black cursor-pointer shadow-[2px_2px_0px_#000] transition-colors shrink-0 ${
+                isEjected
+                  ? 'bg-[#ffd166] text-black hover:bg-[#eec054]'
+                  : 'bg-neutral-800 text-white hover:bg-neutral-700'
               }`}
-              style={{ animationDuration: '2.2s' }}
             >
-              <div className="h-2.5 w-2.5 sm:h-3.5 sm:w-3.5 rounded-full border-2 border-white bg-black" />
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="12,5 4,14 20,14" />
+                <rect x="4" y="17" width="16" height="2.5" />
+              </svg>
+              <span>{isEjected ? 'LOAD TAPE' : 'EJECT'}</span>
+            </button>
+
+            {/* Transport Cluster: Prev, Rewind 10s, Play/Pause, Fwd 10s, Next */}
+            <div className="flex items-center gap-1 sm:gap-1.5">
+              <button
+                type="button"
+                onClick={() => {
+                  try { retroAudio.click(); } catch {}
+                  studioMp3Engine.prevSong();
+                }}
+                title="Previous Cassette"
+                className="flex items-center justify-center rounded border-2 border-black bg-white hover:bg-black hover:text-white p-1 sm:p-1.5 text-black cursor-pointer shadow-[2px_2px_0px_#000]"
+              >
+                <SkipBack size={12} strokeWidth={2.5} />
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  try { retroAudio.click(); } catch {}
+                  studioMp3Engine.seek(Math.max(0, currentTime - 10));
+                }}
+                title="Rewind 10 Seconds"
+                className="flex items-center gap-0.5 rounded border-2 border-black bg-neutral-800 hover:bg-black p-1 sm:p-1.5 text-white cursor-pointer shadow-[2px_2px_0px_#000] text-[9px] font-mono font-bold"
+              >
+                <Rewind size={11} />
+                <span className="hidden xs:inline">10s</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  try { retroAudio.click(); } catch {}
+                  if (isEjected) setIsEjected(false);
+                  studioMp3Engine.toggle();
+                }}
+                className={`flex items-center gap-1.5 rounded border-2 border-black px-3 sm:px-4 py-1 sm:py-1.5 font-mono text-[11px] sm:text-xs font-black cursor-pointer transition-colors shadow-[2px_2px_0px_#000] ${
+                  isPlaying && !isEjected
+                    ? 'bg-[#ef476f] text-white hover:bg-[#d63056]'
+                    : 'bg-[#d8ee57] text-black hover:bg-[#cbe348]'
+                }`}
+              >
+                {isPlaying && !isEjected ? <Pause size={12} strokeWidth={3} /> : <Play size={12} strokeWidth={3} />}
+                <span>{isPlaying && !isEjected ? 'PAUSE' : 'PLAY'}</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  try { retroAudio.click(); } catch {}
+                  studioMp3Engine.seek(Math.min(duration, currentTime + 10));
+                }}
+                title="Fast Forward 10 Seconds"
+                className="flex items-center gap-0.5 rounded border-2 border-black bg-neutral-800 hover:bg-black p-1 sm:p-1.5 text-white cursor-pointer shadow-[2px_2px_0px_#000] text-[9px] font-mono font-bold"
+              >
+                <span className="hidden xs:inline">10s</span>
+                <FastForward size={11} />
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  try { retroAudio.click(); } catch {}
+                  studioMp3Engine.nextSong();
+                }}
+                title="Next Cassette"
+                className="flex items-center justify-center rounded border-2 border-black bg-white hover:bg-black hover:text-white p-1 sm:p-1.5 text-black cursor-pointer shadow-[2px_2px_0px_#000]"
+              >
+                <SkipForward size={12} strokeWidth={2.5} />
+              </button>
             </div>
 
-            {/* Center Tape Window with 16-Band Real-Time LED Visualizer */}
-            <div className="flex flex-1 flex-col items-center justify-center px-1 sm:px-2.5">
-              <canvas
-                ref={canvasRef}
-                width={180}
-                height={28}
-                className="h-6 sm:h-8 w-full max-w-[190px] rounded border border-black/40 bg-black/70 shadow-inner"
-              />
-              <div className="mt-0.5 flex items-center gap-1 text-[7.5px] sm:text-[8px] font-bold text-neutral-400">
-                <span className="flex items-center gap-1">
-                  <span className={`h-1.5 w-1.5 rounded-full ${isPlaying ? 'bg-[#39e658] animate-ping' : 'bg-neutral-600'}`} />
-                  <span>MOTOR: {isPlaying ? 'RUNNING' : 'STANDBY'}</span>
-                </span>
-                <span>•</span>
-                <span className="text-[#d8ee57] hidden xs:inline">HTML5 STREAM</span>
-              </div>
-            </div>
-
-            {/* Right Takeup Spool */}
-            <div
-              className={`flex h-8 w-8 sm:h-11 sm:w-11 items-center justify-center rounded-full border-2 border-white/60 bg-neutral-800 transition-transform duration-300 shrink-0 ${
-                isPlaying ? 'animate-spin' : ''
-              }`}
-              style={{ animationDuration: '2.2s' }}
+            {/* Replay Track */}
+            <button
+              type="button"
+              onClick={() => {
+                try { retroAudio.click(); } catch {}
+                studioMp3Engine.seek(0);
+              }}
+              title="Restart from Beginning"
+              className="flex items-center justify-center rounded border-2 border-black bg-white hover:bg-black hover:text-white p-1 sm:p-1.5 text-black cursor-pointer shadow-[2px_2px_0px_#000]"
             >
-              <div className="h-2.5 w-2.5 sm:h-3.5 sm:w-3.5 rounded-full border-2 border-white bg-black" />
-            </div>
+              <RotateCcw size={12} />
+            </button>
           </div>
 
-          {/* Interactive Audio Scrubber & Progress Bar */}
-          <div className="mt-1.5 space-y-0.5">
+          {/* Interactive Tape Scrubber Bar */}
+          <div className="space-y-0.5 mt-1">
             <div className="flex items-center justify-between text-[8.5px] sm:text-[9.5px] font-bold text-neutral-300">
-              <span>{formatTime(currentTime)}</span>
-              <span className="text-[#d8ee57] uppercase text-[7.5px] sm:text-[8.5px] tracking-wider">
-                {isPlaying ? '● PLAYING STUDIO MP3' : '❚❚ PAUSED'}
+              <span className="font-mono">{formatTime(currentTime)}</span>
+              <span className="text-[#d8ee57] uppercase text-[7.5px] sm:text-[8.5px] tracking-wider font-mono">
+                {isEjected ? '⏏ DECK EJECTED' : isPlaying ? '● TAPE RUNNING' : '❚❚ PAUSED'}
               </span>
-              <span>{formatTime(duration)}</span>
+              <span className="font-mono">{formatTime(duration)}</span>
             </div>
             <input
               type="range"
@@ -877,7 +1297,7 @@ export function StudioTapePlayer() {
                 studioMp3Engine.seek(parseFloat(e.target.value));
               }}
               style={{ touchAction: 'none' }}
-              className="w-full h-1.5 sm:h-2 rounded-xs appearance-none bg-neutral-800 cursor-pointer accent-[#d8ee57]"
+              className="w-full h-1.5 sm:h-2 rounded-xs appearance-none bg-neutral-900 cursor-pointer accent-[#d8ee57]"
             />
           </div>
         </div>
